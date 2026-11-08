@@ -1,0 +1,40 @@
+{
+ "fuga-s": {
+  "parametros": 151619328,
+  "d": 768,
+  "capas": 24,
+  "cabezas": 12,
+  "kv": 4,
+  "ffn": 2048,
+  "ctx": 4096,
+  "loss_inicial": 6.767,
+  "ln_vocab": 6.633,
+  "seg_fwd_bwd_cpu": 33.1,
+  "rss_max_gb": 2.46,
+  "grad_finito": true,
+  "estimacion_24gb_ctx4096_lote8": {
+   "estado_gb": 2.43,
+   "activaciones_gb": 1.21,
+   "total_gb": 3.63
+  }
+ },
+ "fuga-m": {
+  "parametros": 386724864,
+  "d": 1024,
+  "capas": 32,
+  "cabezas": 16,
+  "kv": 4,
+  "ffn": 3072,
+  "ctx": 4096,
+  "loss_inicial": 6.863,
+  "ln_vocab": 6.633,
+  "seg_fwd_bwd_cpu": 33.4,
+  "rss_max_gb": 5.13,
+  "grad_finito": true,
+  "estimacion_24gb_ctx4096_lote8": {
+   "estado_gb": 6.19,
+   "activaciones_gb": 2.15,
+   "total_gb": 8.34
+  }
+ }
+}

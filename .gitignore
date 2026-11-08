@@ -1,0 +1,32 @@
+# FUGA — artefactos que no se versionan
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.ruff_cache/
+.pytest_cache/
+.forja/progress.json
+
+# datos y pesos (reproducibles con scripts/extraer_corpus.py y fuga.train)
+data/*.jsonl
+cache/
+# modelo.pt, modelo_mejor.pt y exports de zspace; los log.json y registros sí se versionan
+runs/**/*.pt
+# almacenes Z-Space (packfiles de GB)
+runs/**/zspace/
+muestras/
+
+# audio generado (los MIDI de ensayo/ y ensayo/audio/ sí se versionan; los WAV se regeneran)
+ensayo/audio/*.wav
+ensayo/demos/*.wav
+
+# E1 (RFC-FUGA-2 §5): metadatos y clips FMA descargados, herramientas y venv aparte (scripts/e1_pares.py)
+data/fma_e1/
+.venv_e1/
+
+# exports para Hugging Face (pesos grandes); se regeneran con scripts/exportar_hf.py
+hf/
+
+# almacén local de herramientas de memoria (no es parte del proyecto)
+mneme_storage/

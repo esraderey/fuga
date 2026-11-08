@@ -1,0 +1,263 @@
+{
+ "piezas": 14955,
+ "vocab": 723,
+ "particion": {
+  "train": 14102,
+  "test": 478,
+  "val": 375
+ },
+ "fuentes": {
+  "essenFolksong": 8514,
+  "oneills1850": 2009,
+  "palestrina": 1318,
+  "airdsAirs": 1180,
+  "ryansMammoth": 1059,
+  "bach": 413,
+  "miscFolk": 185,
+  "trecento": 103,
+  "monteverdi": 49,
+  "josquin": 29,
+  "beethoven": 26,
+  "mozart": 16,
+  "demos": 11,
+  "haydn": 9,
+  "schumann_robert": 7,
+  "schumann_clara": 5,
+  "leadSheet": 2,
+  "nottingham-dataset": 2,
+  "schoenberg": 2,
+  "theoryExercises": 2,
+  "cpebach": 1,
+  "chopin": 1,
+  "ciconia": 1,
+  "corelli": 1,
+  "johnson_j_r": 1,
+  "joplin": 1,
+  "liliuokalani": 1,
+  "handel": 1,
+  "luca": 1,
+  "lusitano": 1,
+  "schubert": 1,
+  "webern": 1,
+  "verdi": 1,
+  "weber": 1
+ },
+ "notas": 2029813,
+ "tokens_base": 7095997,
+ "tokens_eco": 5271297,
+ "ratio_eco_base": 0.742855020936452,
+ "tok_por_nota_base": 3.4958870595468645,
+ "tok_por_nota_eco": 2.5969372548111576,
+ "segmentos": {
+  "literal": 271429,
+  "eco": 148462,
+  "ecor": 168401
+ },
+ "por_fuente": {
+  "palestrina": {
+   "notas": 669400,
+   "ratio_eco_base": 0.792,
+   "frac_seg_eco": 0.246,
+   "frac_seg_ecor": 0.301
+  },
+  "essenFolksong": {
+   "notas": 448252,
+   "ratio_eco_base": 0.792,
+   "frac_seg_eco": 0.232,
+   "frac_seg_ecor": 0.242
+  },
+  "oneills1850": {
+   "notas": 215833,
+   "ratio_eco_base": 0.649,
+   "frac_seg_eco": 0.276,
+   "frac_seg_ecor": 0.324
+  },
+  "beethoven": {
+   "notas": 151940,
+   "ratio_eco_base": 0.631,
+   "frac_seg_eco": 0.304,
+   "frac_seg_ecor": 0.32
+  },
+  "ryansMammoth": {
+   "notas": 121529,
+   "ratio_eco_base": 0.597,
+   "frac_seg_eco": 0.3,
+   "frac_seg_ecor": 0.35
+  },
+  "bach": {
+   "notas": 110895,
+   "ratio_eco_base": 0.752,
+   "frac_seg_eco": 0.183,
+   "frac_seg_ecor": 0.359
+  },
+  "airdsAirs": {
+   "notas": 109281,
+   "ratio_eco_base": 0.715,
+   "frac_seg_eco": 0.27,
+   "frac_seg_ecor": 0.273
+  },
+  "trecento": {
+   "notas": 71536,
+   "ratio_eco_base": 0.798,
+   "frac_seg_eco": 0.25,
+   "frac_seg_ecor": 0.201
+  },
+  "monteverdi": {
+   "notas": 41792,
+   "ratio_eco_base": 0.739,
+   "frac_seg_eco": 0.306,
+   "frac_seg_ecor": 0.251
+  },
+  "mozart": {
+   "notas": 22861,
+   "ratio_eco_base": 0.642,
+   "frac_seg_eco": 0.336,
+   "frac_seg_ecor": 0.293
+  },
+  "miscFolk": {
+   "notas": 15422,
+   "ratio_eco_base": 0.687,
+   "frac_seg_eco": 0.317,
+   "frac_seg_ecor": 0.259
+  },
+  "haydn": {
+   "notas": 13957,
+   "ratio_eco_base": 0.667,
+   "frac_seg_eco": 0.302,
+   "frac_seg_ecor": 0.323
+  },
+  "schumann_robert": {
+   "notas": 13922,
+   "ratio_eco_base": 0.631,
+   "frac_seg_eco": 0.381,
+   "frac_seg_ecor": 0.215
+  },
+  "schumann_clara": {
+   "notas": 5213,
+   "ratio_eco_base": 0.748,
+   "frac_seg_eco": 0.166,
+   "frac_seg_ecor": 0.265
+  },
+  "weber": {
+   "notas": 4670,
+   "ratio_eco_base": 0.68,
+   "frac_seg_eco": 0.274,
+   "frac_seg_ecor": 0.199
+  },
+  "josquin": {
+   "notas": 3471,
+   "ratio_eco_base": 0.908,
+   "frac_seg_eco": 0.171,
+   "frac_seg_ecor": 0.112
+  },
+  "schubert": {
+   "notas": 1645,
+   "ratio_eco_base": 0.569,
+   "frac_seg_eco": 0.413,
+   "frac_seg_ecor": 0.218
+  },
+  "joplin": {
+   "notas": 1489,
+   "ratio_eco_base": 0.622,
+   "frac_seg_eco": 0.281,
+   "frac_seg_ecor": 0.299
+  },
+  "cpebach": {
+   "notas": 804,
+   "ratio_eco_base": 0.857,
+   "frac_seg_eco": 0.188,
+   "frac_seg_ecor": 0.062
+  },
+  "chopin": {
+   "notas": 787,
+   "ratio_eco_base": 0.714,
+   "frac_seg_eco": 0.37,
+   "frac_seg_ecor": 0.137
+  },
+  "luca": {
+   "notas": 755,
+   "ratio_eco_base": 0.838,
+   "frac_seg_eco": 0.227,
+   "frac_seg_ecor": 0.241
+  },
+  "demos": {
+   "notas": 712,
+   "ratio_eco_base": 0.881,
+   "frac_seg_eco": 0.117,
+   "frac_seg_ecor": 0.421
+  },
+  "handel": {
+   "notas": 619,
+   "ratio_eco_base": 0.784,
+   "frac_seg_eco": 0.275,
+   "frac_seg_ecor": 0.221
+  },
+  "liliuokalani": {
+   "notas": 458,
+   "ratio_eco_base": 0.769,
+   "frac_seg_eco": 0.128,
+   "frac_seg_ecor": 0.337
+  },
+  "leadSheet": {
+   "notas": 414,
+   "ratio_eco_base": 0.768,
+   "frac_seg_eco": 0.217,
+   "frac_seg_ecor": 0.275
+  },
+  "johnson_j_r": {
+   "notas": 388,
+   "ratio_eco_base": 0.612,
+   "frac_seg_eco": 0.57,
+   "frac_seg_ecor": 0.281
+  },
+  "lusitano": {
+   "notas": 385,
+   "ratio_eco_base": 0.844,
+   "frac_seg_eco": 0.157,
+   "frac_seg_ecor": 0.268
+  },
+  "verdi": {
+   "notas": 364,
+   "ratio_eco_base": 0.666,
+   "frac_seg_eco": 0.391,
+   "frac_seg_ecor": 0.232
+  },
+  "nottingham-dataset": {
+   "notas": 313,
+   "ratio_eco_base": 0.772,
+   "frac_seg_eco": 0.111,
+   "frac_seg_ecor": 0.278
+  },
+  "corelli": {
+   "notas": 238,
+   "ratio_eco_base": 0.879,
+   "frac_seg_eco": 0.053,
+   "frac_seg_ecor": 0.175
+  },
+  "schoenberg": {
+   "notas": 161,
+   "ratio_eco_base": 0.966,
+   "frac_seg_eco": 0.032,
+   "frac_seg_ecor": 0.0
+  },
+  "theoryExercises": {
+   "notas": 132,
+   "ratio_eco_base": 0.873,
+   "frac_seg_eco": 0.155,
+   "frac_seg_ecor": 0.5
+  },
+  "webern": {
+   "notas": 92,
+   "ratio_eco_base": 0.793,
+   "frac_seg_eco": 0.0,
+   "frac_seg_ecor": 0.583
+  },
+  "ciconia": {
+   "notas": 83,
+   "ratio_eco_base": 0.806,
+   "frac_seg_eco": 0.229,
+   "frac_seg_ecor": 0.314
+  }
+ },
+ "segundos": 23
+}

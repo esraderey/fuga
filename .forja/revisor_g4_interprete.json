@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "veredicto": "aprobar_con_cambios",
+  "independencia": "contextual",
+  "dimensiones": [
+    {"dimension": "correccion", "juicio": "hallazgos",
+     "evidencia": "G4 pasada 1 (expedicion/revision_g4_interprete.md): 0 ALTA / 4 MEDIA / 8 BAJA. Pasada 2 (revision_g4_interprete_v2.md): 9 corregidos, 2 parciales, 1 aceptado; 2 MEDIA nuevos (N1 duplicados mismo tick, N3 corte en a_midi plano) y 3 BAJA (N2, N4, N5). Todos los MEDIA y los BAJA N2, N4, N5 corregidos después con test ancla: tests/test_interprete.py::test_duplicados_de_misma_voz_ataque_y_altura_se_fusionan, ::test_midi_plano_no_corta_notas_repetidas, ::test_tope_con_tpq_alto_y_ataques_densos[misma]; scripts/ensayo.py guarda te_b vacío."},
+    {"dimension": "regresiones", "juicio": "ok",
+     "evidencia": "Pasada 1, clase 1: los 4 checkpoints runs/*/modelo.pt generan bit a bit igual que antes/ en CPU (reg.py); codificar da hashes idénticos en 800 casos; entrenamiento --device cpu idéntico (maxdif 0). Control del director: 8 MIDI de ensayo regenerados con antes/ y ahora/ en esta máquina, idénticos antes del cambio de a_midi; tras la regla anti-solape de a_midi solo cambian los off de notas repetidas (scratchpad/regresion2)."},
+    {"dimension": "errores", "juicio": "hallazgos",
+     "evidencia": "G4I-B3 (largos vacío → IndexError sin explicación) corregido con _validar y test_validacion_de_entradas; N5 (ZeroDivisionError en ensayo.py con te_b vacío) corregido con guarda, no ejecutable sin music21 (SOSPECHA)."},
+    {"dimension": "seguridad", "juicio": "no_aplica", "evidencia": "sin superficie de red, credenciales ni datos sensibles; torch.load con weights_only=False solo sobre checkpoints propios (preexistente)."},
+    {"dimension": "concurrencia", "juicio": "ok", "evidencia": "extraer_corpus: imap ordenado con chunksize 4, sin estado compartido (lectura, pasada 1 clase 7)."},
+    {"dimension": "eficiencia", "juicio": "ok", "evidencia": "I-1 interpreta 16 s de música en <1 s en CPU; GPU nano 60 pasos en 4 s; escala FUGA-S fwd+bwd 0,45 s / 1,57 GB (ensayo/escala_cuda.json)."},
+    {"dimension": "mantenibilidad", "juicio": "ok", "evidencia": "regla anti-solape única (_sin_solapes/_escribir_pista) para los dos escritores MIDI; config_guardable aisla las banderas de entrenamiento del checkpoint; ruff limpio."},
+    {"dimension": "oraculo", "juicio": "hallazgos",
+     "evidencia": "G4I-M3: 12 mutantes sobrevivían a los tests iniciales. Tras reforzar los tests: 16/16 mutantes muertos en la corrida del director (.forja/mutantes_interprete.json) y 22/23 en la pasada 2 (vivo M11 preserve_rng_state); M11 cubierto después comparando gradientes con dropout (test_checkpoint_con_dropout_misma_semilla_mismo_resultado). forja_oraculo: 0 sospechosos sin justificar."}
+  ],
+  "objecion_mas_fuerte": {
+    "descripcion": "El render plano a_midi que usa fuga.sample cortaba notas repetidas (30 de 98 muestras generadas; N3, preexistente al diff) y el intérprete nuevo dejaba en un tick las notas duplicadas del corpus crudo (N1, 341 pares en 30 piezas).",
+    "valoracion": "Ambos corregidos con una regla común en render._sin_solapes (fusión de ataques simultáneos de la misma tecla y off ≤ siguiente on) y fusión de duplicados en interprete.notas_unicas, con tests ancla y mutantes M21–M23. La corrección de a_midi cambia los off de notas repetidas en las muestras generadas: es un cambio de comportamiento deliberado, no una regresión."
+  },
+  "hallazgos": [
+    {"severidad": "mayor", "descripcion": "G4I-M1/N1: solapes de la misma altura en el MIDI interpretado (legato ≥ 1 + jitter; duplicados del corpus en el mismo tick).", "evidencia": "pasada 1: 338/584 solapes en 60 piezas (neutro/romantico); pasada 2: 341 pares en 30 piezas. Corregido: _cortar_repeticiones + notas_unicas + _sin_solapes; tests test_repeticion_de_la_misma_altura_no_se_solapa y test_duplicados_*; 55 passed."},
+    {"severidad": "mayor", "descripcion": "G4I-M2: la pinza de orden solo corregía la primera nota del acorde y rompía la cohesión y el orden por voz.", "evidencia": "entrada [(k,1,60,0),(k,1,64,0)] a 200 bpm, neutro semilla 15: ts != sorted(ts). Corregido: pinza a nivel de ataque con eps ≤ Δ/2; test_acordes_con_ataques_a_un_tick (3 casos). Pasada 2: corregido."},
+    {"severidad": "mayor", "descripcion": "G4I-M3: los tests del intérprete y del render no detectaban la ruptura de las propiedades declaradas (12 mutantes vivos).", "evidencia": "mutar.py/mutar2.py de la pasada 1; tras reforzar: 16/16 y 22/23 muertos; .forja/mutantes_interprete.json."},
+    {"severidad": "mayor", "descripcion": "G4I-M4: extraer_corpus.py abortaba en Windows por separadores de ruta mientras el README prometía portabilidad.", "evidencia": "IndexError en ruta.split('/corpus/'). Corregido: _fuente_y_nombre con pathlib dentro del try; test_fuente_y_nombre_con_rutas_de_windows_y_posix; README matiza que la extracción no se ejecutó aquí."},
+    {"severidad": "mayor", "descripcion": "N3 (preexistente): a_midi plano corta notas repetidas en las muestras de fuga.sample.", "evidencia": "30 de 98 muestra_XX.mid con violación (chk2.py, pasada 2). Corregido con _escribir_pista/_sin_solapes; test_midi_plano_no_corta_notas_repetidas."},
+    {"severidad": "menor", "descripcion": "G4I-B1/N2: el tope de desvío y el piso de 1 ms podían violarse con tpq alto y ataques densos.", "evidencia": "corregido: eps ≤ Δ/2 y recorte sin piso; test_tope_con_tpq_alto_y_ataques_densos[distintas|misma]."},
+    {"severidad": "menor", "descripcion": "G4I-B2: el estilo plano no reproducía notas de menos de 40 ms.", "evidencia": "corregido con Estilo.dur_min_s (0 en plano); test_plano_conserva_notas_mas_cortas_de_40_ms."},
+    {"severidad": "menor", "descripcion": "G4I-B3: largos vacío o inicios desordenados fallaban sin explicación o pasaban en silencio.", "evidencia": "corregido con _validar; test_validacion_de_entradas."},
+    {"severidad": "menor", "descripcion": "G4I-B4: la anacrusa recibía acento de primer tiempo y contaba como compás 0 de la frase.", "evidencia": "corregido; test_anacrusa_no_recibe_acento_de_primer_tiempo."},
+    {"severidad": "menor", "descripcion": "G4I-B5: --device auto por defecto cambia el 3.er decimal respecto a los brazos de runs/ entrenados en CPU.", "evidencia": "aceptado sin cambio de código; README advierte fijar --device cpu para reproducir; ensayo/informe.md lo fija en el comando de reproducción."},
+    {"severidad": "menor", "descripcion": "G4I-B6: la bandera ckpt se guardaba en el checkpoint y rompía la carga con 0.1.0.", "evidencia": "corregido con model.config_guardable; test_config_guardable_no_lleva_ckpt_y_carga_en_ambas_direcciones."},
+    {"severidad": "menor", "descripcion": "G4I-B7/N5: el ValueError de estilo desconocido rompía ensayo.py con brazos entrenados con --max_piezas; te_b vacío dividía por cero.", "evidencia": "corregido por lectura (filtro de estilos y guarda); no ejecutable sin music21 (SOSPECHA)."},
+    {"severidad": "menor", "descripcion": "G4I-B8: el oráculo de checkpointing no cubría dropout ni bits_por_nota en GPU; M11 seguía vivo en la pasada 2.", "evidencia": "corregido: test_checkpoint_con_dropout_misma_semilla_mismo_resultado compara también gradientes; test_bits_por_nota_en_cuda_coincide_con_cpu."},
+    {"severidad": "menor", "descripcion": "N4: el comentario de dur_min_s no decía que el recorte por repetición puede dejar la duración por debajo.", "evidencia": "comentario corregido en Estilo."}
+  ],
+  "verificaciones_ejecutadas": [
+    {"comando": "python -m compileall -q fuga scripts tests", "resultado": "pass"},
+    {"comando": "python -m ruff check --select E,F,W,B --ignore E501 fuga scripts tests", "resultado": "pass"},
+    {"comando": "python -m pytest -q tests  (55 passed)", "resultado": "pass"},
+    {"comando": "scratchpad/mut/mutar.py (16 mutantes, 0 vivos; corrida con M22/M23 pendiente de registro)", "resultado": "pass"},
+    {"comando": "regresion antes/ vs ahora/: 8 MIDI de ensayo con los 4 checkpoints en CPU", "resultado": "pass"},
+    {"comando": "python -m fuga.train --device cuda (60 pasos bf16; 20 pasos --ckpt)", "resultado": "pass"},
+    {"comando": "python scripts/escala.py --device cuda --precision bf16", "resultado": "pass"},
+    {"comando": "python scripts/ensayo.py (requiere music21)", "resultado": "no_disponible"},
+    {"comando": "python scripts/extraer_corpus.py (requiere music21)", "resultado": "no_disponible"}
+  ]
+}

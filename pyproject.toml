@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fuga"
+version = "0.2.0"
+description = "FUGA: LM compositor de música (150–400M) con operadores ECO"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = ["torch>=2.4", "numpy", "mido"]  # F.rms_norm existe desde torch 2.4
+
+[project.optional-dependencies]
+corpus = ["music21>=9"]
+dev = ["pytest", "ruff"]
+zspace = ["z-space-core @ git+https://github.com/esraderey/z-space-core"]   # checkpoints periodicos (--guardar_cada)
+hf = ["safetensors", "huggingface_hub"]   # export y subida a Hugging Face (scripts/exportar_hf.py, scripts/subir_hf.py)
+
+[tool.setuptools]
+packages = ["fuga"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

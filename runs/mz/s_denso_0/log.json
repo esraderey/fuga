@@ -1,0 +1,2166 @@
+{
+ "args": {
+  "brazo": "s_denso",
+  "rango": 512,
+  "datos": "data/corpus_pd.jsonl",
+  "cache": "cache/eco_rel_1024.pkl",
+  "cache_test": "cache/test_eco_rel_1024.pkl",
+  "ctx": 1024,
+  "tokens_por_lote": 8192,
+  "pasos": 700,
+  "lr": 0.0006,
+  "wd": 0.1,
+  "dropout": 0.1,
+  "ckpt": true,
+  "precision": "bf16",
+  "semilla": 0,
+  "eval_cada": 100,
+  "probar": false,
+  "contrastar": null,
+  "out": "runs\\mz\\s_denso_0"
+ },
+ "parametros": 151590912,
+ "info": {},
+ "vocab": 723,
+ "curva": [
+  {
+   "paso": 25,
+   "t": 28.6,
+   "tokens": 199331,
+   "loss": 3.5539
+  },
+  {
+   "paso": 50,
+   "t": 56.5,
+   "tokens": 397696,
+   "loss": 2.5702
+  },
+  {
+   "paso": 75,
+   "t": 84.8,
+   "tokens": 596918,
+   "loss": 1.5643
+  },
+  {
+   "paso": 100,
+   "t": 112.7,
+   "tokens": 795949,
+   "loss": 1.5333
+  },
+  {
+   "paso": 125,
+   "t": 145.9,
+   "tokens": 996582,
+   "loss": 2.0994
+  },
+  {
+   "paso": 150,
+   "t": 173.9,
+   "tokens": 1195566,
+   "loss": 2.0233
+  },
+  {
+   "paso": 175,
+   "t": 202.1,
+   "tokens": 1394998,
+   "loss": 2.1059
+  },
+  {
+   "paso": 200,
+   "t": 230.1,
+   "tokens": 1594089,
+   "loss": 1.4958
+  },
+  {
+   "paso": 225,
+   "t": 262.8,
+   "tokens": 1793345,
+   "loss": 1.6946
+  },
+  {
+   "paso": 250,
+   "t": 291.2,
+   "tokens": 1993154,
+   "loss": 1.6636
+  },
+  {
+   "paso": 275,
+   "t": 319.0,
+   "tokens": 2192967,
+   "loss": 1.2595
+  },
+  {
+   "paso": 300,
+   "t": 346.9,
+   "tokens": 2393168,
+   "loss": 1.0748
+  },
+  {
+   "paso": 325,
+   "t": 379.7,
+   "tokens": 2593003,
+   "loss": 1.6053
+  },
+  {
+   "paso": 350,
+   "t": 408.2,
+   "tokens": 2793026,
+   "loss": 1.6327
+  },
+  {
+   "paso": 375,
+   "t": 436.2,
+   "tokens": 2992696,
+   "loss": 1.4544
+  },
+  {
+   "paso": 400,
+   "t": 464.2,
+   "tokens": 3192431,
+   "loss": 1.0393
+  },
+  {
+   "paso": 425,
+   "t": 497.2,
+   "tokens": 3392532,
+   "loss": 1.0616
+  },
+  {
+   "paso": 450,
+   "t": 525.0,
+   "tokens": 3590527,
+   "loss": 1.5647
+  },
+  {
+   "paso": 475,
+   "t": 553.1,
+   "tokens": 3790043,
+   "loss": 1.4298
+  },
+  {
+   "paso": 500,
+   "t": 581.3,
+   "tokens": 3989314,
+   "loss": 1.1174
+  },
+  {
+   "paso": 525,
+   "t": 613.9,
+   "tokens": 4188877,
+   "loss": 1.5203
+  },
+  {
+   "paso": 550,
+   "t": 642.0,
+   "tokens": 4388289,
+   "loss": 1.0452
+  },
+  {
+   "paso": 575,
+   "t": 670.4,
+   "tokens": 4589274,
+   "loss": 1.0014
+  },
+  {
+   "paso": 600,
+   "t": 698.5,
+   "tokens": 4788743,
+   "loss": 1.3104
+  },
+  {
+   "paso": 625,
+   "t": 731.1,
+   "tokens": 4988415,
+   "loss": 1.2907
+  },
+  {
+   "paso": 650,
+   "t": 759.7,
+   "tokens": 5189145,
+   "loss": 1.3099
+  },
+  {
+   "paso": 675,
+   "t": 788.1,
+   "tokens": 5388296,
+   "loss": 0.9382
+  },
+  {
+   "paso": 700,
+   "t": 816.1,
+   "tokens": 5587956,
+   "loss": 1.266
+  }
+ ],
+ "val": [
+  {
+   "paso": 100,
+   "bits_por_nota": 7.682427280579662,
+   "bits_por_token": 3.164509234154394,
+   "tokens_por_nota": 2.4276836350052635,
+   "notas": 29447
+  },
+  {
+   "paso": 200,
+   "bits_por_nota": 6.505246571770171,
+   "bits_por_token": 2.679610505244464,
+   "tokens_por_nota": 2.4276836350052635,
+   "notas": 29447
+  },
+  {
+   "paso": 300,
+   "bits_por_nota": 6.015558641369687,
+   "bits_por_token": 2.4779005611069436,
+   "tokens_por_nota": 2.4276836350052635,
+   "notas": 29447
+  },
+  {
+   "paso": 400,
+   "bits_por_nota": 5.44994133388432,
+   "bits_por_token": 2.2449141458551307,
+   "tokens_por_nota": 2.4276836350052635,
+   "notas": 29447
+  },
+  {
+   "paso": 500,
+   "bits_por_nota": 5.212808804472642,
+   "bits_por_token": 2.147235632068402,
+   "tokens_por_nota": 2.4276836350052635,
+   "notas": 29447
+  },
+  {
+   "paso": 600,
+   "bits_por_nota": 5.002414846698879,
+   "bits_por_token": 2.0605711446780144,
+   "tokens_por_nota": 2.4276836350052635,
+   "notas": 29447
+  },
+  {
+   "paso": 700,
+   "bits_por_nota": 4.76401696342836,
+   "bits_por_token": 1.9623714122940201,
+   "tokens_por_nota": 2.4276836350052635,
+   "notas": 29447
+  }
+ ],
+ "final": {
+  "paso": 700,
+  "tokens_vistos": 5587956,
+  "segundos": 821,
+  "bits_por_nota": 4.488784240825169,
+  "bits_por_token": 1.7460976553274805,
+  "tokens_por_nota": 2.570752115226509,
+  "notas": 96089
+ },
+ "memoria": {
+  "cuda_pico_asignado_gb": 3.601,
+  "cuda_pico_reservado_gb": 5.662
+ },
+ "test": {
+  "bits_por_nota": 4.889328221050258,
+  "notas": 70358,
+  "piezas": 475,
+  "por_pieza": {
+   "bach/bwv1.6.mxl#0": [
+    1957.6729125976562,
+    491
+   ],
+   "bach/bwv124.6.mxl#0": [
+    1311.1613159179688,
+    327
+   ],
+   "bach/bwv169.7.mxl#0": [
+    1060.3778076171875,
+    248
+   ],
+   "bach/bwv183.5.mxl#0": [
+    941.5345458984375,
+    239
+   ],
+   "bach/bwv197.5.mxl#0": [
+    1175.4725189208984,
+    280
+   ],
+   "bach/bwv244.32.mxl#0": [
+    855.53564453125,
+    207
+   ],
+   "bach/bwv245.28.mxl#0": [
+    943.2975387573242,
+    235
+   ],
+   "bach/bwv248.5.mxl#0": [
+    911.7753295898438,
+    219
+   ],
+   "bach/bwv251.mxl#0": [
+    1448.9328918457031,
+    325
+   ],
+   "bach/bwv252.mxl#0": [
+    1527.5523986816406,
+    310
+   ],
+   "bach/bwv248.59-6.mxl#0": [
+    1174.4029541015625,
+    277
+   ],
+   "bach/bwv271.mxl#0": [
+    808.9827880859375,
+    201
+   ],
+   "bach/bwv297.mxl#0": [
+    940.4545288085938,
+    206
+   ],
+   "bach/bwv343.mxl#0": [
+    1312.3427124023438,
+    232
+   ],
+   "bach/bwv345.mxl#0": [
+    901.7047119140625,
+    204
+   ],
+   "bach/bwv391.mxl#0": [
+    923.5977783203125,
+    199
+   ],
+   "bach/bwv436.mxl#0": [
+    872.3468017578125,
+    222
+   ],
+   "bach/bwv77.6.mxl#0": [
+    796.5306396484375,
+    183
+   ],
+   "bach/bwv81.7.mxl#0": [
+    820.0007934570312,
+    195
+   ],
+   "bach/bwv846.mxl#0": [
+    2194.402313232422,
+    535
+   ],
+   "bach/bwv88.7.mxl#0": [
+    651.621337890625,
+    165
+   ],
+   "bach/bwv91.6.mxl#0": [
+    1567.2846069335938,
+    334
+   ],
+   "beethoven/movement3.mxl#0": [
+    57695.10334777832,
+    8001
+   ],
+   "essenFolksong/altdeu10.abc#0": [
+    311.09661865234375,
+    60
+   ],
+   "essenFolksong/altdeu10.abc#1": [
+    635.7101440429688,
+    104
+   ],
+   "essenFolksong/altdeu10.abc#2": [
+    170.38925170898438,
+    23
+   ],
+   "essenFolksong/altdeu10.abc#3": [
+    337.361083984375,
+    80
+   ],
+   "essenFolksong/altdeu10.abc#4": [
+    304.3427734375,
+    59
+   ],
+   "essenFolksong/altdeu10.abc#5": [
+    228.27940368652344,
+    56
+   ],
+   "essenFolksong/altdeu10.abc#6": [
+    172.8242950439453,
+    40
+   ],
+   "essenFolksong/altdeu10.abc#7": [
+    154.45530700683594,
+    34
+   ],
+   "essenFolksong/altdeu10.abc#8": [
+    128.9798583984375,
+    28
+   ],
+   "essenFolksong/altdeu10.abc#9": [
+    125.38912200927734,
+    24
+   ],
+   "essenFolksong/altdeu10.abc#10": [
+    222.0205841064453,
+    38
+   ],
+   "essenFolksong/altdeu10.abc#11": [
+    150.79588317871094,
+    34
+   ],
+   "essenFolksong/altdeu10.abc#12": [
+    139.28460693359375,
+    34
+   ],
+   "essenFolksong/altdeu10.abc#13": [
+    216.97360229492188,
+    50
+   ],
+   "essenFolksong/altdeu10.abc#14": [
+    270.8533630371094,
+    53
+   ],
+   "essenFolksong/altdeu10.abc#15": [
+    314.938232421875,
+    57
+   ],
+   "essenFolksong/altdeu10.abc#16": [
+    290.59783935546875,
+    55
+   ],
+   "essenFolksong/altdeu10.abc#17": [
+    238.99122619628906,
+    53
+   ],
+   "essenFolksong/altdeu10.abc#18": [
+    187.55294799804688,
+    31
+   ],
+   "essenFolksong/altdeu10.abc#19": [
+    148.54417419433594,
+    31
+   ],
+   "essenFolksong/altdeu10.abc#20": [
+    233.65907287597656,
+    36
+   ],
+   "essenFolksong/altdeu10.abc#21": [
+    150.98687744140625,
+    44
+   ],
+   "essenFolksong/altdeu10.abc#22": [
+    189.67723083496094,
+    30
+   ],
+   "essenFolksong/altdeu10.abc#23": [
+    199.30857849121094,
+    36
+   ],
+   "essenFolksong/altdeu10.abc#24": [
+    204.49209594726562,
+    32
+   ],
+   "essenFolksong/altdeu10.abc#25": [
+    164.45423889160156,
+    30
+   ],
+   "essenFolksong/altdeu10.abc#26": [
+    158.8892059326172,
+    35
+   ],
+   "essenFolksong/altdeu10.abc#27": [
+    152.86512756347656,
+    32
+   ],
+   "essenFolksong/altdeu10.abc#28": [
+    254.9705047607422,
+    42
+   ],
+   "essenFolksong/altdeu10.abc#29": [
+    197.3874969482422,
+    37
+   ],
+   "essenFolksong/altdeu10.abc#30": [
+    185.1931610107422,
+    41
+   ],
+   "essenFolksong/altdeu10.abc#31": [
+    132.01864624023438,
+    35
+   ],
+   "essenFolksong/altdeu10.abc#32": [
+    218.498046875,
+    42
+   ],
+   "essenFolksong/altdeu10.abc#33": [
+    177.22662353515625,
+    36
+   ],
+   "essenFolksong/altdeu10.abc#34": [
+    159.34132385253906,
+    35
+   ],
+   "essenFolksong/altdeu10.abc#35": [
+    162.18304443359375,
+    34
+   ],
+   "essenFolksong/altdeu10.abc#36": [
+    115.61306762695312,
+    29
+   ],
+   "essenFolksong/altdeu10.abc#37": [
+    164.9178924560547,
+    43
+   ],
+   "essenFolksong/altdeu10.abc#38": [
+    159.90089416503906,
+    35
+   ],
+   "essenFolksong/altdeu10.abc#39": [
+    201.45980834960938,
+    38
+   ],
+   "essenFolksong/altdeu10.abc#40": [
+    211.02320861816406,
+    40
+   ],
+   "essenFolksong/altdeu10.abc#41": [
+    74.72119903564453,
+    16
+   ],
+   "essenFolksong/altdeu10.abc#42": [
+    263.3194274902344,
+    60
+   ],
+   "essenFolksong/altdeu10.abc#43": [
+    181.67254638671875,
+    56
+   ],
+   "essenFolksong/altdeu10.abc#44": [
+    447.169677734375,
+    89
+   ],
+   "essenFolksong/altdeu10.abc#45": [
+    199.87591552734375,
+    41
+   ],
+   "essenFolksong/altdeu10.abc#46": [
+    194.82518005371094,
+    43
+   ],
+   "essenFolksong/altdeu10.abc#47": [
+    219.9351348876953,
+    46
+   ],
+   "essenFolksong/altdeu10.abc#48": [
+    156.8944854736328,
+    32
+   ],
+   "essenFolksong/altdeu10.abc#49": [
+    209.33633422851562,
+    39
+   ],
+   "essenFolksong/altdeu10.abc#50": [
+    145.03976440429688,
+    39
+   ],
+   "essenFolksong/altdeu10.abc#51": [
+    175.8805694580078,
+    27
+   ],
+   "essenFolksong/altdeu10.abc#52": [
+    185.4991455078125,
+    38
+   ],
+   "essenFolksong/altdeu10.abc#53": [
+    326.0395812988281,
+    49
+   ],
+   "essenFolksong/altdeu10.abc#54": [
+    218.16104125976562,
+    41
+   ],
+   "essenFolksong/altdeu10.abc#55": [
+    281.49249267578125,
+    42
+   ],
+   "essenFolksong/altdeu10.abc#56": [
+    173.21786499023438,
+    39
+   ],
+   "essenFolksong/altdeu10.abc#57": [
+    229.1516571044922,
+    44
+   ],
+   "essenFolksong/altdeu10.abc#58": [
+    265.52117919921875,
+    61
+   ],
+   "essenFolksong/altdeu10.abc#59": [
+    229.31881713867188,
+    41
+   ],
+   "essenFolksong/altdeu10.abc#60": [
+    265.0417175292969,
+    66
+   ],
+   "essenFolksong/altdeu10.abc#61": [
+    147.8249053955078,
+    36
+   ],
+   "essenFolksong/altdeu10.abc#62": [
+    210.3020782470703,
+    40
+   ],
+   "essenFolksong/altdeu10.abc#63": [
+    134.2451171875,
+    35
+   ],
+   "essenFolksong/altdeu10.abc#64": [
+    139.42384338378906,
+    31
+   ],
+   "essenFolksong/altdeu10.abc#65": [
+    137.72561645507812,
+    32
+   ],
+   "essenFolksong/altdeu10.abc#66": [
+    199.3898468017578,
+    39
+   ],
+   "essenFolksong/altdeu10.abc#67": [
+    149.2153778076172,
+    41
+   ],
+   "essenFolksong/altdeu10.abc#68": [
+    123.62472534179688,
+    26
+   ],
+   "essenFolksong/altdeu10.abc#69": [
+    230.69410705566406,
+    35
+   ],
+   "essenFolksong/altdeu10.abc#70": [
+    135.11619567871094,
+    43
+   ],
+   "essenFolksong/altdeu10.abc#71": [
+    296.96331787109375,
+    39
+   ],
+   "essenFolksong/altdeu10.abc#72": [
+    120.1819076538086,
+    27
+   ],
+   "essenFolksong/altdeu10.abc#73": [
+    226.1591339111328,
+    44
+   ],
+   "essenFolksong/altdeu10.abc#74": [
+    365.5805358886719,
+    52
+   ],
+   "essenFolksong/altdeu10.abc#75": [
+    300.3510437011719,
+    48
+   ],
+   "essenFolksong/altdeu10.abc#76": [
+    139.84986877441406,
+    34
+   ],
+   "essenFolksong/altdeu10.abc#77": [
+    229.95529174804688,
+    37
+   ],
+   "essenFolksong/altdeu10.abc#78": [
+    202.17816162109375,
+    39
+   ],
+   "essenFolksong/altdeu10.abc#79": [
+    185.02288818359375,
+    42
+   ],
+   "essenFolksong/altdeu10.abc#80": [
+    127.55052185058594,
+    34
+   ],
+   "essenFolksong/altdeu10.abc#81": [
+    94.08134460449219,
+    26
+   ],
+   "essenFolksong/altdeu10.abc#82": [
+    103.25911712646484,
+    24
+   ],
+   "essenFolksong/altdeu10.abc#83": [
+    250.86180114746094,
+    55
+   ],
+   "essenFolksong/altdeu10.abc#84": [
+    77.6590347290039,
+    25
+   ],
+   "essenFolksong/altdeu10.abc#85": [
+    328.6265869140625,
+    59
+   ],
+   "essenFolksong/altdeu10.abc#86": [
+    259.1744079589844,
+    59
+   ],
+   "essenFolksong/altdeu10.abc#87": [
+    262.4833984375,
+    52
+   ],
+   "essenFolksong/altdeu10.abc#88": [
+    295.0975341796875,
+    54
+   ],
+   "essenFolksong/altdeu10.abc#89": [
+    225.29000854492188,
+    58
+   ],
+   "essenFolksong/altdeu10.abc#90": [
+    354.48577880859375,
+    61
+   ],
+   "essenFolksong/altdeu10.abc#91": [
+    426.072509765625,
+    61
+   ],
+   "essenFolksong/altdeu10.abc#92": [
+    225.3851318359375,
+    50
+   ],
+   "essenFolksong/altdeu10.abc#93": [
+    167.6269073486328,
+    34
+   ],
+   "essenFolksong/altdeu10.abc#94": [
+    445.45562744140625,
+    102
+   ],
+   "essenFolksong/altdeu10.abc#95": [
+    202.07080078125,
+    40
+   ],
+   "essenFolksong/altdeu10.abc#96": [
+    170.63446044921875,
+    52
+   ],
+   "essenFolksong/altdeu10.abc#97": [
+    338.6996765136719,
+    77
+   ],
+   "essenFolksong/altdeu10.abc#98": [
+    247.19761657714844,
+    56
+   ],
+   "essenFolksong/altdeu10.abc#99": [
+    403.9736328125,
+    86
+   ],
+   "essenFolksong/altdeu10.abc#100": [
+    332.5227355957031,
+    61
+   ],
+   "essenFolksong/altdeu10.abc#101": [
+    311.9095153808594,
+    66
+   ],
+   "essenFolksong/altdeu10.abc#102": [
+    186.8787384033203,
+    48
+   ],
+   "essenFolksong/altdeu10.abc#103": [
+    350.273681640625,
+    66
+   ],
+   "essenFolksong/altdeu10.abc#104": [
+    422.4471435546875,
+    80
+   ],
+   "essenFolksong/altdeu10.abc#105": [
+    336.85650634765625,
+    60
+   ],
+   "essenFolksong/altdeu10.abc#106": [
+    163.0214080810547,
+    48
+   ],
+   "essenFolksong/altdeu10.abc#107": [
+    273.2004699707031,
+    59
+   ],
+   "essenFolksong/altdeu10.abc#108": [
+    227.93887329101562,
+    46
+   ],
+   "essenFolksong/altdeu10.abc#109": [
+    321.2798156738281,
+    56
+   ],
+   "essenFolksong/altdeu10.abc#110": [
+    270.3670349121094,
+    60
+   ],
+   "essenFolksong/altdeu10.abc#111": [
+    329.203369140625,
+    53
+   ],
+   "essenFolksong/altdeu10.abc#112": [
+    235.90647888183594,
+    41
+   ],
+   "essenFolksong/altdeu10.abc#113": [
+    233.9457550048828,
+    52
+   ],
+   "essenFolksong/altdeu10.abc#114": [
+    186.3546142578125,
+    52
+   ],
+   "essenFolksong/altdeu10.abc#115": [
+    141.5990447998047,
+    56
+   ],
+   "essenFolksong/altdeu10.abc#116": [
+    262.24267578125,
+    58
+   ],
+   "essenFolksong/altdeu10.abc#117": [
+    265.15338134765625,
+    59
+   ],
+   "essenFolksong/altdeu10.abc#118": [
+    195.68551635742188,
+    59
+   ],
+   "essenFolksong/altdeu10.abc#119": [
+    250.54171752929688,
+    47
+   ],
+   "essenFolksong/altdeu10.abc#120": [
+    286.52398681640625,
+    52
+   ],
+   "essenFolksong/altdeu10.abc#121": [
+    156.48556518554688,
+    43
+   ],
+   "essenFolksong/altdeu10.abc#122": [
+    184.23841857910156,
+    54
+   ],
+   "essenFolksong/altdeu10.abc#123": [
+    200.63116455078125,
+    27
+   ],
+   "essenFolksong/altdeu10.abc#124": [
+    169.67796325683594,
+    37
+   ],
+   "essenFolksong/altdeu10.abc#125": [
+    222.7642364501953,
+    45
+   ],
+   "essenFolksong/altdeu10.abc#126": [
+    173.7278289794922,
+    30
+   ],
+   "essenFolksong/altdeu10.abc#127": [
+    134.70059204101562,
+    31
+   ],
+   "essenFolksong/altdeu10.abc#128": [
+    107.77152252197266,
+    29
+   ],
+   "essenFolksong/altdeu10.abc#129": [
+    265.5800476074219,
+    60
+   ],
+   "essenFolksong/altdeu10.abc#130": [
+    207.5426483154297,
+    36
+   ],
+   "essenFolksong/altdeu10.abc#131": [
+    165.688232421875,
+    30
+   ],
+   "essenFolksong/altdeu10.abc#132": [
+    212.79737854003906,
+    42
+   ],
+   "essenFolksong/altdeu10.abc#133": [
+    120.8087158203125,
+    46
+   ],
+   "essenFolksong/altdeu10.abc#134": [
+    147.99900817871094,
+    37
+   ],
+   "essenFolksong/altdeu10.abc#135": [
+    136.9358367919922,
+    31
+   ],
+   "essenFolksong/altdeu10.abc#136": [
+    98.15715026855469,
+    30
+   ],
+   "essenFolksong/altdeu10.abc#137": [
+    138.88107299804688,
+    32
+   ],
+   "essenFolksong/altdeu10.abc#138": [
+    228.2184295654297,
+    37
+   ],
+   "essenFolksong/altdeu10.abc#139": [
+    184.59170532226562,
+    37
+   ],
+   "essenFolksong/altdeu10.abc#140": [
+    142.4683074951172,
+    44
+   ],
+   "essenFolksong/altdeu10.abc#141": [
+    213.0854949951172,
+    38
+   ],
+   "essenFolksong/altdeu10.abc#142": [
+    149.38046264648438,
+    27
+   ],
+   "essenFolksong/altdeu10.abc#143": [
+    204.78848266601562,
+    38
+   ],
+   "essenFolksong/altdeu10.abc#144": [
+    179.85427856445312,
+    37
+   ],
+   "essenFolksong/altdeu10.abc#145": [
+    190.08950805664062,
+    41
+   ],
+   "essenFolksong/altdeu10.abc#146": [
+    131.6514434814453,
+    33
+   ],
+   "essenFolksong/altdeu10.abc#147": [
+    494.96929931640625,
+    98
+   ],
+   "essenFolksong/altdeu10.abc#148": [
+    192.3168182373047,
+    34
+   ],
+   "essenFolksong/altdeu10.abc#149": [
+    94.4707260131836,
+    26
+   ],
+   "essenFolksong/altdeu10.abc#150": [
+    188.9173583984375,
+    39
+   ],
+   "essenFolksong/altdeu10.abc#151": [
+    137.30181884765625,
+    37
+   ],
+   "essenFolksong/altdeu10.abc#152": [
+    168.41848754882812,
+    42
+   ],
+   "essenFolksong/altdeu10.abc#153": [
+    399.1878356933594,
+    73
+   ],
+   "essenFolksong/altdeu10.abc#154": [
+    214.2169189453125,
+    43
+   ],
+   "essenFolksong/altdeu10.abc#155": [
+    211.3763427734375,
+    43
+   ],
+   "essenFolksong/altdeu10.abc#156": [
+    257.21783447265625,
+    42
+   ],
+   "essenFolksong/altdeu10.abc#157": [
+    179.6005096435547,
+    58
+   ],
+   "essenFolksong/altdeu10.abc#158": [
+    268.7100524902344,
+    67
+   ],
+   "essenFolksong/altdeu10.abc#159": [
+    299.9803466796875,
+    70
+   ],
+   "essenFolksong/altdeu10.abc#160": [
+    458.85528564453125,
+    56
+   ],
+   "essenFolksong/altdeu10.abc#161": [
+    244.64012145996094,
+    47
+   ],
+   "essenFolksong/altdeu10.abc#162": [
+    223.7030029296875,
+    41
+   ],
+   "essenFolksong/altdeu10.abc#163": [
+    116.9281005859375,
+    25
+   ],
+   "essenFolksong/altdeu10.abc#164": [
+    372.52288818359375,
+    81
+   ],
+   "essenFolksong/altdeu10.abc#165": [
+    176.53758239746094,
+    35
+   ],
+   "essenFolksong/altdeu10.abc#166": [
+    356.52337646484375,
+    62
+   ],
+   "essenFolksong/altdeu10.abc#167": [
+    316.30670166015625,
+    64
+   ],
+   "essenFolksong/altdeu10.abc#168": [
+    134.36561584472656,
+    29
+   ],
+   "essenFolksong/altdeu10.abc#169": [
+    319.47979736328125,
+    59
+   ],
+   "essenFolksong/altdeu10.abc#170": [
+    248.8935546875,
+    57
+   ],
+   "essenFolksong/altdeu10.abc#171": [
+    326.8388671875,
+    73
+   ],
+   "essenFolksong/altdeu10.abc#172": [
+    277.84417724609375,
+    64
+   ],
+   "essenFolksong/altdeu10.abc#173": [
+    363.431884765625,
+    103
+   ],
+   "essenFolksong/altdeu10.abc#174": [
+    316.8169250488281,
+    79
+   ],
+   "essenFolksong/altdeu10.abc#175": [
+    262.8562927246094,
+    71
+   ],
+   "essenFolksong/altdeu10.abc#176": [
+    166.18020629882812,
+    51
+   ],
+   "essenFolksong/altdeu10.abc#177": [
+    337.9576416015625,
+    60
+   ],
+   "essenFolksong/altdeu10.abc#178": [
+    209.96170043945312,
+    55
+   ],
+   "essenFolksong/altdeu10.abc#179": [
+    245.26858520507812,
+    59
+   ],
+   "essenFolksong/altdeu10.abc#180": [
+    140.82090759277344,
+    52
+   ],
+   "essenFolksong/altdeu10.abc#181": [
+    155.63873291015625,
+    40
+   ],
+   "essenFolksong/altdeu10.abc#182": [
+    166.52093505859375,
+    41
+   ],
+   "essenFolksong/altdeu10.abc#183": [
+    154.14186096191406,
+    40
+   ],
+   "essenFolksong/altdeu10.abc#184": [
+    247.3823699951172,
+    51
+   ],
+   "essenFolksong/altdeu10.abc#185": [
+    221.58949279785156,
+    51
+   ],
+   "essenFolksong/altdeu10.abc#186": [
+    280.0622863769531,
+    53
+   ],
+   "essenFolksong/altdeu10.abc#187": [
+    204.5883331298828,
+    51
+   ],
+   "essenFolksong/altdeu10.abc#188": [
+    121.69591522216797,
+    26
+   ],
+   "essenFolksong/altdeu10.abc#189": [
+    71.03561401367188,
+    22
+   ],
+   "essenFolksong/altdeu10.abc#190": [
+    300.2683410644531,
+    64
+   ],
+   "essenFolksong/altdeu10.abc#191": [
+    105.65524291992188,
+    28
+   ],
+   "essenFolksong/altdeu10.abc#192": [
+    276.0635681152344,
+    67
+   ],
+   "essenFolksong/altdeu10.abc#193": [
+    131.38497924804688,
+    36
+   ],
+   "essenFolksong/altdeu10.abc#194": [
+    127.75601959228516,
+    32
+   ],
+   "essenFolksong/altdeu10.abc#195": [
+    233.9222869873047,
+    84
+   ],
+   "essenFolksong/altdeu10.abc#196": [
+    111.72978973388672,
+    25
+   ],
+   "essenFolksong/altdeu10.abc#197": [
+    266.2945251464844,
+    56
+   ],
+   "essenFolksong/altdeu10.abc#198": [
+    121.30859375,
+    26
+   ],
+   "essenFolksong/altdeu10.abc#199": [
+    180.7867889404297,
+    39
+   ],
+   "essenFolksong/altdeu10.abc#200": [
+    343.07598876953125,
+    70
+   ],
+   "essenFolksong/altdeu10.abc#201": [
+    171.62088012695312,
+    38
+   ],
+   "essenFolksong/altdeu10.abc#202": [
+    192.82203674316406,
+    52
+   ],
+   "essenFolksong/altdeu10.abc#203": [
+    265.6014099121094,
+    56
+   ],
+   "essenFolksong/altdeu10.abc#204": [
+    283.34844970703125,
+    74
+   ],
+   "essenFolksong/altdeu10.abc#205": [
+    170.26150512695312,
+    36
+   ],
+   "essenFolksong/altdeu10.abc#206": [
+    192.632080078125,
+    42
+   ],
+   "essenFolksong/altdeu10.abc#207": [
+    356.1303405761719,
+    67
+   ],
+   "essenFolksong/altdeu10.abc#208": [
+    203.62225341796875,
+    48
+   ],
+   "essenFolksong/altdeu10.abc#209": [
+    167.31861877441406,
+    42
+   ],
+   "essenFolksong/altdeu10.abc#210": [
+    142.0752410888672,
+    42
+   ],
+   "essenFolksong/altdeu10.abc#211": [
+    368.6454772949219,
+    70
+   ],
+   "essenFolksong/altdeu10.abc#212": [
+    303.2100524902344,
+    73
+   ],
+   "essenFolksong/altdeu10.abc#213": [
+    374.72320556640625,
+    58
+   ],
+   "essenFolksong/altdeu10.abc#214": [
+    239.5079803466797,
+    61
+   ],
+   "essenFolksong/altdeu10.abc#215": [
+    370.9108581542969,
+    61
+   ],
+   "essenFolksong/altdeu10.abc#216": [
+    373.4685974121094,
+    82
+   ],
+   "essenFolksong/altdeu10.abc#217": [
+    288.9253845214844,
+    72
+   ],
+   "essenFolksong/altdeu10.abc#218": [
+    247.1351776123047,
+    41
+   ],
+   "essenFolksong/altdeu10.abc#219": [
+    93.71179962158203,
+    27
+   ],
+   "essenFolksong/altdeu10.abc#220": [
+    323.8814392089844,
+    53
+   ],
+   "essenFolksong/altdeu10.abc#221": [
+    161.36277770996094,
+    36
+   ],
+   "essenFolksong/altdeu10.abc#222": [
+    132.9423828125,
+    32
+   ],
+   "essenFolksong/altdeu10.abc#223": [
+    150.410400390625,
+    34
+   ],
+   "essenFolksong/altdeu10.abc#224": [
+    155.300537109375,
+    37
+   ],
+   "essenFolksong/altdeu10.abc#225": [
+    132.52920532226562,
+    27
+   ],
+   "essenFolksong/altdeu10.abc#226": [
+    207.5479736328125,
+    33
+   ],
+   "essenFolksong/altdeu10.abc#227": [
+    230.27671813964844,
+    37
+   ],
+   "essenFolksong/altdeu10.abc#228": [
+    147.5061798095703,
+    31
+   ],
+   "essenFolksong/altdeu10.abc#229": [
+    135.13540649414062,
+    36
+   ],
+   "essenFolksong/altdeu10.abc#230": [
+    126.5555191040039,
+    31
+   ],
+   "essenFolksong/altdeu10.abc#231": [
+    163.62074279785156,
+    37
+   ],
+   "essenFolksong/altdeu10.abc#232": [
+    123.98021697998047,
+    32
+   ],
+   "essenFolksong/altdeu10.abc#233": [
+    159.38323974609375,
+    40
+   ],
+   "essenFolksong/altdeu10.abc#234": [
+    117.63223266601562,
+    30
+   ],
+   "essenFolksong/altdeu10.abc#235": [
+    148.5916290283203,
+    30
+   ],
+   "essenFolksong/altdeu10.abc#236": [
+    120.50855255126953,
+    32
+   ],
+   "essenFolksong/altdeu10.abc#237": [
+    174.52235412597656,
+    46
+   ],
+   "essenFolksong/altdeu10.abc#238": [
+    164.37957763671875,
+    34
+   ],
+   "essenFolksong/altdeu10.abc#239": [
+    145.69976806640625,
+    30
+   ],
+   "essenFolksong/altdeu10.abc#240": [
+    136.76791381835938,
+    32
+   ],
+   "essenFolksong/altdeu10.abc#241": [
+    130.86685180664062,
+    38
+   ],
+   "essenFolksong/altdeu10.abc#242": [
+    136.0849151611328,
+    30
+   ],
+   "essenFolksong/altdeu10.abc#243": [
+    152.55584716796875,
+    40
+   ],
+   "essenFolksong/altdeu10.abc#244": [
+    130.02911376953125,
+    40
+   ],
+   "essenFolksong/altdeu10.abc#245": [
+    165.4022216796875,
+    48
+   ],
+   "essenFolksong/altdeu10.abc#246": [
+    189.80015563964844,
+    44
+   ],
+   "essenFolksong/altdeu10.abc#247": [
+    149.08383178710938,
+    34
+   ],
+   "essenFolksong/altdeu10.abc#248": [
+    110.8748779296875,
+    30
+   ],
+   "essenFolksong/altdeu10.abc#249": [
+    183.29379272460938,
+    52
+   ],
+   "essenFolksong/altdeu10.abc#250": [
+    201.99473571777344,
+    40
+   ],
+   "essenFolksong/altdeu10.abc#251": [
+    546.89599609375,
+    92
+   ],
+   "essenFolksong/altdeu10.abc#252": [
+    261.46600341796875,
+    52
+   ],
+   "essenFolksong/altdeu10.abc#253": [
+    518.800048828125,
+    135
+   ],
+   "essenFolksong/altdeu10.abc#254": [
+    234.96942138671875,
+    60
+   ],
+   "essenFolksong/altdeu10.abc#255": [
+    330.7861633300781,
+    93
+   ],
+   "essenFolksong/altdeu10.abc#256": [
+    184.71304321289062,
+    45
+   ],
+   "essenFolksong/altdeu10.abc#257": [
+    188.8963165283203,
+    42
+   ],
+   "essenFolksong/altdeu10.abc#258": [
+    112.55994415283203,
+    15
+   ],
+   "essenFolksong/altdeu10.abc#259": [
+    212.462158203125,
+    43
+   ],
+   "essenFolksong/altdeu10.abc#260": [
+    121.54721069335938,
+    26
+   ],
+   "essenFolksong/altdeu10.abc#261": [
+    281.0127258300781,
+    54
+   ],
+   "essenFolksong/altdeu10.abc#262": [
+    356.0126037597656,
+    77
+   ],
+   "essenFolksong/altdeu10.abc#263": [
+    223.68618774414062,
+    51
+   ],
+   "essenFolksong/altdeu10.abc#264": [
+    159.32847595214844,
+    50
+   ],
+   "essenFolksong/altdeu10.abc#265": [
+    133.83421325683594,
+    50
+   ],
+   "essenFolksong/altdeu10.abc#266": [
+    186.01988220214844,
+    48
+   ],
+   "essenFolksong/altdeu10.abc#267": [
+    181.4513397216797,
+    37
+   ],
+   "essenFolksong/altdeu10.abc#268": [
+    198.45199584960938,
+    51
+   ],
+   "essenFolksong/altdeu10.abc#269": [
+    162.48028564453125,
+    34
+   ],
+   "essenFolksong/altdeu10.abc#270": [
+    112.78245544433594,
+    19
+   ],
+   "essenFolksong/altdeu10.abc#271": [
+    1094.7437744140625,
+    177
+   ],
+   "essenFolksong/altdeu10.abc#272": [
+    220.20252990722656,
+    66
+   ],
+   "essenFolksong/altdeu10.abc#273": [
+    333.4933776855469,
+    76
+   ],
+   "essenFolksong/altdeu10.abc#274": [
+    213.58229064941406,
+    64
+   ],
+   "essenFolksong/altdeu10.abc#275": [
+    73.47171020507812,
+    17
+   ],
+   "essenFolksong/altdeu10.abc#276": [
+    130.19981384277344,
+    39
+   ],
+   "essenFolksong/altdeu10.abc#277": [
+    274.0181884765625,
+    40
+   ],
+   "essenFolksong/altdeu10.abc#278": [
+    297.5824279785156,
+    56
+   ],
+   "essenFolksong/altdeu10.abc#279": [
+    213.58175659179688,
+    55
+   ],
+   "essenFolksong/altdeu10.abc#280": [
+    236.17361450195312,
+    58
+   ],
+   "essenFolksong/altdeu10.abc#281": [
+    97.40988159179688,
+    26
+   ],
+   "essenFolksong/altdeu10.abc#282": [
+    379.18682861328125,
+    90
+   ],
+   "essenFolksong/altdeu10.abc#283": [
+    643.9888305664062,
+    76
+   ],
+   "essenFolksong/altdeu10.abc#284": [
+    186.1593017578125,
+    47
+   ],
+   "essenFolksong/altdeu10.abc#285": [
+    178.7956085205078,
+    50
+   ],
+   "essenFolksong/altdeu10.abc#286": [
+    285.77117919921875,
+    47
+   ],
+   "essenFolksong/altdeu10.abc#287": [
+    256.0263366699219,
+    62
+   ],
+   "essenFolksong/altdeu10.abc#288": [
+    169.8172607421875,
+    59
+   ],
+   "essenFolksong/altdeu10.abc#289": [
+    73.38299560546875,
+    21
+   ],
+   "essenFolksong/altdeu10.abc#290": [
+    146.0301513671875,
+    54
+   ],
+   "essenFolksong/altdeu10.abc#291": [
+    79.2073745727539,
+    15
+   ],
+   "essenFolksong/altdeu10.abc#292": [
+    316.4598388671875,
+    63
+   ],
+   "essenFolksong/altdeu10.abc#293": [
+    167.53636169433594,
+    67
+   ],
+   "essenFolksong/altdeu10.abc#294": [
+    440.8092041015625,
+    91
+   ],
+   "essenFolksong/altdeu10.abc#295": [
+    215.86048889160156,
+    39
+   ],
+   "essenFolksong/altdeu10.abc#296": [
+    179.94898986816406,
+    52
+   ],
+   "essenFolksong/altdeu10.abc#297": [
+    229.1544647216797,
+    54
+   ],
+   "essenFolksong/altdeu10.abc#298": [
+    241.19158935546875,
+    74
+   ],
+   "essenFolksong/altdeu10.abc#299": [
+    314.47186279296875,
+    89
+   ],
+   "essenFolksong/altdeu10.abc#300": [
+    440.4591369628906,
+    92
+   ],
+   "essenFolksong/altdeu10.abc#301": [
+    242.15211486816406,
+    51
+   ],
+   "essenFolksong/altdeu10.abc#302": [
+    364.954345703125,
+    68
+   ],
+   "essenFolksong/altdeu10.abc#303": [
+    281.726318359375,
+    75
+   ],
+   "essenFolksong/altdeu10.abc#304": [
+    886.899169921875,
+    144
+   ],
+   "essenFolksong/altdeu10.abc#305": [
+    123.764892578125,
+    20
+   ],
+   "essenFolksong/altdeu10.abc#306": [
+    372.4029235839844,
+    81
+   ],
+   "essenFolksong/altdeu10.abc#307": [
+    165.639404296875,
+    37
+   ],
+   "essenFolksong/altdeu10.abc#308": [
+    221.7883758544922,
+    51
+   ],
+   "essenFolksong/altdeu10.abc#309": [
+    571.32763671875,
+    143
+   ],
+   "essenFolksong/altdeu10.abc#310": [
+    271.2643127441406,
+    57
+   ],
+   "essenFolksong/altdeu10.abc#311": [
+    334.2764587402344,
+    82
+   ],
+   "essenFolksong/altdeu10.abc#312": [
+    286.57586669921875,
+    70
+   ],
+   "oneills1850/1116-1135_ml.abc#0": [
+    335.41552734375,
+    148
+   ],
+   "oneills1850/1116-1135_ml.abc#1": [
+    230.28228759765625,
+    95
+   ],
+   "oneills1850/1116-1135_ml.abc#2": [
+    262.4844665527344,
+    102
+   ],
+   "oneills1850/1116-1135_ml.abc#3": [
+    205.209716796875,
+    78
+   ],
+   "oneills1850/1116-1135_ml.abc#4": [
+    237.20448303222656,
+    88
+   ],
+   "oneills1850/1116-1135_ml.abc#5": [
+    449.23272705078125,
+    180
+   ],
+   "oneills1850/1116-1135_ml.abc#6": [
+    356.3023376464844,
+    137
+   ],
+   "oneills1850/1116-1135_ml.abc#7": [
+    262.3990173339844,
+    90
+   ],
+   "oneills1850/1116-1135_ml.abc#8": [
+    243.85256958007812,
+    99
+   ],
+   "oneills1850/1116-1135_ml.abc#9": [
+    263.4798583984375,
+    66
+   ],
+   "oneills1850/1116-1135_ml.abc#10": [
+    304.6018981933594,
+    87
+   ],
+   "oneills1850/1116-1135_ml.abc#11": [
+    228.9450225830078,
+    70
+   ],
+   "oneills1850/1116-1135_ml.abc#12": [
+    168.91102600097656,
+    63
+   ],
+   "oneills1850/1116-1135_ml.abc#13": [
+    272.2487487792969,
+    95
+   ],
+   "oneills1850/1116-1135_ml.abc#14": [
+    454.9502258300781,
+    138
+   ],
+   "oneills1850/1116-1135_ml.abc#15": [
+    302.5658264160156,
+    102
+   ],
+   "oneills1850/1116-1135_ml.abc#16": [
+    309.2615051269531,
+    96
+   ],
+   "oneills1850/1116-1135_ml.abc#17": [
+    300.57275390625,
+    88
+   ],
+   "oneills1850/1116-1135_ml.abc#18": [
+    313.3656921386719,
+    99
+   ],
+   "oneills1850/1116-1135_ml.abc#19": [
+    172.6634521484375,
+    72
+   ],
+   "palestrina/Agnus_12.krn#0": [
+    2685.7349853515625,
+    520
+   ],
+   "palestrina/Agnus_II_17_a.krn#0": [
+    1775.089111328125,
+    357
+   ],
+   "palestrina/Agnus_II_44.krn#0": [
+    2938.5046997070312,
+    624
+   ],
+   "palestrina/Agnus_II_58.krn#0": [
+    2202.7447509765625,
+    452
+   ],
+   "palestrina/Agnus_II_66_a.krn#0": [
+    1400.6468353271484,
+    270
+   ],
+   "palestrina/Benedictus_16.krn#0": [
+    2002.4666748046875,
+    461
+   ],
+   "palestrina/Benedictus_20_b.krn#0": [
+    1275.7134246826172,
+    244
+   ],
+   "palestrina/Benedictus_43_a.krn#0": [
+    1793.9863891601562,
+    380
+   ],
+   "palestrina/Benedictus_46_b.krn#0": [
+    1212.7047500610352,
+    242
+   ],
+   "palestrina/Benedictus_93_b.krn#0": [
+    1356.5108184814453,
+    237
+   ],
+   "palestrina/Credo_07_a.krn#0": [
+    3916.9924926757812,
+    782
+   ],
+   "palestrina/Credo_09_c.krn#0": [
+    4322.0611572265625,
+    766
+   ],
+   "palestrina/Credo_11_a.krn#0": [
+    4619.115325927734,
+    962
+   ],
+   "palestrina/Credo_17_c.krn#0": [
+    4077.9607543945312,
+    870
+   ],
+   "palestrina/Credo_22_b.krn#0": [
+    2907.5547485351562,
+    638
+   ],
+   "palestrina/Credo_35_c.krn#0": [
+    4401.435775756836,
+    910
+   ],
+   "palestrina/Credo_50_b.krn#0": [
+    2237.771728515625,
+    468
+   ],
+   "palestrina/Credo_60_d.krn#0": [
+    1708.2378540039062,
+    365
+   ],
+   "palestrina/Credo_63_c.krn#0": [
+    1713.828857421875,
+    369
+   ],
+   "palestrina/Credo_67_e.krn#0": [
+    264.53302001953125,
+    57
+   ],
+   "palestrina/Credo_68_b.krn#0": [
+    2168.277587890625,
+    453
+   ],
+   "palestrina/Credo_70_i.krn#0": [
+    1186.628662109375,
+    225
+   ],
+   "palestrina/Credo_74_b.krn#0": [
+    2080.13330078125,
+    432
+   ],
+   "palestrina/Credo_75_a.krn#0": [
+    5345.9136962890625,
+    1088
+   ],
+   "palestrina/Credo_77_c.krn#0": [
+    2929.7057495117188,
+    601
+   ],
+   "palestrina/Credo_80_f.krn#0": [
+    4094.7791748046875,
+    675
+   ],
+   "palestrina/Credo_88_a.krn#0": [
+    3619.5968170166016,
+    687
+   ],
+   "palestrina/Credo_88_c.krn#0": [
+    4033.8489990234375,
+    845
+   ],
+   "palestrina/Credo_89_a.krn#0": [
+    3555.6210021972656,
+    745
+   ],
+   "palestrina/Credo_90_b.krn#0": [
+    2478.6914978027344,
+    569
+   ],
+   "palestrina/Credo_92_c.krn#0": [
+    1151.0264892578125,
+    240
+   ],
+   "palestrina/Credo_97_c.krn#0": [
+    3337.3134765625,
+    685
+   ],
+   "palestrina/Gloria_13_a.krn#0": [
+    5710.8829345703125,
+    919
+   ],
+   "palestrina/Gloria_14_i.krn#0": [
+    560.64599609375,
+    115
+   ],
+   "palestrina/Gloria_16_f.krn#0": [
+    1030.34423828125,
+    188
+   ],
+   "palestrina/Gloria_17_f.krn#0": [
+    1095.7587890625,
+    208
+   ],
+   "palestrina/Gloria_29.krn#0": [
+    7000.438507080078,
+    1442
+   ],
+   "palestrina/Gloria_34_d.krn#0": [
+    1012.0410766601562,
+    171
+   ],
+   "palestrina/Gloria_45.krn#0": [
+    7428.821441650391,
+    1472
+   ],
+   "palestrina/Kyrie_101.krn#0": [
+    6528.101989746094,
+    1244
+   ],
+   "palestrina/Kyrie_53_a.krn#0": [
+    1459.60400390625,
+    300
+   ],
+   "palestrina/Kyrie_56.krn#0": [
+    4009.17529296875,
+    832
+   ],
+   "palestrina/Kyrie_70_b.krn#0": [
+    1464.5115966796875,
+    305
+   ],
+   "palestrina/Kyrie_II_07.krn#0": [
+    2383.42333984375,
+    431
+   ],
+   "palestrina/Sanctus_12_c.krn#0": [
+    392.97003173828125,
+    76
+   ],
+   "palestrina/Sanctus_22_b.krn#0": [
+    1403.5985565185547,
+    316
+   ],
+   "palestrina/Sanctus_29.krn#0": [
+    1707.112060546875,
+    351
+   ],
+   "palestrina/Sanctus_33.krn#0": [
+    519.406982421875,
+    112
+   ],
+   "palestrina/Sanctus_50_c.krn#0": [
+    1152.3937797546387,
+    250
+   ],
+   "palestrina/Sanctus_73_b.krn#0": [
+    1475.1615753173828,
+    288
+   ],
+   "palestrina/Sanctus_71_b.krn#0": [
+    1605.1090698242188,
+    315
+   ],
+   "palestrina/Sanctus_93.krn#0": [
+    2683.275177001953,
+    520
+   ],
+   "palestrina/Sanctus_97.krn#0": [
+    5504.223449707031,
+    1062
+   ],
+   "ryansMammoth/AfterTheHareReel.abc#0": [
+    327.8863525390625,
+    123
+   ],
+   "ryansMammoth/AllTheRageReel.abc#0": [
+    192.2289581298828,
+    59
+   ],
+   "ryansMammoth/AmericanHornpipe.abc#0": [
+    255.17227172851562,
+    119
+   ],
+   "ryansMammoth/ApolloClubHornpipe.abc#0": [
+    202.8392791748047,
+    118
+   ],
+   "ryansMammoth/BonanzaHornpipe.abc#0": [
+    361.72442626953125,
+    117
+   ],
+   "ryansMammoth/BraesOfDumblaneReel.abc#0": [
+    277.3302917480469,
+    114
+   ],
+   "ryansMammoth/ByrnesFavoriteHornpipe.abc#0": [
+    262.8172607421875,
+    122
+   ],
+   "ryansMammoth/CaledonianHuntStrathspey.abc#0": [
+    349.28753662109375,
+    139
+   ],
+   "ryansMammoth/CameronianReel.abc#0": [
+    317.8141784667969,
+    128
+   ],
+   "ryansMammoth/CampMeetingHornpipe.abc#0": [
+    362.509033203125,
+    109
+   ],
+   "ryansMammoth/CarnivalHornpipe.abc#0": [
+    379.1416015625,
+    120
+   ],
+   "ryansMammoth/ChampionHornpipe.abc#0": [
+    446.1781311035156,
+    139
+   ],
+   "ryansMammoth/CongressParkReel.abc#0": [
+    281.5517578125,
+    114
+   ],
+   "ryansMammoth/CrossRoad.abc#0": [
+    305.6646728515625,
+    130
+   ],
+   "ryansMammoth/DefianceHornpipe.abc#0": [
+    325.6700744628906,
+    122
+   ],
+   "ryansMammoth/DownfallOfWaterStreetJig.abc#0": [
+    442.7096862792969,
+    114
+   ],
+   "ryansMammoth/DundeeHornpipe.abc#0": [
+    267.46881103515625,
+    124
+   ],
+   "ryansMammoth/EbbTideHornpipe.abc#0": [
+    333.6724548339844,
+    121
+   ],
+   "ryansMammoth/EchoesFromForestGardenReel.abc#0": [
+    322.7807312011719,
+    122
+   ],
+   "ryansMammoth/EurekaHornpipe.abc#0": [
+    423.300537109375,
+    124
+   ],
+   "ryansMammoth/EssenceOfOldKentucky.abc#0": [
+    667.922607421875,
+    115
+   ],
+   "ryansMammoth/EyesRight.abc#0": [
+    363.5772705078125,
+    127
+   ],
+   "ryansMammoth/GarthlandsStrathspey.abc#0": [
+    388.5152893066406,
+    128
+   ],
+   "ryansMammoth/GrandSpyReel.abc#0": [
+    411.285888671875,
+    164
+   ],
+   "ryansMammoth/HappyToMeetSorryToPart.abc#0": [
+    197.99945068359375,
+    90
+   ],
+   "ryansMammoth/HarryBloodgoodsFamousJig.abc#0": [
+    500.7401123046875,
+    113
+   ],
+   "ryansMammoth/HigginsBestHornpipe.abc#0": [
+    329.3258361816406,
+    117
+   ],
+   "ryansMammoth/HighlandHornpipe.abc#0": [
+    383.7396545410156,
+    125
+   ],
+   "ryansMammoth/HullsVictoryHornpipe.abc#0": [
+    315.3055114746094,
+    106
+   ],
+   "ryansMammoth/JamesLeesFavoriteJig.abc#0": [
+    232.38941955566406,
+    107
+   ],
+   "ryansMammoth/KenmuresOnAndAwaJig.abc#0": [
+    194.4652099609375,
+    88
+   ],
+   "ryansMammoth/JuniataHornpipe.abc#0": [
+    315.6438903808594,
+    106
+   ],
+   "ryansMammoth/LadyCawdorsJig.abc#0": [
+    182.84194946289062,
+    54
+   ],
+   "ryansMammoth/LastNightsFunReel.abc#0": [
+    279.4024353027344,
+    125
+   ],
+   "ryansMammoth/LordMoirasHornpipe.abc#0": [
+    361.71685791015625,
+    174
+   ],
+   "ryansMammoth/LooneyMcTwolterJig.abc#0": [
+    203.7460174560547,
+    83
+   ],
+   "ryansMammoth/LordByronsFavoriteStrathspey.abc#0": [
+    453.1429748535156,
+    120
+   ],
+   "ryansMammoth/MaggiePickingCockelsReel.abc#0": [
+    327.2091369628906,
+    119
+   ],
+   "ryansMammoth/MarquisOfBowmontReel.abc#0": [
+    351.3209228515625,
+    128
+   ],
+   "ryansMammoth/MortonsReel.abc#0": [
+    223.5942840576172,
+    110
+   ],
+   "ryansMammoth/NedKendallsFavoriteReel.abc#0": [
+    353.83203125,
+    103
+   ],
+   "ryansMammoth/NewOrleansLancashireClog.abc#0": [
+    420.91259765625,
+    116
+   ],
+   "ryansMammoth/PaddyHandlysGooseReel.abc#0": [
+    361.8731689453125,
+    126
+   ],
+   "ryansMammoth/PaddyOCarrolsJig.abc#0": [
+    158.8871612548828,
+    95
+   ],
+   "ryansMammoth/Petronella.abc#0": [
+    341.2933654785156,
+    95
+   ],
+   "ryansMammoth/RossReel.abc#0": [
+    288.5959777832031,
+    125
+   ],
+   "ryansMammoth/RovingBachelorReel.abc#0": [
+    257.89337158203125,
+    112
+   ],
+   "ryansMammoth/RumAndOnionsJig.abc#0": [
+    305.4244384765625,
+    92
+   ],
+   "ryansMammoth/SallyGrowlerHornpipe.abc#0": [
+    340.5870361328125,
+    115
+   ],
+   "ryansMammoth/SheeLaNaQuiraJig.abc#0": [
+    221.20030212402344,
+    84
+   ],
+   "ryansMammoth/ShipsAreSailingReel.abc#0": [
+    251.41879272460938,
+    126
+   ],
+   "ryansMammoth/StropTheRazorJig.abc#0": [
+    250.7658233642578,
+    92
+   ],
+   "ryansMammoth/SwimmingInTheGutterJig.abc#0": [
+    298.4232177734375,
+    94
+   ],
+   "ryansMammoth/TeteATeteHornpipe.abc#0": [
+    281.8859558105469,
+    119
+   ],
+   "ryansMammoth/TwinKatysReel.abc#0": [
+    246.9710235595703,
+    116
+   ],
+   "ryansMammoth/WalkAroundCarveDatPossum.abc#0": [
+    423.9046936035156,
+    128
+   ],
+   "ryansMammoth/VaughansFavoriteJig.abc#0": [
+    196.57472229003906,
+    93
+   ],
+   "ryansMammoth/WalkAroundGwineToDeShow.abc#0": [
+    453.6223449707031,
+    106
+   ],
+   "ryansMammoth/WinnieGreensFavoriteReel.abc#0": [
+    368.4873352050781,
+    153
+   ],
+   "ryansMammoth/WitchOfTheWaveReel.abc#0": [
+    240.31285095214844,
+    124
+   ],
+   "trecento/PMFC_06_Giovanni-05_Donna_Gia_Fu_Leggiadra.xml#0": [
+    3194.1464233398438,
+    604
+   ],
+   "trecento/PMFC_12_18-Sanctus Mediolano.xml#0": [
+    4659.9791259765625,
+    791
+   ],
+   "trecento/PMFC_12_2-Gloria (Gubbio).xml#0": [
+    2896.7305908203125,
+    570
+   ],
+   "trecento/PMFC_12_23-Benedicamus PMFC12.23.xml#0": [
+    1677.0733642578125,
+    284
+   ],
+   "trecento/PMFC_13_18-Gloria Spiritus et Alme.xml#0": [
+    6383.0499267578125,
+    1027
+   ],
+   "trecento/PMFC_24_8-Gloria Ciconia 8.xml#0": [
+    5684.133544921875,
+    942
+   ]
+  }
+ }
+}

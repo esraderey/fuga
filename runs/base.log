@@ -1,0 +1,17 @@
+secuencias=41226 tokens=13099522 val_trozos=981 prep=0s
+parámetros=2.50M vocab=723
+paso 25 f=0.07 loss=2.8833 tok=199774
+paso 50 f=0.14 loss=2.5280 tok=399520
+paso 75 f=0.21 loss=2.3200 tok=598354
+paso 100 f=0.28 loss=2.2400 tok=797318
+paso 125 f=0.34 loss=1.9934 tok=996721
+paso 150 f=0.41 loss=2.0401 tok=1197264
+paso 175 f=0.48 loss=1.2705 tok=1396367
+paso 200 f=0.55 loss=1.6464 tok=1596292
+paso 225 f=0.62 loss=1.4282 tok=1795402
+paso 250 f=0.69 loss=1.1476 tok=1995257
+paso 275 f=0.76 loss=1.5102 tok=2195254
+paso 300 f=0.83 loss=1.4309 tok=2395055
+paso 325 f=0.90 loss=1.3365 tok=2593517
+paso 350 f=0.97 loss=1.0426 tok=2793076
+FINAL {"paso": 360, "tokens_vistos": 2873571, "segundos": 1124, "bits_por_nota": 6.21897392176079, "bits_por_token": 1.7997753346584935, "tokens_por_nota": 3.455416796753044, "notas": 96090}

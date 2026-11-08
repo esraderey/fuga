@@ -1,0 +1,46 @@
+{
+ "device": "cuda",
+ "precision": "bf16",
+ "tokens": 512,
+ "gpu": "NVIDIA GeForce RTX 4060",
+ "fuga-s": {
+  "parametros": 151619328,
+  "d": 768,
+  "capas": 24,
+  "cabezas": 12,
+  "kv": 4,
+  "ffn": 2048,
+  "ctx": 4096,
+  "loss_inicial": 6.799,
+  "ln_vocab": 6.633,
+  "seg_fwd_bwd": 0.45,
+  "rss_max_gb": 1.81,
+  "grad_finito": true,
+  "estimacion_ctx4096_lote8_ckpt": {
+   "estado_gb": 2.43,
+   "activaciones_gb": 1.21,
+   "total_gb": 3.63
+  },
+  "cuda_pico_gb": 1.57
+ },
+ "fuga-m": {
+  "parametros": 386724864,
+  "d": 1024,
+  "capas": 32,
+  "cabezas": 16,
+  "kv": 4,
+  "ffn": 3072,
+  "ctx": 4096,
+  "loss_inicial": 6.893,
+  "ln_vocab": 6.633,
+  "seg_fwd_bwd": 0.25,
+  "rss_max_gb": 2.96,
+  "grad_finito": true,
+  "estimacion_ctx4096_lote8_ckpt": {
+   "estado_gb": 6.19,
+   "activaciones_gb": 2.15,
+   "total_gb": 8.34
+  },
+  "cuda_pico_gb": 3.55
+ }
+}

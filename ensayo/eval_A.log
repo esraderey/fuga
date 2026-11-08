@@ -1,0 +1,6 @@
+base común {"piezas": {"train": 14102, "test": 478, "prompts": 60}, "copia_4compases_test_real_vs_train": 0.051993996569468265, "D_ruido_real_vs_real": [0.9260475002580265, 0.6512921221079117, 1.2567930796055793], "techo_juez_tonalidad_8compases": {"kk": 0.545, "tkp": 0.76}, "brazos": {}}
+base estructura [0.4442002025397166, 0.2659535875037154, 0.6453185427838241]
+base adherencia {"exacta": 0.058333333333333334, "tonica": 0.10833333333333334, "modo": 0.525, "posthoc_exacta": 0.26666666666666666, "posthoc_tonica": 0.4666666666666667, "vacias": 0.0, "n": 240}
+eco estructura [0.5521890877154034, 0.41572567296251506, 0.707641939262005]
+eco adherencia {"exacta": 0.30833333333333335, "tonica": 0.31666666666666665, "modo": 0.5166666666666667, "posthoc_exacta": 0.24583333333333332, "posthoc_tonica": 0.4708333333333333, "vacias": 0.0, "n": 240}
+OK ensayo/res_A.json 533 s

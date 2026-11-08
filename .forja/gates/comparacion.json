@@ -1,0 +1,35 @@
+{
+  "antes": "baseline",
+  "despues": "final",
+  "deuda_preexistente": false,
+  "gates": {
+    "G0": {
+      "comando_igual": true,
+      "comparacion": "por_identificador",
+      "estado": "pass",
+      "fallos_nuevos": [],
+      "fallos_persistentes": [],
+      "fallos_resueltos": []
+    },
+    "G1": {
+      "comando_igual": true,
+      "comparacion": "por_identificador",
+      "estado": "pass",
+      "fallos_nuevos": [],
+      "fallos_persistentes": [],
+      "fallos_resueltos": [
+        "fuga\\data.py::Do not perform function call `range` in argument defaults; instead, perform the "
+      ]
+    },
+    "G3": {
+      "comando_igual": true,
+      "comparacion": "por_identificador",
+      "estado": "pass",
+      "fallos_nuevos": [],
+      "fallos_persistentes": [],
+      "fallos_resueltos": []
+    }
+  },
+  "regresion": false,
+  "schema_version": 1
+}

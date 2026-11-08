@@ -1,0 +1,34 @@
+{
+ "val_completo": {
+  "modelo.pt": {
+   "bits_por_nota": 6.844247941004021,
+   "bits_por_token": 2.6623523522418555,
+   "tokens_por_nota": 2.570752115226509,
+   "notas": 96089
+  },
+  "modelo_mejor.pt": {
+   "bits_por_nota": 3.533042911104266,
+   "bits_por_token": 1.374322670077029,
+   "tokens_por_nota": 2.570752115226509,
+   "notas": 96089
+  }
+ },
+ "elegido": "modelo_mejor.pt",
+ "val_trozos": 617,
+ "test_completo": {
+  "trozos": 631,
+  "piezas": 475,
+  "modelo_mejor.pt": {
+   "bits_por_nota": 3.848081933060714,
+   "bits_por_token": 1.3738086954016782,
+   "tokens_por_nota": 2.8010318656016375,
+   "notas": 70358
+  },
+  "modelo.pt": {
+   "bits_por_nota": 7.216480462343974,
+   "bits_por_token": 2.5763649999725855,
+   "tokens_por_nota": 2.8010318656016375,
+   "notas": 70358
+  }
+ }
+}

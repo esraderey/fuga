@@ -1,0 +1,70 @@
+{
+  "archivos": {
+    ".gitignore": "propio_en_alcance",
+    "README.md": "propio_en_alcance",
+    "ensayo/escala_cuda.json": "fuera_de_alcance",
+    "ensayo/informe.md": "propio_en_alcance",
+    "expedicion/MAPA.md": "propio_en_alcance",
+    "expedicion/S5.md": "propio_en_alcance",
+    "expedicion/S6.md": "propio_en_alcance",
+    "expedicion/revision_g4_interprete.md": "propio_en_alcance",
+    "expedicion/revision_g4_interprete_v2.md": "propio_en_alcance",
+    "expedicion/verificacion_S5_S6.md": "propio_en_alcance",
+    "fuga/__init__.py": "propio_en_alcance",
+    "fuga/data.py": "propio_en_alcance",
+    "fuga/interprete.py": "propio_en_alcance",
+    "fuga/model.py": "propio_en_alcance",
+    "fuga/render.py": "propio_en_alcance",
+    "fuga/sample.py": "propio_en_alcance",
+    "fuga/tokenizer.py": "propio_en_alcance",
+    "fuga/train.py": "propio_en_alcance",
+    "pyproject.toml": "propio_en_alcance",
+    "rfc/RFC-FUGA-2.md": "propio_en_alcance",
+    "scripts/ensayo.py": "propio_en_alcance",
+    "scripts/escala.py": "propio_en_alcance",
+    "scripts/extraer_corpus.py": "propio_en_alcance",
+    "tests/test_fuga.py": "propio_en_alcance",
+    "tests/test_interprete.py": "propio_en_alcance"
+  },
+  "cambios_propios": [
+    ".gitignore",
+    "README.md",
+    "ensayo/escala_cuda.json",
+    "ensayo/informe.md",
+    "expedicion/MAPA.md",
+    "expedicion/S5.md",
+    "expedicion/S6.md",
+    "expedicion/revision_g4_interprete.md",
+    "expedicion/revision_g4_interprete_v2.md",
+    "expedicion/verificacion_S5_S6.md",
+    "fuga/__init__.py",
+    "fuga/data.py",
+    "fuga/interprete.py",
+    "fuga/model.py",
+    "fuga/render.py",
+    "fuga/sample.py",
+    "fuga/tokenizer.py",
+    "fuga/train.py",
+    "pyproject.toml",
+    "rfc/RFC-FUGA-2.md",
+    "scripts/ensayo.py",
+    "scripts/escala.py",
+    "scripts/extraer_corpus.py",
+    "tests/test_fuga.py",
+    "tests/test_interprete.py"
+  ],
+  "declarados_sin_cambio": [],
+  "hallazgos": [
+    {
+      "detalle": "sin Git no se distinguen cambios preexistentes de propios",
+      "tipo": "sin_git"
+    },
+    {
+      "detalle": "ensayo/escala_cuda.json",
+      "tipo": "fuera_de_alcance"
+    }
+  ],
+  "no_declarados": [],
+  "schema_version": 1,
+  "violaciones": 1
+}

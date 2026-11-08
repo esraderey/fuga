@@ -1,0 +1,12 @@
+{'muestra': 0, 'notas': 201, 'compases': 16, 'tonica': 2, 'modo': 'minor', 'tempo': 94}
+{'muestra': 1, 'notas': 166, 'compases': 16, 'tonica': 2, 'modo': 'minor', 'tempo': 94}
+{'muestra': 2, 'notas': 60, 'compases': 16, 'tonica': 7, 'modo': 'minor', 'tempo': 94}
+{'muestra': 3, 'notas': 155, 'compases': 16, 'tonica': 9, 'modo': 'minor', 'tempo': 94}
+{'muestra': 4, 'notas': 79, 'compases': 16, 'tonica': 2, 'modo': 'major', 'tempo': 94}
+{'muestra': 5, 'notas': 32, 'compases': 9, 'tonica': 5, 'modo': 'major', 'tempo': 94}
+{'muestra': 6, 'notas': 249, 'compases': 16, 'tonica': 9, 'modo': 'major', 'tempo': 127}
+{'muestra': 7, 'notas': 50, 'compases': 11, 'tonica': 7, 'modo': 'major', 'tempo': 94}
+{'muestra': 8, 'notas': 82, 'compases': 16, 'tonica': 2, 'modo': 'major', 'tempo': 104}
+{'muestra': 9, 'notas': 153, 'compases': 16, 'tonica': 5, 'modo': 'major', 'tempo': 94}
+{'muestra': 10, 'notas': 20, 'compases': 5, 'tonica': 0, 'modo': 'major', 'tempo': 94}
+{'muestra': 11, 'notas': 57, 'compases': 16, 'tonica': 11, 'modo': 'minor', 'tempo': 94}

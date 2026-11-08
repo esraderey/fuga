@@ -1,0 +1,48 @@
+{
+ "fecha": "2026-11-08",
+ "tarea": "Checkpoints periodicos Z-Space (fuga/zcheckpoints.py, --guardar_cada, --inicial) y paquete Hugging Face (safetensors, ficha, subida)",
+ "archivos": [
+  "fuga/zcheckpoints.py",
+  "fuga/train.py",
+  "fuga/sample.py",
+  "scripts/exportar_hf.py",
+  "scripts/subir_hf.py",
+  "tests/test_zcheckpoints.py",
+  "tests/test_hf.py",
+  "tests/test_train.py",
+  "pyproject.toml",
+  "LICENSE",
+  ".gitignore",
+  "ensayo/prerregistro_regularizacion.md",
+  "ensayo/prerregistro_6h.md",
+  "ensayo/reporte_zspace/"
+ ],
+ "G0": {
+  "comando": "python -m compileall -q fuga tests scripts",
+  "resultado": "pasa"
+ },
+ "G1": {
+  "comando": "python -m ruff check --select E,F,W,B --ignore E501 fuga tests scripts",
+  "resultado": "pasa"
+ },
+ "G3": {
+  "comando": "python -m pytest -q",
+  "resultado": "63 passed in 18.57s",
+  "nuevos": [
+   "test_versiones_exactas_reapertura_y_export",
+   "test_train_guardar_cada_e_inicial",
+   "test_export_carga_igual_y_ficha_completa"
+  ]
+ },
+ "anclas": [
+  "Z-Space: cada version reconstruye bit a bit el state_dict guardado; reapertura desde disco; export .pt carga con fuga.sample",
+  "train: la ultima version Z-Space es el modelo final aunque el paso no sea multiplo; --inicial con lr 0 deja los pesos identicos",
+  "HF: safetensors + config.json cargan igual que el .pt; la ficha lleva licencia, limitaciones y procedencia"
+ ],
+ "dependencias": {
+  "z-space-core": "0.1.0 commit 0f51a9e, pip install --no-deps --user desde clon; bug reportado en esraderey/z-space-core#1",
+  "safetensors": "0.5.3 (ya instalado)",
+  "huggingface_hub": "1.5.0 (ya instalado; sin token configurado)"
+ },
+ "ensayo_export": "hf/_ensayo_3h desde runs/fuga_s_rel_3h/modelo_mejor.pt: 607,6 MB, carga identica, subida en seco sin token"
+}

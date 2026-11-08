@@ -1,0 +1,219 @@
+
+### 2026-10-30 06:59:20 C:\Python313\python.exe scripts/train_mztrain.py --brazo nano_denso --semilla 0 --out runs\mz\nano_denso_0 --cache cache/eco_rel_1024.pkl --cache_test cache/test_eco_rel_1024.pkl --ckpt --tokens_por_lote 8192 --lr 6e-4 --wd 0.1 --dropout 0.1 --eval_cada 100 --pasos 360
+brazo=nano_denso parámetros entrenables=2.5M {}
+paso 25 f=0.07 loss=4.3993 tok=199331 t=3s
+paso 50 f=0.14 loss=3.0257 tok=397696 t=5s
+paso 75 f=0.21 loss=1.8057 tok=596918 t=7s
+paso 100 f=0.28 loss=1.5324 tok=795949 t=8s
+  val(sub) bpn=8.111
+paso 125 f=0.35 loss=2.1540 tok=996582 t=10s
+paso 150 f=0.42 loss=2.0455 tok=1195566 t=12s
+paso 175 f=0.49 loss=1.9650 tok=1394998 t=14s
+paso 200 f=0.56 loss=1.4777 tok=1594089 t=16s
+  val(sub) bpn=6.327
+paso 225 f=0.62 loss=1.6852 tok=1793345 t=18s
+paso 250 f=0.69 loss=1.6764 tok=1993154 t=19s
+paso 275 f=0.76 loss=1.2322 tok=2192967 t=21s
+paso 300 f=0.83 loss=1.0508 tok=2393168 t=22s
+  val(sub) bpn=5.841
+paso 325 f=0.90 loss=1.5958 tok=2593003 t=24s
+paso 350 f=0.97 loss=1.6457 tok=2793026 t=26s
+FINAL {"paso": 360, "tokens_vistos": 2872621, "segundos": 26, "bits_por_nota": 5.2528180676876985, "bits_por_token": 2.0433001052786737, "tokens_por_nota": 2.570752115226509, "notas": 96089} {'cuda_pico_asignado_gb': 0.235, 'cuda_pico_reservado_gb': 0.619}
+TEST bits/nota 5.6954 piezas 475
+### exit=0 segundos=41
+
+### 2026-10-30 07:00:01 C:\Python313\python.exe scripts/train_mztrain.py --brazo nano_mztrain --semilla 0 --out runs\mz\nano_mztrain_0 --cache cache/eco_rel_1024.pkl --cache_test cache/test_eco_rel_1024.pkl --ckpt --tokens_por_lote 8192 --lr 6e-4 --wd 0.1 --dropout 0.1 --eval_cada 100 --pasos 360 --rango 48
+<string>:43: RuntimeWarning: enable_encryption estaba activo pero no hay secret_key: ni por parámetro ni en la variable de entorno MNEME_SECRET_KEY. El cifrado en reposo queda DESACTIVADO para esta instancia. Cifrar con una clave generada al vuelo haría irrecuperable todo lo almacenado en cuanto termine el proceso.
+C:\Users\Raul\AppData\Roaming\Python\Python313\site-packages\mneme\mneme_security_core.py:338: RuntimeWarning: require_signatures está activo pero no hay clave de firma: ni SecurityConfig.signing_key ni MNEME_SIGNING_KEY/MNEME_SECRET_KEY. La firma HMAC queda DESACTIVADA. Firmar con una clave generada al vuelo haría ilegible en el siguiente arranque todo lo que se persista ahora.
+  self.serializer = SecureSerializer(config)
+brazo=nano_mztrain parámetros entrenables=1.0M {'mztrain_version': '1.5.0', 'mztrain_archivo': 'C:\\Users\\Raul\\AppData\\Local\\Temp\\claude\\D--fuga\\7a4c3412-31dd-4934-bbb9-a0da03230d7d\\scratchpad\\mz_pypi\\mztrain\\__init__.py', 'capas_factorizadas': 30, 'rango': 48, 'rangos_efectivos': [48], 'parametros_densos_equivalentes': 2500992}
+paso 25 f=0.07 loss=4.7184 tok=199331 t=3s
+paso 50 f=0.14 loss=3.3260 tok=397696 t=7s
+paso 75 f=0.21 loss=2.2026 tok=596918 t=10s
+paso 100 f=0.28 loss=1.8078 tok=795949 t=13s
+  val(sub) bpn=9.142
+paso 125 f=0.35 loss=2.4809 tok=996582 t=16s
+paso 150 f=0.42 loss=2.3983 tok=1195566 t=19s
+paso 175 f=0.49 loss=2.3159 tok=1394998 t=22s
+paso 200 f=0.56 loss=1.7943 tok=1594089 t=25s
+  val(sub) bpn=7.281
+paso 225 f=0.62 loss=1.9559 tok=1793345 t=28s
+paso 250 f=0.69 loss=1.9167 tok=1993154 t=31s
+paso 275 f=0.76 loss=1.3543 tok=2192967 t=34s
+paso 300 f=0.83 loss=1.1801 tok=2393168 t=38s
+  val(sub) bpn=6.510
+paso 325 f=0.90 loss=1.7619 tok=2593003 t=41s
+paso 350 f=0.97 loss=1.8504 tok=2793026 t=44s
+FINAL {"paso": 360, "tokens_vistos": 2872621, "segundos": 45, "bits_por_nota": 5.917764878420093, "bits_por_token": 2.3019585760016694, "tokens_por_nota": 2.570752115226509, "notas": 96089} {'cuda_pico_asignado_gb': 0.208, 'cuda_pico_reservado_gb': 0.598}
+TEST bits/nota 6.3912 piezas 475
+### exit=0 segundos=53
+
+### 2026-10-30 07:00:54 C:\Python313\python.exe scripts/train_mztrain.py --brazo s_denso --semilla 0 --out runs\mz\s_denso_0 --cache cache/eco_rel_1024.pkl --cache_test cache/test_eco_rel_1024.pkl --ckpt --tokens_por_lote 8192 --lr 6e-4 --wd 0.1 --dropout 0.1 --eval_cada 100 --pasos 700
+brazo=s_denso parámetros entrenables=151.6M {}
+paso 25 f=0.04 loss=3.5539 tok=199331 t=29s
+paso 50 f=0.07 loss=2.5702 tok=397696 t=57s
+paso 75 f=0.11 loss=1.5643 tok=596918 t=85s
+paso 100 f=0.14 loss=1.5333 tok=795949 t=113s
+  val(sub) bpn=7.682
+paso 125 f=0.18 loss=2.0994 tok=996582 t=146s
+paso 150 f=0.21 loss=2.0233 tok=1195566 t=174s
+paso 175 f=0.25 loss=2.1059 tok=1394998 t=202s
+paso 200 f=0.29 loss=1.4958 tok=1594089 t=230s
+  val(sub) bpn=6.505
+paso 225 f=0.32 loss=1.6946 tok=1793345 t=263s
+paso 250 f=0.36 loss=1.6636 tok=1993154 t=291s
+paso 275 f=0.39 loss=1.2595 tok=2192967 t=319s
+paso 300 f=0.43 loss=1.0748 tok=2393168 t=347s
+  val(sub) bpn=6.016
+paso 325 f=0.46 loss=1.6053 tok=2593003 t=380s
+paso 350 f=0.50 loss=1.6327 tok=2793026 t=408s
+paso 375 f=0.54 loss=1.4544 tok=2992696 t=436s
+paso 400 f=0.57 loss=1.0393 tok=3192431 t=464s
+  val(sub) bpn=5.450
+paso 425 f=0.61 loss=1.0616 tok=3392532 t=497s
+paso 450 f=0.64 loss=1.5647 tok=3590527 t=525s
+paso 475 f=0.68 loss=1.4298 tok=3790043 t=553s
+paso 500 f=0.71 loss=1.1174 tok=3989314 t=581s
+  val(sub) bpn=5.213
+paso 525 f=0.75 loss=1.5203 tok=4188877 t=614s
+paso 550 f=0.79 loss=1.0452 tok=4388289 t=642s
+paso 575 f=0.82 loss=1.0014 tok=4589274 t=670s
+paso 600 f=0.86 loss=1.3104 tok=4788743 t=699s
+  val(sub) bpn=5.002
+paso 625 f=0.89 loss=1.2907 tok=4988415 t=731s
+paso 650 f=0.93 loss=1.3099 tok=5189145 t=760s
+paso 675 f=0.96 loss=0.9382 tok=5388296 t=788s
+paso 700 f=1.00 loss=1.2660 tok=5587956 t=816s
+  val(sub) bpn=4.764
+FINAL {"paso": 700, "tokens_vistos": 5587956, "segundos": 821, "bits_por_nota": 4.488784240825169, "bits_por_token": 1.7460976553274805, "tokens_por_nota": 2.570752115226509, "notas": 96089} {'cuda_pico_asignado_gb': 3.601, 'cuda_pico_reservado_gb': 5.662}
+TEST bits/nota 4.8893 piezas 475
+### exit=0 segundos=858
+
+### 2026-10-30 07:15:11 C:\Python313\python.exe scripts/train_mztrain.py --brazo m_mztrain --semilla 0 --out runs\mz\m_mztrain_0 --cache cache/eco_rel_1024.pkl --cache_test cache/test_eco_rel_1024.pkl --ckpt --tokens_por_lote 8192 --lr 6e-4 --wd 0.1 --dropout 0.1 --eval_cada 100 --pasos 700 --rango 512
+<string>:43: RuntimeWarning: enable_encryption estaba activo pero no hay secret_key: ni por parámetro ni en la variable de entorno MNEME_SECRET_KEY. El cifrado en reposo queda DESACTIVADO para esta instancia. Cifrar con una clave generada al vuelo haría irrecuperable todo lo almacenado en cuanto termine el proceso.
+C:\Users\Raul\AppData\Roaming\Python\Python313\site-packages\mneme\mneme_security_core.py:338: RuntimeWarning: require_signatures está activo pero no hay clave de firma: ni SecurityConfig.signing_key ni MNEME_SIGNING_KEY/MNEME_SECRET_KEY. La firma HMAC queda DESACTIVADA. Firmar con una clave generada al vuelo haría ilegible en el siguiente arranque todo lo que se persista ahora.
+  self.serializer = SecureSerializer(config)
+brazo=m_mztrain parámetros entrenables=277.7M {'mztrain_version': '1.5.0', 'mztrain_archivo': 'C:\\Users\\Raul\\AppData\\Local\\Temp\\claude\\D--fuga\\7a4c3412-31dd-4934-bbb9-a0da03230d7d\\scratchpad\\mz_pypi\\mztrain\\__init__.py', 'capas_factorizadas': 160, 'rango': 512, 'rangos_efectivos': [512], 'parametros_densos_equivalentes': 386686976}
+paso 25 f=0.04 loss=3.4850 tok=199331 t=58s
+paso 50 f=0.07 loss=2.6402 tok=397696 t=115s
+paso 75 f=0.11 loss=1.5425 tok=596918 t=173s
+paso 100 f=0.14 loss=1.5861 tok=795949 t=230s
+  val(sub) bpn=7.696
+paso 125 f=0.18 loss=2.0516 tok=996582 t=330s
+paso 150 f=0.21 loss=1.9592 tok=1195566 t=388s
+paso 175 f=0.25 loss=1.8942 tok=1394998 t=458s
+paso 200 f=0.29 loss=1.3930 tok=1594089 t=575s
+  val(sub) bpn=6.239
+paso 225 f=0.32 loss=1.5697 tok=1793345 t=1192s
+paso 250 f=0.36 loss=1.6144 tok=1993154 t=1361s
+paso 275 f=0.39 loss=1.1847 tok=2192967 t=1535s
+paso 300 f=0.43 loss=1.0638 tok=2393168 t=1651s
+  val(sub) bpn=5.770
+paso 325 f=0.46 loss=1.5331 tok=2593003 t=2308s
+paso 350 f=0.50 loss=1.6034 tok=2793026 t=2492s
+paso 375 f=0.54 loss=1.4333 tok=2992696 t=2594s
+paso 400 f=0.57 loss=1.0287 tok=3192431 t=2681s
+  val(sub) bpn=5.407
+paso 425 f=0.61 loss=1.0306 tok=3392532 t=3207s
+paso 450 f=0.64 loss=1.5793 tok=3590527 t=3282s
+paso 475 f=0.68 loss=1.3977 tok=3790043 t=3362s
+paso 500 f=0.71 loss=1.0990 tok=3989314 t=3553s
+  val(sub) bpn=5.183
+paso 525 f=0.75 loss=1.4850 tok=4188877 t=4352s
+paso 550 f=0.79 loss=1.0322 tok=4388289 t=4488s
+paso 575 f=0.82 loss=1.0327 tok=4589274 t=4635s
+paso 600 f=0.86 loss=1.3110 tok=4788743 t=4830s
+  val(sub) bpn=5.089
+paso 625 f=0.89 loss=1.2805 tok=4988415 t=5444s
+paso 650 f=0.93 loss=1.2950 tok=5189145 t=5525s
+paso 675 f=0.96 loss=0.9329 tok=5388296 t=5616s
+paso 700 f=1.00 loss=1.2534 tok=5587956 t=5690s
+  val(sub) bpn=4.706
+FINAL {"paso": 700, "tokens_vistos": 5587956, "segundos": 5917, "bits_por_nota": 4.428246563531594, "bits_por_token": 1.722549030419225, "tokens_por_nota": 2.570752115226509, "notas": 96089} {'cuda_pico_asignado_gb': 6.469, 'cuda_pico_reservado_gb': 8.768}
+TEST bits/nota 4.8235 piezas 475
+### exit=0 segundos=6723
+
+### 2026-10-30 09:07:14 C:\Python313\python.exe scripts/train_mztrain.py --brazo s_denso --semilla 1 --out runs\mz\s_denso_1 --cache cache/eco_rel_1024.pkl --cache_test cache/test_eco_rel_1024.pkl --ckpt --tokens_por_lote 8192 --lr 6e-4 --wd 0.1 --dropout 0.1 --eval_cada 100 --pasos 700
+brazo=s_denso parámetros entrenables=151.6M {}
+paso 25 f=0.04 loss=3.4953 tok=199436 t=28s
+paso 50 f=0.07 loss=2.5514 tok=399029 t=56s
+paso 75 f=0.11 loss=2.4369 tok=598532 t=84s
+paso 100 f=0.14 loss=1.6350 tok=798215 t=113s
+  val(sub) bpn=7.788
+paso 125 f=0.18 loss=1.4224 tok=999538 t=147s
+paso 150 f=0.21 loss=1.5871 tok=1199598 t=175s
+paso 175 f=0.25 loss=1.9041 tok=1399892 t=204s
+paso 200 f=0.29 loss=1.5087 tok=1599427 t=232s
+  val(sub) bpn=6.766
+paso 225 f=0.32 loss=1.3613 tok=1797544 t=266s
+paso 250 f=0.36 loss=1.0749 tok=1997238 t=294s
+paso 275 f=0.39 loss=1.1338 tok=2195086 t=321s
+paso 300 f=0.43 loss=1.3530 tok=2394932 t=350s
+  val(sub) bpn=5.681
+paso 325 f=0.46 loss=1.7219 tok=2594025 t=383s
+paso 350 f=0.50 loss=1.2980 tok=2793223 t=411s
+paso 375 f=0.54 loss=1.3800 tok=2991636 t=439s
+paso 400 f=0.57 loss=1.2548 tok=3191733 t=468s
+  val(sub) bpn=5.529
+paso 425 f=0.61 loss=0.9907 tok=3390684 t=500s
+paso 450 f=0.64 loss=0.9785 tok=3590538 t=529s
+paso 475 f=0.68 loss=0.9879 tok=3791590 t=557s
+paso 500 f=0.71 loss=1.5843 tok=3991927 t=585s
+  val(sub) bpn=5.300
+paso 525 f=0.75 loss=1.5488 tok=4191636 t=618s
+paso 550 f=0.79 loss=1.4906 tok=4390443 t=646s
+paso 575 f=0.82 loss=1.0737 tok=4591506 t=674s
+paso 600 f=0.86 loss=0.8937 tok=4790097 t=702s
+  val(sub) bpn=5.023
+paso 625 f=0.89 loss=0.9987 tok=4987282 t=735s
+paso 650 f=0.93 loss=1.2824 tok=5186893 t=763s
+paso 675 f=0.96 loss=1.4430 tok=5386804 t=792s
+paso 700 f=1.00 loss=1.3394 tok=5586159 t=820s
+  val(sub) bpn=4.813
+FINAL {"paso": 700, "tokens_vistos": 5586159, "segundos": 825, "bits_por_nota": 4.53758779595922, "bits_por_token": 1.765081809748667, "tokens_por_nota": 2.570752115226509, "notas": 96089} {'cuda_pico_asignado_gb': 3.602, 'cuda_pico_reservado_gb': 5.727}
+TEST bits/nota 4.864 piezas 475
+### exit=0 segundos=862
+
+### 2026-10-30 09:21:36 C:\Python313\python.exe scripts/train_mztrain.py --brazo m_mztrain --semilla 1 --out runs\mz\m_mztrain_1 --cache cache/eco_rel_1024.pkl --cache_test cache/test_eco_rel_1024.pkl --ckpt --tokens_por_lote 8192 --lr 6e-4 --wd 0.1 --dropout 0.1 --eval_cada 100 --pasos 700 --rango 512
+<string>:43: RuntimeWarning: enable_encryption estaba activo pero no hay secret_key: ni por parámetro ni en la variable de entorno MNEME_SECRET_KEY. El cifrado en reposo queda DESACTIVADO para esta instancia. Cifrar con una clave generada al vuelo haría irrecuperable todo lo almacenado en cuanto termine el proceso.
+C:\Users\Raul\AppData\Roaming\Python\Python313\site-packages\mneme\mneme_security_core.py:338: RuntimeWarning: require_signatures está activo pero no hay clave de firma: ni SecurityConfig.signing_key ni MNEME_SIGNING_KEY/MNEME_SECRET_KEY. La firma HMAC queda DESACTIVADA. Firmar con una clave generada al vuelo haría ilegible en el siguiente arranque todo lo que se persista ahora.
+  self.serializer = SecureSerializer(config)
+brazo=m_mztrain parámetros entrenables=277.7M {'mztrain_version': '1.5.0', 'mztrain_archivo': 'C:\\Users\\Raul\\AppData\\Local\\Temp\\claude\\D--fuga\\7a4c3412-31dd-4934-bbb9-a0da03230d7d\\scratchpad\\mz_pypi\\mztrain\\__init__.py', 'capas_factorizadas': 160, 'rango': 512, 'rangos_efectivos': [512], 'parametros_densos_equivalentes': 386686976}
+paso 25 f=0.04 loss=3.1503 tok=199436 t=75s
+paso 50 f=0.07 loss=2.5837 tok=399029 t=169s
+paso 75 f=0.11 loss=2.4258 tok=598532 t=250s
+paso 100 f=0.14 loss=1.5978 tok=798215 t=332s
+  val(sub) bpn=7.706
+paso 125 f=0.18 loss=1.3616 tok=999538 t=933s
+paso 150 f=0.21 loss=1.5502 tok=1199598 t=1122s
+paso 175 f=0.25 loss=1.8864 tok=1399892 t=1247s
+paso 200 f=0.29 loss=1.3378 tok=1599427 t=1361s
+  val(sub) bpn=6.364
+paso 225 f=0.32 loss=1.2423 tok=1797544 t=1673s
+paso 250 f=0.36 loss=1.0377 tok=1997238 t=1782s
+paso 275 f=0.39 loss=1.1047 tok=2195086 t=2006s
+paso 300 f=0.43 loss=1.3321 tok=2394932 t=2238s
+  val(sub) bpn=5.553
+paso 325 f=0.46 loss=1.6278 tok=2594025 t=2759s
+paso 350 f=0.50 loss=1.2786 tok=2793223 t=2917s
+paso 375 f=0.54 loss=1.3793 tok=2991636 t=3062s
+paso 400 f=0.57 loss=1.2311 tok=3191733 t=3192s
+  val(sub) bpn=5.432
+paso 425 f=0.61 loss=0.9827 tok=3390684 t=3505s
+paso 450 f=0.64 loss=0.9736 tok=3590538 t=3641s
+paso 475 f=0.68 loss=0.9935 tok=3791590 t=3763s
+paso 500 f=0.71 loss=1.5487 tok=3991927 t=3879s
+  val(sub) bpn=5.151
+paso 525 f=0.75 loss=1.5172 tok=4191636 t=4184s
+paso 550 f=0.79 loss=1.4703 tok=4390443 t=4295s
+paso 575 f=0.82 loss=1.0780 tok=4591506 t=4416s
+paso 600 f=0.86 loss=0.8823 tok=4790097 t=4532s
+  val(sub) bpn=4.996
+paso 625 f=0.89 loss=0.9877 tok=4987282 t=4842s
+paso 650 f=0.93 loss=1.2450 tok=5186893 t=4968s
+paso 675 f=0.96 loss=1.4047 tok=5386804 t=5085s
+paso 700 f=1.00 loss=1.3136 tok=5586159 t=5215s
+  val(sub) bpn=4.712
+FINAL {"paso": 700, "tokens_vistos": 5586159, "segundos": 5413, "bits_por_nota": 4.43190509058117, "bits_por_token": 1.7239721653173374, "tokens_por_nota": 2.570752115226509, "notas": 96089} {'cuda_pico_asignado_gb': 6.458, 'cuda_pico_reservado_gb': 8.892}
+TEST bits/nota 4.8017 piezas 475
+### exit=0 segundos=6242

@@ -1,0 +1,42 @@
+{
+  "etiqueta": "mztrain",
+  "gates": {
+    "G0": {
+      "codigo_salida": 0,
+      "cola_salida": "",
+      "comando": "python -m compileall -q fuga scripts tests",
+      "duracion_s": 0.17,
+      "estado_bruto": "pass",
+      "fallos": [],
+      "hash_salida": "e3b0c44298fc1c14",
+      "herramienta": "ninguno",
+      "registrado_utc": "2026-10-30T17:08:43Z",
+      "timeout": false
+    },
+    "G1": {
+      "codigo_salida": 0,
+      "cola_salida": "All checks passed!",
+      "comando": "python -m ruff check --select E,F,W,B --ignore E501 fuga scripts tests",
+      "duracion_s": 0.2,
+      "estado_bruto": "pass",
+      "fallos": [],
+      "hash_salida": "82b3e6a6c090a576",
+      "herramienta": "ninguno",
+      "registrado_utc": "2026-10-30T17:09:28Z",
+      "timeout": false
+    },
+    "G3": {
+      "codigo_salida": 0,
+      "cola_salida": "..........................................................               [100%]\n58 passed in 10.26s",
+      "comando": "python -m pytest -q tests",
+      "duracion_s": 14.86,
+      "estado_bruto": "pass",
+      "fallos": [],
+      "hash_salida": "5b438e81240c7f75",
+      "herramienta": "ninguno",
+      "registrado_utc": "2026-10-30T17:08:59Z",
+      "timeout": false
+    }
+  },
+  "schema_version": 1
+}

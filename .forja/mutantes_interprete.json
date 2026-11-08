@@ -1,0 +1,110 @@
+{
+ "fecha": "2026-10-25",
+ "comando": "pytest -q -x tests/test_interprete.py sobre copias mutadas de fuga/ (scratchpad/mut/mutar.py), corrida final tras N1/N3; M23 repetido tras ampliar test_midi_off_antes_que_on_y_sin_corte_de_repeticiones",
+ "mutantes": {
+  "M0_control": {
+   "import_local": true,
+   "muerto": false,
+   "resumen": "27 passed in 4.60s"
+  },
+  "M1_sin_pinza_orden": {
+   "import_local": true,
+   "muerto": true,
+   "resumen": "1 failed, 8 passed in 4.42s"
+  },
+  "M2_sin_tope": {
+   "import_local": true,
+   "muerto": true,
+   "resumen": "1 failed, 11 passed in 4.37s"
+  },
+  "M3_jitter_por_nota": {
+   "import_local": true,
+   "muerto": true,
+   "resumen": "1 failed, 8 passed in 4.60s"
+  },
+  "M4_legato_ignorado": {
+   "import_local": true,
+   "muerto": true,
+   "resumen": "1 failed, 14 passed in 4.37s"
+  },
+  "M5_high_loud_invertido": {
+   "import_local": true,
+   "muerto": true,
+   "resumen": "1 failed, 19 passed in 4.40s"
+  },
+  "M6_arco_tempo_invertido": {
+   "import_local": true,
+   "muerto": true,
+   "resumen": "1 failed, 17 passed in 4.45s"
+  },
+  "M7_adelanto_invertido": {
+   "import_local": true,
+   "muerto": true,
+   "resumen": "1 failed, 19 passed in 4.48s"
+  },
+  "M18_sin_recorte_repeticiones": {
+   "import_local": true,
+   "muerto": true,
+   "resumen": "1 failed, 3 passed in 4.44s"
+  },
+  "M19_anacrusa_con_acento": {
+   "import_local": true,
+   "muerto": true,
+   "resumen": "1 failed, 20 passed in 4.59s"
+  },
+  "M20_dur_min_fija": {
+   "import_local": true,
+   "muerto": true,
+   "resumen": "1 failed, 1 passed in 4.44s"
+  },
+  "M22_sin_fusion_duplicados": {
+   "import_local": true,
+   "muerto": true,
+   "resumen": "1 failed, 15 passed in 4.65s"
+  },
+  "M8_on_antes_que_off": {
+   "import_local": true,
+   "muerto": true,
+   "resumen": "1 failed, 22 passed in 4.61s"
+  },
+  "M9_todo_canal_0": {
+   "import_local": true,
+   "muerto": true,
+   "resumen": "1 failed, 22 passed in 4.62s"
+  },
+  "M10_audio_sin_velocidad": {
+   "import_local": true,
+   "muerto": true,
+   "resumen": "1 failed, 25 passed in 4.62s"
+  },
+  "M16_ticks_escalados": {
+   "import_local": true,
+   "muerto": true,
+   "resumen": "1 failed, 23 passed in 4.60s"
+  },
+  "M17_audio_en_t0": {
+   "import_local": true,
+   "muerto": true,
+   "resumen": "1 failed, 25 passed in 4.64s"
+  },
+  "M21_midi_sin_recorte_off": {
+   "import_local": true,
+   "muerto": true,
+   "resumen": "1 failed, 23 passed in 4.60s"
+  },
+  "M23_midi_sin_fusion": {
+   "import_local": true,
+   "muerto": true,
+   "resumen": "1 failed, 23 passed in 4.56s"
+  },
+  "M24_midi_plano_sin_regla": {
+   "import_local": true,
+   "muerto": true,
+   "resumen": "1 failed, 24 passed in 4.69s"
+  }
+ },
+ "muertos": 19,
+ "vivos": [],
+ "control_pasa": true,
+ "import_local_todos": true
+}

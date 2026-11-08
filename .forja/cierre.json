@@ -1,0 +1,43 @@
+{
+  "definicion_de_hecho": [
+    {
+      "estado": "mecanico",
+      "item": "gates reejecutados y comparados con baseline"
+    },
+    {
+      "estado": "mecanico",
+      "item": "cambios preexistentes preservados y diff dentro de alcance"
+    },
+    {
+      "estado": "mecanico",
+      "item": "ningún test, warning o excepción debilitado"
+    },
+    {
+      "estado": "mecanico",
+      "item": "G4 revisión contextual independiente"
+    },
+    {
+      "estado": "declaracion_del_director",
+      "item": "criterios de aceptación del plan ejecutados"
+    },
+    {
+      "estado": "declaracion_del_director",
+      "item": "sin instalaciones, red, Git ni instrucciones persistentes alterados sin autorización"
+    },
+    {
+      "estado": "declaracion_del_director",
+      "item": "si hubo bug no trivial, existe test ancla o se documenta por qué no"
+    },
+    {
+      "estado": "declaracion_del_director",
+      "item": ".forja/progress.json actualizado o eliminado, sin secretos"
+    }
+  ],
+  "motivos": [
+    "alcance: 1 violaciones ['sin_git', 'fuera_de_alcance']"
+  ],
+  "riesgo": "R2",
+  "schema_version": 1,
+  "veredicto": "RECHAZADA",
+  "veredicto_maximo": "RECHAZADA"
+}

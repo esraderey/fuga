@@ -1,0 +1,44 @@
+{
+  "asserts": {
+    "anadidos": 62,
+    "eliminados": 0
+  },
+  "config_tocada": [],
+  "hallazgos": [
+    {
+      "evidencia": "ahora/tests/test_fuga.py\t2026-10-25 12:59:01.211805600 -0600:246",
+      "justificacion": "condicional de hardware: los dos tests de CUDA solo pueden ejecutarse donde hay GPU; en esta máquina se ejecutaron y pasaron",
+      "linea": "@pytest.mark.skipif(not torch.cuda.is_available(), reason=\"sin CUDA\")",
+      "severidad": "sospechoso",
+      "tipo": "skip_test"
+    },
+    {
+      "evidencia": "ahora/tests/test_fuga.py\t2026-10-25 12:59:01.211805600 -0600:305",
+      "justificacion": "condicional de hardware: los dos tests de CUDA solo pueden ejecutarse donde hay GPU; en esta máquina se ejecutaron y pasaron",
+      "linea": "@pytest.mark.skipif(not torch.cuda.is_available(), reason=\"sin CUDA\")",
+      "severidad": "sospechoso",
+      "tipo": "skip_test"
+    },
+    {
+      "evidencia": "ahora/tests/test_interprete.py\t2026-10-25 12:59:01.215806300 -0600:28",
+      "justificacion": "no es trivial: comprueba el rango MIDI 1..127 de la velocidad y duración positiva de cada evento del intérprete",
+      "linea": "assert 1 <= v <= 127 and d > 0",
+      "severidad": "sospechoso",
+      "tipo": "assert_trivial"
+    },
+    {
+      "evidencia": "ahora/tests/test_interprete.py\t2026-10-25 12:59:01.215806300 -0600:262",
+      "justificacion": null,
+      "linea": "rms = lambda a: float(np.sqrt(np.mean(a ** 2)))  # noqa: E731",
+      "severidad": "revisar",
+      "tipo": "supresion_lint"
+    }
+  ],
+  "justificaciones": {
+    "assert_trivial": "no es trivial: comprueba el rango MIDI 1..127 de la velocidad y duración positiva de cada evento del intérprete",
+    "skip_test": "condicional de hardware: los dos tests de CUDA solo pueden ejecutarse donde hay GPU; en esta máquina se ejecutaron y pasaron"
+  },
+  "schema_version": 1,
+  "sospechosos_sin_justificar": 0,
+  "tests_eliminados": []
+}

@@ -1,0 +1,44 @@
+{
+  "etiqueta": "baseline",
+  "gates": {
+    "G0": {
+      "codigo_salida": 0,
+      "cola_salida": "",
+      "comando": "python -m compileall -q fuga scripts tests",
+      "duracion_s": 0.17,
+      "estado_bruto": "pass",
+      "fallos": [],
+      "hash_salida": "e3b0c44298fc1c14",
+      "herramienta": "ninguno",
+      "registrado_utc": "2026-10-25T17:29:54Z",
+      "timeout": false
+    },
+    "G1": {
+      "codigo_salida": 1,
+      "cola_salida": "fuga\\data.py:31:48: B008 Do not perform function call `range` in argument defaults; instead, perform the call within the function, or read the default from a module-level singleton variable\n   |\n31 | def transposiciones_validas(pieza: dict, rango=range(-5, 7), lo: int = 21, hi: int = 108) -> list[int]:\n   |                                                ^^^^^^^^^^^^ B008\n32 |     pmin = min(n[2] for n in pieza[\"notas\"])\n33 |     pmax = max(n[2] for n in pieza[\"notas\"])\n   |\n\nFound 1 error.",
+      "comando": "python -m ruff check --select E,F,W,B --ignore E501 fuga scripts tests",
+      "duracion_s": 0.2,
+      "estado_bruto": "fail",
+      "fallos": [
+        "fuga\\data.py::Do not perform function call `range` in argument defaults; instead, perform the "
+      ],
+      "hash_salida": "d4ce6cd14cb1e2e7",
+      "herramienta": "estatico",
+      "registrado_utc": "2026-10-25T17:29:55Z",
+      "timeout": false
+    },
+    "G3": {
+      "codigo_salida": 0,
+      "cola_salida": "...................                                                      [100%]\n19 passed in 6.97s",
+      "comando": "python -m pytest -q tests",
+      "duracion_s": 11.13,
+      "estado_bruto": "pass",
+      "fallos": [],
+      "hash_salida": "ccae219d3657ce52",
+      "herramienta": "ninguno",
+      "registrado_utc": "2026-10-25T17:30:06Z",
+      "timeout": false
+    }
+  },
+  "schema_version": 1
+}

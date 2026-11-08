@@ -1,0 +1,42 @@
+{
+  "etiqueta": "final",
+  "gates": {
+    "G0": {
+      "codigo_salida": 0,
+      "cola_salida": "",
+      "comando": "python -m compileall -q fuga scripts tests",
+      "duracion_s": 0.17,
+      "estado_bruto": "pass",
+      "fallos": [],
+      "hash_salida": "e3b0c44298fc1c14",
+      "herramienta": "ninguno",
+      "registrado_utc": "2026-10-25T18:59:01Z",
+      "timeout": false
+    },
+    "G1": {
+      "codigo_salida": 0,
+      "cola_salida": "All checks passed!",
+      "comando": "python -m ruff check --select E,F,W,B --ignore E501 fuga scripts tests",
+      "duracion_s": 0.2,
+      "estado_bruto": "pass",
+      "fallos": [],
+      "hash_salida": "82b3e6a6c090a576",
+      "herramienta": "ninguno",
+      "registrado_utc": "2026-10-25T18:59:02Z",
+      "timeout": false
+    },
+    "G3": {
+      "codigo_salida": 0,
+      "cola_salida": ".......................................................                  [100%]\n55 passed in 9.42s",
+      "comando": "python -m pytest -q tests",
+      "duracion_s": 13.7,
+      "estado_bruto": "pass",
+      "fallos": [],
+      "hash_salida": "f1818a664f15aa97",
+      "herramienta": "ninguno",
+      "registrado_utc": "2026-10-25T18:59:16Z",
+      "timeout": false
+    }
+  },
+  "schema_version": 1
+}

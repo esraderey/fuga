@@ -1,0 +1,115 @@
+{
+ "brazos": {
+  "m_mztrain": {
+   "0": {
+    "test_bits_por_nota": 4.823459776242348,
+    "val_bits_por_nota": 4.428246563531594,
+    "parametros": 277716992,
+    "segundos": 5917,
+    "tokens_vistos": 5587956,
+    "cuda_pico_asignado_gb": 6.469,
+    "cuda_pico_reservado_gb": 8.768
+   },
+   "1": {
+    "test_bits_por_nota": 4.8017191691580114,
+    "val_bits_por_nota": 4.43190509058117,
+    "parametros": 277716992,
+    "segundos": 5413,
+    "tokens_vistos": 5586159,
+    "cuda_pico_asignado_gb": 6.458,
+    "cuda_pico_reservado_gb": 8.892
+   }
+  },
+  "nano_denso": {
+   "0": {
+    "test_bits_por_nota": 5.695445164910611,
+    "val_bits_por_nota": 5.2528180676876985,
+    "parametros": 2500992,
+    "segundos": 26,
+    "tokens_vistos": 2872621,
+    "cuda_pico_asignado_gb": 0.235,
+    "cuda_pico_reservado_gb": 0.619
+   }
+  },
+  "nano_mztrain": {
+   "0": {
+    "test_bits_por_nota": 6.391200289832932,
+    "val_bits_por_nota": 5.917764878420093,
+    "parametros": 1009440,
+    "segundos": 45,
+    "tokens_vistos": 2872621,
+    "cuda_pico_asignado_gb": 0.208,
+    "cuda_pico_reservado_gb": 0.598
+   }
+  },
+  "s_denso": {
+   "0": {
+    "test_bits_por_nota": 4.889328221050258,
+    "val_bits_por_nota": 4.488784240825169,
+    "parametros": 151590912,
+    "segundos": 821,
+    "tokens_vistos": 5587956,
+    "cuda_pico_asignado_gb": 3.601,
+    "cuda_pico_reservado_gb": 5.662
+   },
+   "1": {
+    "test_bits_por_nota": 4.864022991337978,
+    "val_bits_por_nota": 4.53758779595922,
+    "parametros": 151590912,
+    "segundos": 825,
+    "tokens_vistos": 5586159,
+    "cuda_pico_asignado_gb": 3.602,
+    "cuda_pico_reservado_gb": 5.727
+   }
+  }
+ },
+ "contrastes": {
+  "m_mztrain - s_denso": {
+   "por_semilla": {
+    "0": {
+     "n_piezas": 475,
+     "IC95_pareado": [
+      -0.03534489476518059,
+      -0.04752124176628861,
+      -0.023686060633215846
+     ],
+     "agregada": -0.06586844480790986
+    },
+    "1": {
+     "n_piezas": 475,
+     "IC95_pareado": [
+      -0.03741339000546191,
+      -0.048700029623616276,
+      -0.026575625148831362
+     ],
+     "agregada": -0.06230382217996689
+    }
+   },
+   "IC95_pareado_todas_las_semillas": [
+    -0.03637914238532125,
+    -0.04498209411717603,
+    -0.028339604279779773
+   ],
+   "veredicto_K1": "pasa (IC95 < 0)"
+  },
+  "nano_mztrain - nano_denso": {
+   "por_semilla": {
+    "0": {
+     "n_piezas": 475,
+     "IC95_pareado": [
+      0.5822836630494772,
+      0.5536327292677977,
+      0.6103656296894955
+     ],
+     "agregada": 0.695755124922321
+    }
+   },
+   "IC95_pareado_todas_las_semillas": [
+    0.5822836630494772,
+    0.5536327292677977,
+    0.6103656296894955
+   ],
+   "veredicto_K1": "falla"
+  }
+ }
+}

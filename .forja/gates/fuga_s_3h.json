@@ -1,0 +1,11 @@
+{
+ "fecha": "2026-10-30",
+ "tarea": "FUGA-S eco_rel 3 h en la RTX 4060 + opcion --guardar_mejor en fuga/train.py",
+ "archivos": ["fuga/train.py", "tests/test_train.py", "ensayo/fuga_s_3h.md", "ensayo/informe.md", "README.md",
+              "runs/fuga_s_rel_3h/", "muestras/fuga_s_rel_3h/"],
+ "G0": {"comando": "python -m compileall -q fuga tests scripts", "resultado": "pasa"},
+ "G1": {"comando": "python -m ruff check --select E,F,W,B --ignore E501 fuga tests scripts", "resultado": "pasa"},
+ "G3": {"comando": "python -m pytest -q", "resultado": "60 passed in 12.89s", "nuevos": ["test_guardar_mejor_guarda_el_minimo_de_val", "test_sin_guardar_mejor_no_hay_fichero"]},
+ "ancla": "tests/test_train.py: el checkpoint mejor coincide con el final exactamente cuando la ultima evaluacion fue la mejor; sin la opcion no se crea modelo_mejor.pt",
+ "evidencia_corrida": {"log": "runs/fuga_s_rel_3h/log.json", "eleccion": "runs/fuga_s_rel_3h/eleccion.json", "muestras": "runs/fuga_s_rel_3h/analisis_muestras.json"}
+}

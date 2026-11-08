@@ -1,0 +1,120 @@
+{
+ "args": {
+  "datos": "data/corpus_pd.jsonl",
+  "modo": "eco",
+  "n_transp": 2,
+  "preset": "nano",
+  "ctx": 512,
+  "kv_compas": null,
+  "tokens_por_lote": 8192,
+  "minutos": 0,
+  "pasos": 360,
+  "lr": 0.002,
+  "wd": 0.1,
+  "dropout": 0.0,
+  "semilla": 0,
+  "hilos": 1,
+  "max_piezas": 0,
+  "out": "runs/eco",
+  "cache": "cache/eco.pkl",
+  "solo_preparar": false
+ },
+ "parametros": 2500992,
+ "vocab": 723,
+ "curva": [
+  {
+   "paso": 25,
+   "t": 81.7,
+   "tokens": 200265,
+   "loss": 2.6134
+  },
+  {
+   "paso": 50,
+   "t": 154.4,
+   "tokens": 399646,
+   "loss": 2.6716
+  },
+  {
+   "paso": 75,
+   "t": 222.6,
+   "tokens": 599918,
+   "loss": 2.3084
+  },
+  {
+   "paso": 100,
+   "t": 290.8,
+   "tokens": 799806,
+   "loss": 2.2546
+  },
+  {
+   "paso": 125,
+   "t": 359.6,
+   "tokens": 999695,
+   "loss": 1.8908
+  },
+  {
+   "paso": 150,
+   "t": 425.5,
+   "tokens": 1199757,
+   "loss": 1.5069
+  },
+  {
+   "paso": 175,
+   "t": 549.5,
+   "tokens": 1399969,
+   "loss": 1.8774
+  },
+  {
+   "paso": 200,
+   "t": 637.7,
+   "tokens": 1600084,
+   "loss": 1.3018
+  },
+  {
+   "paso": 225,
+   "t": 707.2,
+   "tokens": 1799511,
+   "loss": 1.6592
+  },
+  {
+   "paso": 250,
+   "t": 772.3,
+   "tokens": 2000102,
+   "loss": 1.2076
+  },
+  {
+   "paso": 275,
+   "t": 841.4,
+   "tokens": 2199242,
+   "loss": 1.6984
+  },
+  {
+   "paso": 300,
+   "t": 905.5,
+   "tokens": 2393152,
+   "loss": 1.1103
+  },
+  {
+   "paso": 325,
+   "t": 970.4,
+   "tokens": 2593179,
+   "loss": 1.1528
+  },
+  {
+   "paso": 350,
+   "t": 1036.1,
+   "tokens": 2793309,
+   "loss": 1.1742
+  }
+ ],
+ "val": [],
+ "final": {
+  "paso": 360,
+  "tokens_vistos": 2873328,
+  "segundos": 1100,
+  "bits_por_nota": 5.369617929153257,
+  "bits_por_token": 1.9982981871331336,
+  "tokens_por_nota": 2.6870954313664273,
+  "notas": 96090
+ }
+}
