@@ -116,7 +116,8 @@ def ficha(nombre: str, licencia: str, c: ConfigModelo, n_par: int, modo: str, m:
 **English summary.** FUGA is a small symbolic-music language model (decoder-only transformer, {n_par/1e6:.0f}M parameters)
 trained on a public-domain corpus of folk songs and Renaissance/Baroque polyphony. It writes 8–16 bar tonal pieces as
 quantized notes, with explicit repetition operators (ECO), and ships with a deterministic expressive performer
-(FUGA-I) that renders MIDI and WAV. Weights are in safetensors; the `fuga/` package in this repo loads and samples them.
+(FUGA-I) that renders MIDI and WAV. Weights are in safetensors; the `fuga/` package in this repo loads and samples them (source and experiments:
+https://github.com/esraderey/fuga).
 Metrics, training budget, data sources and limitations are documented below in Spanish.
 
 ## Qué es
@@ -190,7 +191,7 @@ las fuentes antes de usos que exijan originalidad garantizada.
 | Archivo de origen | `{ckpt}` |
 | SHA-256 de `model.safetensors` | `{sha}` |
 | Exportado | {dt.date.today().isoformat()} con `scripts/exportar_hf.py` |
-| Proyecto | FUGA (serie RFC-FUGA, firma OMRI). Informes de ensayo en el repositorio del proyecto, carpeta `ensayo/`. |
+| Proyecto | FUGA (serie RFC-FUGA, firma OMRI): código, RFC, pre-registros e informes en https://github.com/esraderey/fuga (carpeta `ensayo/`). |
 | Autoría | {autor} |
 """
 

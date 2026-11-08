@@ -1,6 +1,7 @@
 # FUGA — compositor musical de 150–400M con operadores ECO e intérprete FUGA-I
 
-Implementación de referencia de la serie RFC-FUGA (firmada OMRI):
+Implementación de referencia de la serie RFC-FUGA (firmada OMRI). Repositorio: https://github.com/esraderey/fuga ·
+Licencia MIT.
 
 - **RFC-FUGA-1** — compositor FUGA-C: representación por compás y parte, operadores ECO/ECOR con fantasmas opcionales,
   gramática, marco tonal relativo, núcleo FUGA-S (151,6M) y FUGA-M (386,7M). El texto del RFC no está en este árbol;
