@@ -106,7 +106,8 @@ def bloque_seleccion(sel: dict | None) -> str:
 
 
 def ficha(nombre: str, licencia: str, c: ConfigModelo, n_par: int, modo: str, m: dict, fuentes: list, sha: str,
-          ckpt: str, muestras: list[str], autor: str, seleccion: dict | None = None) -> str:
+          ckpt: str, muestras: list[str], autor: str, seleccion: dict | None = None, commit: str = "") -> str:
+    codigo = ("commit `" + commit[:12] + "` de " if commit else "") + "https://github.com/esraderey/fuga"
     a = m["args"]
     tokens = m["final"].get("tokens_vistos")
     front = "\n".join(["---", f"license: {licencia.lower()}", "library_name: pytorch",
@@ -221,6 +222,7 @@ las fuentes antes de usos que exijan originalidad garantizada.
 | Archivo de origen | `{ckpt}` |
 | SHA-256 de `model.safetensors` | `{sha}` |
 | Exportado | {dt.date.today().isoformat()} con `scripts/exportar_hf.py` |
+| Código | {codigo} |
 | Proyecto | FUGA (serie RFC-FUGA, firma OMRI): código, RFC, pre-registros e informes en https://github.com/esraderey/fuga (carpeta `ensayo/`). |
 | Autoría | {autor} |
 """
@@ -238,6 +240,7 @@ def main(argv=None) -> str:
     ap.add_argument("--muestras", nargs="*", default=[], help="archivos .wav/.mid que se copian a <out>/muestras/")
     ap.add_argument("--dtype", choices=["float32", "bfloat16"], default="float32")
     ap.add_argument("--seleccion", default="", help="seleccion.json de scripts/cadena_final.py (tabla de candidatos en la ficha)")
+    ap.add_argument("--commit", default="", help="commit del código con el que se entrenó (procedencia)")
     a = ap.parse_args(argv)
     from safetensors.torch import save_file
 
@@ -254,7 +257,7 @@ def main(argv=None) -> str:
     m = leer_run(a.run, a.ckpt)
     config = {"arquitectura": ARQUITECTURA, "config": ck["config"], "estilos": ck["estilos"], "modo": ck["modo"],
               "parametros": n_par, "dtype": a.dtype,
-              "origen": {"checkpoint": a.ckpt, "paso": m["paso"], "exportado": dt.date.today().isoformat()},
+              "origen": {"checkpoint": a.ckpt, "paso": m["paso"], "exportado": dt.date.today().isoformat(), "commit": a.commit or None},
               "metricas": {"val_bits_por_nota": m["val"], "test_bits_por_nota": m["test"]},
               "entrenamiento": {k: m["args"].get(k) for k in ("lr", "wd", "dropout", "tokens_por_lote", "pasos", "minutos", "semilla")},
               "sha256_model_safetensors": sha}
@@ -277,7 +280,7 @@ def main(argv=None) -> str:
             copiadas.append(x)
     with open(os.path.join(a.out, "README.md"), "w", encoding="utf-8") as f:
         f.write(ficha(a.nombre, a.licencia, c, n_par, ck["modo"], m, fuentes_corpus(a.datos), sha, a.ckpt, copiadas, a.autor,
-                      _leer_json(a.seleccion) or None))
+                      _leer_json(a.seleccion) or None, a.commit))
     total = sum(os.path.getsize(os.path.join(d, x)) for d, _, xs in os.walk(a.out) for x in xs)
     print(f"exportado a {a.out}: {n_par/1e6:.1f}M parámetros, {a.dtype}, {total/1e6:.1f} MB en total, sha256 {sha[:12]}…", flush=True)
     return a.out

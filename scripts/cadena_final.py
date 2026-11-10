@@ -24,6 +24,7 @@ import os
 import shutil
 import subprocess
 import sys
+import threading
 import time
 import traceback
 
@@ -132,6 +133,8 @@ def main(argv=None) -> int:
     ap.add_argument("--subir", default="", help="repositorio de modelos de Hugging Face donde publicar (usuario/nombre)")
     ap.add_argument("--privado", action="store_true")
     ap.add_argument("--registro_hf", default="", help="dataset de Hugging Face donde dejar copia de los registros (opcional)")
+    ap.add_argument("--latido_min", type=float, default=5.0,
+                    help="minutos entre copias de los registros a --registro_hf mientras la cadena corre (0 = solo al final)")
     ap.add_argument("--precio_hora", type=float, default=3.0)
     ap.add_argument("--apagar", action="store_true", help="detiene el pod de RunPod al terminar (también si falla)")
     ap.add_argument("--prueba", action="store_true", help="miniatura: nano, pocos pasos, 2 muestras")
@@ -177,13 +180,35 @@ def main(argv=None) -> int:
             c.append("--ckpt")
         return c
 
+    def subir_registros(mensaje: str) -> None:
+        from huggingface_hub import HfApi
+        HfApi().upload_folder(folder_path=raiz, repo_id=a.registro_hf, repo_type="dataset",
+                              path_in_repo=f"corridas/{os.path.basename(os.path.normpath(raiz))}",
+                              allow_patterns=["cadena.log", "RESUMEN.md", "*.json", "*/zspace_listado.txt"],
+                              ignore_patterns=["hf/*", "sonda/*", "muestras/*"], commit_message=mensaje)
+
+    parar_latido = threading.Event()
+
+    def latir() -> None:      # copia periódica de los registros: permite seguir la corrida sin entrar al pod
+        while not parar_latido.is_set():
+            try:
+                subir_registros("latido")
+            except Exception as e:
+                print(f"latido: {type(e).__name__}: {str(e)[:200]}", flush=True)
+            parar_latido.wait(a.latido_min * 60)
+
     corridas = [("completo", a.pasos_completo, a.guardar_cada)]
     if a.plan == "final":
         corridas += [(f"wsd_{t}", t, 0) for t in a.candidatos]
     estado = "fallo"
+    hilo_latido = None
+    commit = subprocess.run(["git", "rev-parse", "HEAD"], cwd=RAIZ, capture_output=True, text=True).stdout.strip()
     try:
-        registrar(f"cadena final: plan={a.plan} preset={a.preset} corridas={[(n, p) for n, p, _ in corridas]} "
-                  f"dropout={a.dropout} device={a.device} raiz={raiz}")
+        registrar(f"cadena final: commit={commit[:12] or 'desconocido'} plan={a.plan} preset={a.preset} "
+                  f"corridas={[(n, p) for n, p, _ in corridas]} dropout={a.dropout} device={a.device} raiz={raiz}")
+        if a.registro_hf and a.latido_min > 0:
+            hilo_latido = threading.Thread(target=latir, daemon=True)
+            hilo_latido.start()
         # 1. sonda
         ruta_sonda = os.path.join(raiz, "sonda.json")
         if not os.path.exists(ruta_sonda):
@@ -271,7 +296,7 @@ def main(argv=None) -> int:
         shutil.copyfile(ruta_an, os.path.join(d_run, "analisis_muestras.json"))
         paso("exportar", [PY, os.path.join("scripts", "exportar_hf.py"), "--ckpt", elegido, "--run", d_run, "--out", hf_dir,
                           "--nombre", a.nombre, "--datos", a.datos, "--seleccion", os.path.join(raiz, "seleccion.json"),
-                          "--muestras", *archivos])
+                          *(["--commit", commit] if commit else []), "--muestras", *archivos])
         # resumen y registros dentro del export
         dur = time.time() - t_inicio
         z = _leer(os.path.join(d_comp, "zspace_verificacion.json")) if os.path.exists(os.path.join(d_comp, "zspace_verificacion.json")) else None
@@ -323,15 +348,13 @@ def main(argv=None) -> int:
             traceback.print_exc(file=f)
         return 1
     finally:
+        parar_latido.set()
+        if hilo_latido is not None:
+            hilo_latido.join(timeout=180)
         if a.registro_hf:
             try:
-                from huggingface_hub import HfApi
-                HfApi().upload_folder(folder_path=raiz, repo_id=a.registro_hf, repo_type="dataset",
-                                      path_in_repo=f"corridas/{os.path.basename(os.path.normpath(raiz))}",
-                                      allow_patterns=["cadena.log", "RESUMEN.md", "*.json", "*/log.json", "*/zspace_*",
-                                                      "*/zspace/versiones.json"],
-                                      commit_message=f"registros de la cadena final ({estado})")
-                registrar(f"registros copiados a {a.registro_hf}")
+                registrar(f"copiando los registros a {a.registro_hf} (estado: {estado})")
+                subir_registros(f"registros de la cadena final ({estado})")
             except Exception as e:
                 registrar(f"no se pudieron copiar los registros a {a.registro_hf}: {type(e).__name__}: {e}")
         if a.apagar:

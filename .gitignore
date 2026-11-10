@@ -30,3 +30,6 @@ hf/
 
 # almacén local de herramientas de memoria (no es parte del proyecto)
 mneme_storage/
+
+# pod de RunPod lanzado desde esta máquina (id y precio; no es un secreto, pero es estado local)
+runs/runpod_pod.json

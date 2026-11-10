@@ -7,19 +7,29 @@ jobs:
   linux:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        torch: ["2.4.0", "latest"]   # 2.4.0 es la versión de la imagen del pod de RunPod
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Dependencias (torch CPU)
+      - name: Dependencias (torch CPU ${{ matrix.torch }})
         run: |
           python -m pip install --upgrade pip
-          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          if [ "${{ matrix.torch }}" = "latest" ]; then
+            pip install torch --index-url https://download.pytorch.org/whl/cpu
+          else
+            pip install "torch==${{ matrix.torch }}" --index-url https://download.pytorch.org/whl/cpu
+          fi
           pip install -e ".[zspace,hf,dev]" "numpy>=2"
+      - name: Sintaxis (Python 3.11 y bash)
+        run: |
+          python -m compileall -q fuga scripts tests
+          bash -n scripts/runpod/arranque.sh
       - name: Lint
         run: python -m ruff check --select E,F,W,B --ignore E501 fuga tests scripts
-      - name: Sintaxis del arranque de RunPod
-        run: bash -n scripts/runpod/arranque.sh
       - name: Tests (incluye la cadena final en miniatura)
         run: python -m pytest -q
