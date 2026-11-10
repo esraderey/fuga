@@ -77,7 +77,7 @@ def _score_a_pieza(s, pid: str, fuente: str) -> dict | None:
 
 def _fuente_y_nombre(ruta: str) -> tuple[str, str]:
     """('bach', 'bwv1.6.mxl') a partir de .../corpus/bach/bwv1.6.mxl, con separadores de cualquier sistema."""
-    partes = pathlib.PurePath(ruta).parts
+    partes = pathlib.PureWindowsPath(ruta).parts   # parte por \ y por /, también en Linux
     i = max(j for j, x in enumerate(partes) if x == "corpus")
     return partes[i + 1], partes[-1]
 

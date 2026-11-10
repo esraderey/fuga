@@ -42,4 +42,9 @@ y el 80 % del equivalente bf16: los deltas de 500 pasos en bf16 no son tan dispe
 
 ## Desviaciones
 
-Se anotarán en `ensayo/fuga_s_6h.md` con su motivo.
+- **2026-11-08, corrida cortada.** D resultó 0,3 (`runs/fuga_s_6h/eleccion_dropout.json`). El equipo se reinició sin
+  apagado limpio (evento Kernel-Power 41) con el entrenamiento en el paso 5 575, el 31 % del presupuesto. Sin error de
+  Python. Se conservan `modelo_mejor.pt` (paso 4 250: 3,433 val / 3,718 test) y el almacén Z-Space, que se reabre y
+  verifica tras el corte (11 versiones, 78,9 % del equivalente bf16); detalle en `runs/fuga_s_6h/rescate.json`.
+- **2026-11-09.** La corrida completa se traslada a una H100 con el presupuesto traducido a pasos; el plan, la regla de
+  elección y los criterios vigentes están en `ensayo/prerregistro_final.md`.

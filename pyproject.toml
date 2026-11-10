@@ -13,7 +13,8 @@ dependencies = ["torch>=2.4", "numpy", "mido"]  # F.rms_norm existe desde torch 
 [project.optional-dependencies]
 corpus = ["music21>=9"]
 dev = ["pytest", "ruff"]
-zspace = ["z-space-core @ git+https://github.com/esraderey/z-space-core"]   # checkpoints periodicos (--guardar_cada)
+# checkpoints periodicos (--guardar_cada); commit y mscs fijados a lo probado (ensayo/reporte_zspace)
+zspace = ["z-space-core @ git+https://github.com/esraderey/z-space-core@0f51a9e6d287355500bc42dadffeaf1a10f076ed", "mscs==2.4.0"]
 hf = ["safetensors", "huggingface_hub"]   # export y subida a Hugging Face (scripts/exportar_hf.py, scripts/subir_hf.py)
 
 [tool.setuptools]
