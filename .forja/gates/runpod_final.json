@@ -1,0 +1,19 @@
+{
+ "fecha": "2026-11-09",
+ "tarea": "Entrenamiento final en RunPod (H100): cadena portable, arranque, datos privados en HF, pre-registro final",
+ "archivos": ["scripts/cadena_final.py", "scripts/evaluar_ckpts.py", "scripts/analizar_muestras.py", "scripts/verificar_zspace.py",
+              "scripts/exportar_hf.py", "scripts/extraer_corpus.py", "scripts/runpod/arranque.sh", "scripts/runpod/datos.py",
+              "scripts/runpod/datos.sha256.json", "scripts/runpod/README.md", "tests/test_cadena_final.py", "pyproject.toml",
+              ".github/workflows/tests.yml", ".gitattributes", "ensayo/prerregistro_final.md", "ensayo/prerregistro_6h.md",
+              "ensayo/regularizacion_informe.md", "ensayo/informe.md", "runs/fuga_s_6h/rescate.json"],
+ "G0": {"comando": "python -m compileall -q fuga tests scripts", "resultado": "pasa"},
+ "G1": {"comando": "python -m ruff check --select E,F,W,B --ignore E501 fuga tests scripts", "resultado": "pasa"},
+ "G3": {"comando": "python -m pytest -q", "resultado": "67 passed in 109.66s",
+        "nuevos": ["test_elegir_minimo_de_validacion", "test_contraste_pareado_signo_y_piezas_comunes",
+                   "test_elegir_muestras_y_proyeccion", "test_cadena_en_miniatura_de_extremo_a_extremo"]},
+ "ensayos": ["cadena_final --prueba con corpus y cachés reales en la RTX 4060: 3 min, exit 0 (sonda, 3 corridas, Z-Space exacto, evaluación, elección, muestras, análisis, export con ficha y corrida/)",
+             "datos.py subir -> dataset privado esraderey/fuga-datos; datos.py bajar en carpeta limpia: 3 archivos verificados contra el manifiesto SHA-256",
+             "bash -n scripts/runpod/arranque.sh: sintaxis correcta, finales de línea LF"],
+ "no_verificado_localmente": ["ejecución en Linux (WSL sin disco y Docker parado): se comprueba en GitHub Actions", "parada automática del pod con runpodctl", "velocidad real de la H100 (la mide la sonda)"],
+ "rescate_local": {"fuente": "runs/fuga_s_6h/rescate.json", "mejor_parcial": "paso 4250: 3.433 val / 3.718 test", "zspace_recupera_tras_corte": true}
+}

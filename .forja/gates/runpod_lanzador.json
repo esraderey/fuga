@@ -1,0 +1,22 @@
+{
+ "fecha": "2026-11-09",
+ "tarea": "Lanzador local del pod de RunPod (crear, vigilar, detener), latido de registros y arranque endurecido",
+ "archivos": ["scripts/runpod/lanzar.py", "scripts/runpod/arranque.sh", "scripts/runpod/README.md", "scripts/cadena_final.py",
+              "scripts/exportar_hf.py", "tests/test_lanzar_runpod.py", ".github/workflows/tests.yml", ".gitignore"],
+ "G0": {"comando": "python -m compileall -q fuga tests scripts; py -3.10 -m compileall -q fuga scripts tests", "resultado": "pasa en 3.13 y 3.10"},
+ "G1": {"comando": "python -m ruff check --select E,F,W,B --ignore E501 fuga tests scripts", "resultado": "pasa"},
+ "G3": {"comando": "python -m pytest -q", "resultado": "72 passed in 116.15s",
+        "nuevos": ["test_eleccion_prefiere_nube_segura_y_respeta_el_tope", "test_especificacion_sin_secretos_y_con_seguros",
+                   "test_cliente_autentica_por_cabecera_y_propaga_errores", "test_vigilancia_casos",
+                   "test_clave_de_entorno_o_archivo_y_sin_clave"]},
+ "ensayos": ["latido real: cadena_final --prueba con --registro_hf y latido de 30 s; 14 archivos en el dataset privado, leídos con leer_latido (23 hitos, fin detectado) y carpeta de ensayo borrada",
+             "lanzar.py simulacro sin clave: sale con código 2 y pide `lanzar.py clave`",
+             "CI de GitHub (PR esraderey/fuga#1) sobre el commit anterior: 2 de 2 comprobaciones en verde en Linux"],
+ "fuentes_api": ["https://rest.runpod.io/v1/openapi.json (POST /pods, GET /pods/{id}, POST /pods/{id}/stop, DELETE /pods/{id})",
+                 "https://docs.runpod.io/pods/templates/secrets.md ({{ RUNPOD_SECRET_nombre }})",
+                 "https://docs.runpod.io/runpodctl/overview.md (runpodctl preinstalado en cada pod con clave propia)",
+                 "https://docs.runpod.io/pods/manage-pods.md (runpodctl pod stop $RUNPOD_POD_ID)"],
+ "no_verificado": ["llamadas reales a la API de RunPod (falta la API key del usuario): creación, precios por GraphQL con cabecera, parada",
+                   "resolución del secreto {{ RUNPOD_SECRET_hf_token }} en un pod creado por API",
+                   "velocidad real de la H100"]
+}
