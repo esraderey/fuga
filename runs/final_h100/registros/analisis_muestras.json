@@ -1,0 +1,228 @@
+{
+ "ckpt": "runs/final_h100/wsd_4500/modelo_mejor.pt",
+ "compases": 16,
+ "base_real": {
+  "test_real_copia4": 0.051993996569468265,
+  "test_real_copia2": 0.0918419702411493,
+  "test_real_repeticion": 0.24254137170651302,
+  "test_real_en_escala": 0.9572404627228223
+ },
+ "muestras": [
+  {
+   "muestra": 0,
+   "notas": 33,
+   "compases": 9,
+   "fin": true,
+   "partes": 1,
+   "tonica": 5,
+   "modo": "major",
+   "tempo": 94,
+   "copia4": 0.0,
+   "copia2": 0.0,
+   "en_escala": 0.97,
+   "repeticion": 0.143,
+   "ambito": [
+    60,
+    77
+   ]
+  },
+  {
+   "muestra": 1,
+   "notas": 220,
+   "compases": 16,
+   "fin": true,
+   "partes": 5,
+   "tonica": 2,
+   "modo": "minor",
+   "tempo": 94,
+   "copia4": 0.0,
+   "copia2": 0.0,
+   "en_escala": 0.905,
+   "repeticion": 0.197,
+   "ambito": [
+    50,
+    77
+   ]
+  },
+  {
+   "muestra": 2,
+   "notas": 69,
+   "compases": 16,
+   "fin": true,
+   "partes": 1,
+   "tonica": 7,
+   "modo": "minor",
+   "tempo": 94,
+   "copia4": 0.0,
+   "copia2": 0.0,
+   "en_escala": 0.971,
+   "repeticion": 0.312,
+   "ambito": [
+    55,
+    74
+   ]
+  },
+  {
+   "muestra": 3,
+   "notas": 229,
+   "compases": 16,
+   "fin": true,
+   "partes": 6,
+   "tonica": 9,
+   "modo": "minor",
+   "tempo": 94,
+   "copia4": 0.0,
+   "copia2": 0.0,
+   "en_escala": 0.961,
+   "repeticion": 0.175,
+   "ambito": [
+    40,
+    72
+   ]
+  },
+  {
+   "muestra": 4,
+   "notas": 128,
+   "compases": 16,
+   "fin": true,
+   "partes": 1,
+   "tonica": 2,
+   "modo": "major",
+   "tempo": 94,
+   "copia4": 0.0,
+   "copia2": 0.0,
+   "en_escala": 1.0,
+   "repeticion": 0.438,
+   "ambito": [
+    59,
+    76
+   ]
+  },
+  {
+   "muestra": 5,
+   "notas": 30,
+   "compases": 9,
+   "fin": true,
+   "partes": 1,
+   "tonica": 5,
+   "modo": "major",
+   "tempo": 94,
+   "copia4": 0.0,
+   "copia2": 0.0,
+   "en_escala": 1.0,
+   "repeticion": 0.0,
+   "ambito": [
+    60,
+    74
+   ]
+  },
+  {
+   "muestra": 6,
+   "notas": 51,
+   "compases": 13,
+   "fin": true,
+   "partes": 1,
+   "tonica": 9,
+   "modo": "major",
+   "tempo": 94,
+   "copia4": 0.0,
+   "copia2": 0.0,
+   "en_escala": 1.0,
+   "repeticion": 0.385,
+   "ambito": [
+    64,
+    74
+   ]
+  },
+  {
+   "muestra": 7,
+   "notas": 36,
+   "compases": 9,
+   "fin": true,
+   "partes": 1,
+   "tonica": 7,
+   "modo": "major",
+   "tempo": 94,
+   "copia4": 0.0,
+   "copia2": 0.0,
+   "en_escala": 1.0,
+   "repeticion": 0.0,
+   "ambito": [
+    62,
+    74
+   ]
+  },
+  {
+   "muestra": 8,
+   "notas": 283,
+   "compases": 16,
+   "fin": true,
+   "partes": 4,
+   "tonica": 2,
+   "modo": "major",
+   "tempo": 94,
+   "copia4": 0.0,
+   "copia2": 0.0,
+   "en_escala": 0.841,
+   "repeticion": 0.188,
+   "ambito": [
+    40,
+    79
+   ]
+  },
+  {
+   "muestra": 9,
+   "notas": 30,
+   "compases": 9,
+   "fin": true,
+   "partes": 1,
+   "tonica": 5,
+   "modo": "major",
+   "tempo": 94,
+   "copia4": 0.0,
+   "copia2": 0.0,
+   "en_escala": 1.0,
+   "repeticion": 0.25,
+   "ambito": [
+    65,
+    77
+   ]
+  },
+  {
+   "muestra": 10,
+   "notas": 141,
+   "compases": 10,
+   "fin": true,
+   "partes": 4,
+   "tonica": 0,
+   "modo": "major",
+   "tempo": 94,
+   "copia4": 0.0,
+   "copia2": 0.0,
+   "en_escala": 0.972,
+   "repeticion": 0.038,
+   "ambito": [
+    43,
+    72
+   ]
+  },
+  {
+   "muestra": 11,
+   "notas": 15,
+   "compases": 4,
+   "fin": true,
+   "partes": 1,
+   "tonica": 5,
+   "modo": "major",
+   "tempo": 94,
+   "copia4": 0.0,
+   "copia2": 0.0,
+   "en_escala": 1.0,
+   "repeticion": 0.0,
+   "ambito": [
+    65,
+    74
+   ]
+  }
+ ]
+}

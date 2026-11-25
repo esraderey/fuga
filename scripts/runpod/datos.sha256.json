@@ -1,0 +1,14 @@
+{
+ "cache/eco_rel_1024.pkl": {
+  "sha256": "308dfdec13f56392ea2eb5b19b52c8965ec6fe7c471a9c59f35ebb2c836cb875",
+  "bytes": 21916233
+ },
+ "cache/test_eco_rel_1024.pkl": {
+  "sha256": "44320373f95a06f71241d7df12f86b18d5a03cf16ec3d1346a9ea1a1c79d83af",
+  "bytes": 854044
+ },
+ "data/corpus_pd.jsonl": {
+  "sha256": "086e52438fd4cc533908821d1fb69ba2b6ad1adc74890760265c144e58eecdb2",
+  "bytes": 31598216
+ }
+}

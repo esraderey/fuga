@@ -76,8 +76,38 @@ def fuentes_corpus(datos: str) -> list[tuple[str, int]]:
     return c.most_common()
 
 
+def parrafo_checkpoint(ckpt: str, m: dict) -> str:
+    """Qué es este checkpoint dentro de su corrida: el modelo final o el mínimo de validación parcial."""
+    corrida = os.path.basename(os.path.dirname(ckpt)) or "—"
+    total = m["final"].get("paso")
+    if os.path.basename(ckpt) == "modelo.pt" or (m["paso"] is not None and m["paso"] == total):
+        return (f"Este checkpoint es el modelo final de la corrida `{corrida}` ({total or '—'} pasos con calentamiento, "
+                "meseta y decaimiento completo de la tasa de aprendizaje).")
+    return (f"Este checkpoint es `{os.path.basename(ckpt)}` de la corrida `{corrida}`: el punto de menor bits por nota en "
+            f"validación parcial durante el entrenamiento (paso {m['paso'] or '—'} de {total or '—'}), no el modelo final.")
+
+
+def bloque_seleccion(sel: dict | None) -> str:
+    """Tabla de candidatos y regla de elección, si la cadena final dejó un seleccion.json."""
+    if not sel:
+        return ""
+    filas = "\n".join(f"| `{x['corrida']}` | `{x['archivo']}` | {x['paso']} de {x['pasos_corrida']} | {_fmt(x['val'])} | {_fmt(x['test'])} | "
+                      f"{'**publicado**' if x['ckpt'] == sel['elegido'] else ''} |" for x in sel["candidatos"])
+    txt = ["## Selección del modelo", "",
+           f"Regla fijada antes de entrenar: {sel['regla']}. El test no interviene en la elección.", "",
+           "| Corrida | Checkpoint | Paso | Val bits/nota | Test bits/nota | |", "|---|---|---|---|---|---|", filas, ""]
+    k1 = sel.get("KF1")
+    if k1:
+        ic = k1["IC95_pareado"]
+        txt += [f"Contraste pre-registrado entre el mejor presupuesto corto y el mejor checkpoint de la corrida larga, pareado "
+                f"por pieza en test ({k1['n_piezas']} piezas): {_fmt(ic[0], 4)} [{_fmt(ic[1], 4)}; {_fmt(ic[2], 4)}] bits por nota "
+                f"({k1['veredicto']}).", ""]
+    return "\n".join(txt)
+
+
 def ficha(nombre: str, licencia: str, c: ConfigModelo, n_par: int, modo: str, m: dict, fuentes: list, sha: str,
-          ckpt: str, muestras: list[str], autor: str) -> str:
+          ckpt: str, muestras: list[str], autor: str, seleccion: dict | None = None, commit: str = "") -> str:
+    codigo = ("commit `" + commit[:12] + "` de " if commit else "") + "https://github.com/esraderey/fuga"
     a = m["args"]
     tokens = m["final"].get("tokens_vistos")
     front = "\n".join(["---", f"license: {licencia.lower()}", "library_name: pytorch",
@@ -124,8 +154,7 @@ Metrics, training budget, data sources and limitations are documented below in S
 
 {ARQUITECTURA}
 
-Este checkpoint es `{os.path.basename(ckpt)}` de la corrida `{os.path.basename(os.path.dirname(ckpt)) or '—'}`: el punto
-de menor bits por nota en validación parcial durante el entrenamiento, no el modelo final (que memoriza el corpus).
+{parrafo_checkpoint(ckpt, m)}
 
 ## Resultados
 
@@ -134,6 +163,8 @@ de menor bits por nota en validación parcial durante el entrenamiento, no el mo
 Bits por nota es la pérdida total en bits de todos los tokens de una pieza dividida por su número de notas; menor es
 mejor. Referencias del proyecto sobre los mismos conjuntos: FUGA-S a 700 pasos 4,49 (val) / 4,87 (test); nano (2,5M)
 5,25 (val).
+
+{bloque_seleccion(seleccion)}Los registros de entrenamiento, evaluación y selección, cuando acompañan a este export, están en `corrida/`.
 
 ## Entrenamiento
 
@@ -178,8 +209,8 @@ las fuentes antes de usos que exijan originalidad garantizada.
 
 ## Limitaciones
 
-- Corpus pequeño (unos 2 millones de notas, {sum(n for _, n in fuentes) or '—'} piezas): el modelo se sobreajusta en pocas épocas; este
-  checkpoint es el mínimo de validación, no el final.
+- Corpus pequeño (unos 2 millones de notas, {sum(n for _, n in fuentes) or '—'} piezas): el modelo se sobreajusta en pocas épocas; el
+  checkpoint publicado se eligió por validación para evitarlo.
 - Estilos limitados a lo que hay en el corpus: canción popular europea y polifonía renacentista y barroca; nada fuera de eso.
 - Piezas cortas (8 a 16 compases); sin condicionamiento por texto; sin audio producido (el WAV es un render sintético).
 - Una sola semilla de entrenamiento; las métricas no llevan intervalo entre semillas.
@@ -191,6 +222,7 @@ las fuentes antes de usos que exijan originalidad garantizada.
 | Archivo de origen | `{ckpt}` |
 | SHA-256 de `model.safetensors` | `{sha}` |
 | Exportado | {dt.date.today().isoformat()} con `scripts/exportar_hf.py` |
+| Código | {codigo} |
 | Proyecto | FUGA (serie RFC-FUGA, firma OMRI): código, RFC, pre-registros e informes en https://github.com/esraderey/fuga (carpeta `ensayo/`). |
 | Autoría | {autor} |
 """
@@ -207,6 +239,8 @@ def main(argv=None) -> str:
     ap.add_argument("--datos", default="data/corpus_pd.jsonl", help="para contar las fuentes del corpus en la ficha")
     ap.add_argument("--muestras", nargs="*", default=[], help="archivos .wav/.mid que se copian a <out>/muestras/")
     ap.add_argument("--dtype", choices=["float32", "bfloat16"], default="float32")
+    ap.add_argument("--seleccion", default="", help="seleccion.json de scripts/cadena_final.py (tabla de candidatos en la ficha)")
+    ap.add_argument("--commit", default="", help="commit del código con el que se entrenó (procedencia)")
     a = ap.parse_args(argv)
     from safetensors.torch import save_file
 
@@ -223,7 +257,7 @@ def main(argv=None) -> str:
     m = leer_run(a.run, a.ckpt)
     config = {"arquitectura": ARQUITECTURA, "config": ck["config"], "estilos": ck["estilos"], "modo": ck["modo"],
               "parametros": n_par, "dtype": a.dtype,
-              "origen": {"checkpoint": a.ckpt, "paso": m["paso"], "exportado": dt.date.today().isoformat()},
+              "origen": {"checkpoint": a.ckpt, "paso": m["paso"], "exportado": dt.date.today().isoformat(), "commit": a.commit or None},
               "metricas": {"val_bits_por_nota": m["val"], "test_bits_por_nota": m["test"]},
               "entrenamiento": {k: m["args"].get(k) for k in ("lr", "wd", "dropout", "tokens_por_lote", "pasos", "minutos", "semilla")},
               "sha256_model_safetensors": sha}
@@ -245,7 +279,8 @@ def main(argv=None) -> str:
             shutil.copy2(x, os.path.join(a.out, "muestras", os.path.basename(x)))
             copiadas.append(x)
     with open(os.path.join(a.out, "README.md"), "w", encoding="utf-8") as f:
-        f.write(ficha(a.nombre, a.licencia, c, n_par, ck["modo"], m, fuentes_corpus(a.datos), sha, a.ckpt, copiadas, a.autor))
+        f.write(ficha(a.nombre, a.licencia, c, n_par, ck["modo"], m, fuentes_corpus(a.datos), sha, a.ckpt, copiadas, a.autor,
+                      _leer_json(a.seleccion) or None, a.commit))
     total = sum(os.path.getsize(os.path.join(d, x)) for d, _, xs in os.walk(a.out) for x in xs)
     print(f"exportado a {a.out}: {n_par/1e6:.1f}M parámetros, {a.dtype}, {total/1e6:.1f} MB en total, sha256 {sha[:12]}…", flush=True)
     return a.out

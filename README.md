@@ -89,6 +89,9 @@ corta (`render.a_audio_eventos`). El refinador neuronal de timbre (PxT) se propo
 - **FUGA-S 3 h en GPU** (`ensayo/fuga_s_3h.md`): FUGA-S eco_rel entrenado 180 min en la RTX 4060 llega a 3,53 bits por
   nota en validación con el checkpoint del paso 3 250 (`--guardar_mejor`); más allá de ~5 épocas memoriza el corpus.
   Modelo de referencia local para generar: `runs/fuga_s_rel_3h/modelo_mejor.pt`.
+- **Modelo publicado** (`ensayo/fuga_s_final.md`): https://huggingface.co/esraderey/fuga-s-eco-rel, FUGA-S eco_rel
+  entrenado en una L40S de RunPod; 3,362 bits por nota en validación y 3,645 en test. Se descarga y genera con
+  `python -m fuga.sample --ckpt <carpeta descargada>`.
 - **Pendiente para producción**: cargadores de Lakh/PDMX, ediciones DEL/ADD, decodificador SMC, destructor D7 de la
   escalera metamórfica, salvaguardas de RFC-FUGA-3 y el refinador PxT de RFC-FUGA-2.
 

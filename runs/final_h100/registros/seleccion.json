@@ -1,0 +1,101 @@
+{
+ "regla": "menor bits por nota en validación completa entre modelo_mejor.pt y modelo.pt de todas las corridas",
+ "plan": "final",
+ "candidatos": [
+  {
+   "ckpt": "runs/final_h100/completo/modelo.pt",
+   "corrida": "completo",
+   "archivo": "modelo.pt",
+   "paso": 18380,
+   "pasos_corrida": 18380,
+   "val": 8.18606990458638,
+   "test": 8.591415737611946,
+   "segundos_corrida": 3492
+  },
+  {
+   "ckpt": "runs/final_h100/completo/modelo_mejor.pt",
+   "corrida": "completo",
+   "archivo": "modelo_mejor.pt",
+   "paso": 4250,
+   "pasos_corrida": 18380,
+   "val": 3.4419405345885856,
+   "test": 3.74478682264357,
+   "segundos_corrida": 3492
+  },
+  {
+   "ckpt": "runs/final_h100/wsd_4500/modelo.pt",
+   "corrida": "wsd_4500",
+   "archivo": "modelo.pt",
+   "paso": 4500,
+   "pasos_corrida": 4500,
+   "val": 3.373676819621105,
+   "test": 3.655367495622291,
+   "segundos_corrida": 783
+  },
+  {
+   "ckpt": "runs/final_h100/wsd_4500/modelo_mejor.pt",
+   "corrida": "wsd_4500",
+   "archivo": "modelo_mejor.pt",
+   "paso": 4250,
+   "pasos_corrida": 4500,
+   "val": 3.3617828385092334,
+   "test": 3.6453734262932556,
+   "segundos_corrida": 783
+  },
+  {
+   "ckpt": "runs/final_h100/wsd_6000/modelo.pt",
+   "corrida": "wsd_6000",
+   "archivo": "modelo.pt",
+   "paso": 6000,
+   "pasos_corrida": 6000,
+   "val": 3.6004972894948692,
+   "test": 3.8738138990817657,
+   "segundos_corrida": 1037
+  },
+  {
+   "ckpt": "runs/final_h100/wsd_6000/modelo_mejor.pt",
+   "corrida": "wsd_6000",
+   "archivo": "modelo_mejor.pt",
+   "paso": 4250,
+   "pasos_corrida": 6000,
+   "val": 3.4798313088651445,
+   "test": 3.777516403353469,
+   "segundos_corrida": 1037
+  },
+  {
+   "ckpt": "runs/final_h100/wsd_8000/modelo.pt",
+   "corrida": "wsd_8000",
+   "archivo": "modelo.pt",
+   "paso": 8000,
+   "pasos_corrida": 8000,
+   "val": 4.498297613459363,
+   "test": 4.768714260972106,
+   "segundos_corrida": 1379
+  },
+  {
+   "ckpt": "runs/final_h100/wsd_8000/modelo_mejor.pt",
+   "corrida": "wsd_8000",
+   "archivo": "modelo_mejor.pt",
+   "paso": 4250,
+   "pasos_corrida": 8000,
+   "val": 3.4483438366609254,
+   "test": 3.746139803699818,
+   "segundos_corrida": 1379
+  }
+ ],
+ "elegido": "runs/final_h100/wsd_4500/modelo_mejor.pt",
+ "val_trozos": 617,
+ "test_trozos": 631,
+ "test_piezas": 475,
+ "KF1": {
+  "a": "runs/final_h100/wsd_4500/modelo_mejor.pt",
+  "b": "runs/final_h100/completo/modelo_mejor.pt",
+  "n_piezas": 475,
+  "IC95_pareado": [
+   -0.08974610674900292,
+   -0.1035294803418523,
+   -0.07575524088123942
+  ],
+  "veredicto": "pasa (IC95 < 0)"
+ }
+}
