@@ -50,10 +50,13 @@ def test_especificacion_sin_secretos_y_con_seguros(lz):
     assert spec["env"]["FUGA_COMMIT"] == "a" * 40 and spec["env"]["FUGA_APAGAR"] == "1" and spec["env"]["FUGA_MAX_HORAS"] == "5"
     cmd = spec["dockerStartCmd"]
     assert cmd[:2] == ["bash", "-c"] and 'git checkout -q "$FUGA_COMMIT"' in cmd[2] and "scripts/runpod/arranque.sh" in cmd[2]
-    assert cmd[2].startswith("(sleep $(( ${FUGA_MAX_HORAS:-5} * 3600 )); runpodctl pod stop")      # temporizador de seguridad
+    assert cmd[2].startswith("(sleep $(( ${FUGA_MAX_HORAS:-3} * 3600 )); runpodctl pod stop")      # temporizador de seguridad
     assert '|| runpodctl pod stop "$RUNPOD_POD_ID" ) &' in cmd[2]                                    # si el arranque falla, se apaga
     sin_precios = lz.especificacion(None, "b" * 40)
     assert sin_precios["gpuTypeIds"] == list(lz.H100) and sin_precios["gpuTypePriority"] == "availability"
+    assert sin_precios["env"]["FUGA_MAX_HORAS"] == "3"                                            # tope por defecto
+    a100 = lz.especificacion(None, "c" * 40, familia=lz.FAMILIAS["a100"])
+    assert a100["gpuTypeIds"] == ["NVIDIA A100-SXM4-80GB", "NVIDIA A100 80GB PCIe"] and a100["imageName"] == lz.IMAGEN
 
 
 def test_cliente_autentica_por_cabecera_y_propaga_errores(lz):

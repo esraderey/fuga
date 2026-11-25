@@ -60,9 +60,7 @@ def test_elegir_muestras_y_proyeccion(cf):
     assert abs(p["coste"] - 5.98) < 0.01
 
 
-def test_cadena_en_miniatura_de_extremo_a_extremo(tmp_path, cf):
-    pytest.importorskip("z_space_core")
-    pytest.importorskip("safetensors")
+def _corpus(tmp_path):
     sys.path.insert(0, str(RAIZ / "tests"))
     from test_fuga import pieza_sintetica
 
@@ -75,6 +73,23 @@ def test_cadena_en_miniatura_de_extremo_a_extremo(tmp_path, cf):
     assert {"train", "val", "test"} <= {particion(p) for p in piezas}
     datos = tmp_path / "corpus.jsonl"
     datos.write_text("\n".join(json.dumps(p) for p in piezas) + "\n", encoding="utf-8")
+    return datos
+
+
+def test_guardia_de_presupuesto_aborta_antes_de_entrenar(tmp_path, cf):
+    datos = _corpus(tmp_path)
+    raiz = tmp_path / "g"
+    rc = cf.main(["--prueba", "--raiz", str(raiz), "--device", "cpu", "--datos", str(datos), "--cache", str(tmp_path / "c.pkl"),
+                  "--cache_test", str(tmp_path / "t.pkl"), "--presupuesto_min", "1"])
+    registro = (raiz / "cadena.log").read_text(encoding="utf-8")
+    assert rc == 1 and "no cabe en el presupuesto de 1 min" in registro and "PROYECCIÓN" in registro
+    assert (raiz / "sonda.json").exists() and not (raiz / "completo").exists()       # no llegó a entrenar
+
+
+def test_cadena_en_miniatura_de_extremo_a_extremo(tmp_path, cf):
+    pytest.importorskip("z_space_core")
+    pytest.importorskip("safetensors")
+    datos = _corpus(tmp_path)
     raiz = tmp_path / "final"
     rc = cf.main(["--prueba", "--raiz", str(raiz), "--device", "cpu", "--datos", str(datos),
                   "--cache", str(tmp_path / "cache.pkl"), "--cache_test", str(tmp_path / "test.pkl")])

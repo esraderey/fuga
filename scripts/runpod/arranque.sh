@@ -9,7 +9,8 @@
 #   FUGA_PLAN=final|completo   final (por defecto): corrida larga + candidatos cortos + selección. completo: solo la larga.
 #   FUGA_REPO_HF=usuario/repo  dónde publicar el modelo (por defecto esraderey/fuga-s-eco-rel). Vacío = no publicar.
 #   FUGA_APAGAR=1|0            detener el pod al terminar o si algo falla (por defecto 1).
-#   FUGA_MAX_HORAS=5           tope de vida del pod: pasado ese tiempo se detiene aunque no haya terminado.
+#   FUGA_MAX_HORAS=3           tope de vida del pod: pasado ese tiempo se detiene aunque no haya terminado; si la
+#                              proyección tras la sonda no cabe en él (menos 20 min de margen), no se entrena.
 #   FUGA_PRECIO_HORA=3.0       precio por hora del pod, solo para la proyección de coste.
 #   FUGA_PRUEBA=1              ensayo en miniatura (nano, pocos pasos); no publica ni apaga y no exige GPU ni HF_TOKEN.
 set -euo pipefail
@@ -20,7 +21,7 @@ PY="$(command -v python || command -v python3)"
 PLAN="${FUGA_PLAN:-final}"
 REPO_HF="${FUGA_REPO_HF-esraderey/fuga-s-eco-rel}"
 APAGAR="${FUGA_APAGAR:-1}"
-MAX_HORAS="${FUGA_MAX_HORAS:-5}"
+MAX_HORAS="${FUGA_MAX_HORAS:-3}"
 PRECIO="${FUGA_PRECIO_HORA:-3.0}"
 PRUEBA="${FUGA_PRUEBA:-0}"
 RAIZ_RUN="runs/final_h100"
@@ -82,7 +83,8 @@ if [ "$PRUEBA" = "1" ]; then
   exit $?
 fi
 
-ARGS=(--plan "$PLAN" --raiz "$RAIZ_RUN" --device cuda --precio_hora "$PRECIO" --registro_hf esraderey/fuga-datos)
+ARGS=(--plan "$PLAN" --raiz "$RAIZ_RUN" --device cuda --precio_hora "$PRECIO" --registro_hf esraderey/fuga-datos
+      --presupuesto_min "$((MAX_HORAS * 60 - 20))")
 if [ -n "$REPO_HF" ]; then ARGS+=(--subir "$REPO_HF"); fi
 if [ "$APAGAR" = "1" ]; then ARGS+=(--apagar); fi
 nohup "$PY" scripts/cadena_final.py "${ARGS[@]}" > "$RAIZ_RUN.salida.log" 2>&1 &

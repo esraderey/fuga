@@ -78,9 +78,10 @@ def elegir_muestras(analisis: dict, k: int = 2) -> list[int]:
     return [m["muestra"] for m in orden[:k]]
 
 
-def proyectar(s_paso: float, pasos: int, versiones: int, s_version: float = 12.0, fijo_min: float = 20.0,
+def proyectar(s_paso: float, pasos: int, versiones: int, s_version: float = 12.0, fijo_min: float = 30.0,
               precio_hora: float = 3.0) -> dict:
-    """Minutos y coste previstos: entrenamiento + guardados Z-Space + margen fijo (evaluar, muestras, export, subida)."""
+    """Minutos y coste previstos: entrenamiento + guardados Z-Space + margen fijo (evaluaciones parciales y finales,
+    muestras y su análisis, export y subida)."""
     entreno = pasos * s_paso / 60
     total = entreno + versiones * s_version / 60 + fijo_min
     return {"s_por_paso": s_paso, "pasos": pasos, "minutos_entrenamiento": entreno, "minutos_totales": total,
@@ -136,6 +137,8 @@ def main(argv=None) -> int:
     ap.add_argument("--latido_min", type=float, default=5.0,
                     help="minutos entre copias de los registros a --registro_hf mientras la cadena corre (0 = solo al final)")
     ap.add_argument("--precio_hora", type=float, default=3.0)
+    ap.add_argument("--presupuesto_min", type=float, default=0,
+                    help="si la proyección tras la sonda supera estos minutos, se aborta antes de entrenar (0 = sin límite)")
     ap.add_argument("--apagar", action="store_true", help="detiene el pod de RunPod al terminar (también si falla)")
     ap.add_argument("--prueba", action="store_true", help="miniatura: nano, pocos pasos, 2 muestras")
     a = ap.parse_args(argv)
@@ -227,6 +230,9 @@ def main(argv=None) -> int:
         pr = _leer(ruta_sonda)
         registrar(f"PROYECCIÓN: {pr['s_por_paso']:.3f} s/paso -> entrenamiento {pr['minutos_entrenamiento']:.0f} min, "
                   f"total {pr['minutos_totales']:.0f} min, coste ~{pr['coste']:.2f} USD a {pr['precio_hora']:.2f} USD/h")
+        if a.presupuesto_min and pr["minutos_totales"] > a.presupuesto_min:
+            raise RuntimeError(f"la proyección ({pr['minutos_totales']:.0f} min) no cabe en el presupuesto de "
+                               f"{a.presupuesto_min:.0f} min: se aborta antes de entrenar")
         # 2 y 3. corridas
         for nombre, pasos, gc in corridas:
             out = os.path.join(raiz, nombre)

@@ -20,7 +20,7 @@ progreso desde fuera del pod.
 
 Requisitos, una sola vez y hechos por ti (las credenciales no pasan por ningún archivo del proyecto):
 
-1. **Saldo** en RunPod. El tope de esta corrida son 5 h de pod.
+1. **Saldo** en RunPod. El tope de esta corrida son 3 h de pod.
 2. **API key de RunPod** con permiso de lectura y escritura (consola → Settings → API Keys), guardada con entrada oculta:
 
    ```bash
@@ -33,8 +33,8 @@ Requisitos, una sola vez y hechos por ti (las credenciales no pasan por ningún 
 Después:
 
 ```bash
-python scripts/runpod/lanzar.py simulacro            # precios y stock de H100, pod que se crearía, coste; no crea nada
-python scripts/runpod/lanzar.py crear --confirmar    # crea el pod: una H100 bajo demanda, tope 3 USD/h y 5 h
+python scripts/runpod/lanzar.py simulacro --precio_max 4.5           # precios y stock, pod que se crearía, coste; no crea nada
+python scripts/runpod/lanzar.py crear --confirmar --precio_max 4.5   # crea el pod: una H100 bajo demanda, tope de precio y de 3 h
 python scripts/runpod/lanzar.py vigilar              # sigue los hitos y detiene el pod al terminar o al pasar el tope
 python scripts/runpod/lanzar.py estado               # estado y coste por hora
 python scripts/runpod/lanzar.py eliminar --confirmar # borra el pod y su volumen cuando el modelo ya esté publicado
@@ -42,9 +42,13 @@ python scripts/runpod/lanzar.py eliminar --confirmar # borra el pod y su volumen
 
 El pod clona el commit exacto desde el que se lanzó (`FUGA_COMMIT`), así que hay que lanzar con todo subido a GitHub.
 
-Seguros contra el gasto: la cadena detiene el pod al terminar o fallar; el contenedor lleva un temporizador que lo
-detiene a las 5 h; `vigilar` lo detiene si no da señales en 35 min, si termina y no se apaga solo, o si pasa el tope; y
-el precio se comprueba antes y después de crear (si sale por encima del tope, el pod se elimina).
+`--gpu a100` alquila una A100 en vez de una H100 (misma imagen). `--precio_max` (3 USD/h por defecto) se elige al lanzar:
+entre las GPU de la familia con stock y precio bajo el tope se pide la más barata, primero en la nube segura.
+
+Seguros contra el gasto: la cadena detiene el pod al terminar o fallar; si la proyección medida tras la sonda no cabe
+en el tope (menos 20 min), se aborta antes de entrenar; el contenedor lleva un temporizador que lo detiene a las 3 h;
+`vigilar` lo detiene si no da señales en 35 min, si termina y no se apaga solo, o si pasa el tope; y el precio se
+comprueba antes y después de crear (si sale por encima del tope, el pod se elimina).
 
 ## Lanzamiento a mano (alternativa)
 
@@ -64,7 +68,7 @@ el precio se comprueba antes y después de crear (si sale por encima del tope, e
 | `FUGA_PLAN` | `final` | `completo` entrena solo la corrida larga y publica su mejor checkpoint |
 | `FUGA_REPO_HF` | `esraderey/fuga-s-eco-rel` | repositorio donde publicar; vacío para no publicar |
 | `FUGA_APAGAR` | `1` | `0` deja el pod encendido al terminar |
-| `FUGA_MAX_HORAS` | `5` | tope de vida del pod |
+| `FUGA_MAX_HORAS` | `3` | tope de vida del pod; si la proyección no cabe en él, no se entrena |
 | `FUGA_PRECIO_HORA` | `3.0` | precio del pod, solo para la proyección de coste |
 | `FUGA_PRUEBA` | `0` | `1` ensaya la cadena en miniatura sin publicar ni apagar |
 
@@ -77,9 +81,15 @@ el precio se comprueba antes y después de crear (si sale por encima del tope, e
 
 ## Tiempo y coste previstos
 
-Estimación con 0,10–0,20 s por paso en la H100 (7 a 9 veces la RTX 4060 medida); la sonda la sustituye por una medida.
+El paso está limitado por la CPU, no por la GPU: cada paso despacha unas 19 500 operaciones de PyTorch, que en la RTX
+4060 local cuestan 0,18 s aunque el lote sea diminuto (medido el 2026-11-25), mientras que el cálculo útil, 7,3 TFLOP
+por paso, le lleva a una H100 unos 30 ms. En un servidor Linux el despacho debería bajar a 0,05–0,10 s; por eso una
+H100 SXM apenas gana a una H100 NVL o a una A100. La sonda sustituye estas cifras por una medida.
 
-| Plan | Pasos | Entrenamiento | Total con arranque, evaluación, muestras y subida |
+| Plan | Pasos | Entrenamiento (0,06–0,12 s/paso) | Total con arranque, evaluaciones, muestras y subida |
 |---|---|---|---|
-| `final` | 36 880 | 60–125 min | 1 h 30 – 2 h 30 |
-| `completo` | 18 380 | 30–60 min | 1 h – 1 h 30 |
+| `final` | 36 880 | 37–74 min | 1 h 10 – 1 h 55 |
+| `completo` | 18 380 | 18–37 min | 50 min – 1 h 15 |
+
+Con los precios vistos en la consola el 2026-11-25 (H100 PCIe 2,89 USD/h sin capacidad; H100 NVL 3,19; H100 SXM 4,39;
+A100 SXM 2,19), el plan `final` cuesta unos 3,8–6,1 USD en H100 NVL, 5,3–8,3 en H100 SXM y 2,8–4,4 en A100 SXM.

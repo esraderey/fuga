@@ -4,7 +4,7 @@ La API key de RunPod la guarda el usuario (`clave`, con entrada oculta) o la var
 la imprime ni la pone en una URL. El token de Hugging Face no pasa por aquí: el pod lo recibe de un secreto de RunPod.
 
   python scripts/runpod/lanzar.py clave                 # (tú, en tu terminal) guarda la API key de RunPod
-  python scripts/runpod/lanzar.py simulacro             # precios y stock de H100, pod que se crearía y coste; no crea nada
+  python scripts/runpod/lanzar.py simulacro             # precios y stock (--gpu h100|a100), pod que se crearía y coste
   python scripts/runpod/lanzar.py crear --confirmar     # crea el pod (gasta saldo de RunPod)
   python scripts/runpod/lanzar.py vigilar               # sigue el progreso; detiene el pod al terminar o al pasar el tope
   python scripts/runpod/lanzar.py estado                # pods de este proyecto y su coste
@@ -27,7 +27,10 @@ import urllib.request
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 REST = "https://rest.runpod.io/v1"
 GQL = "https://api.runpod.io/graphql"
-H100 = ("NVIDIA H100 PCIe", "NVIDIA H100 80GB HBM3", "NVIDIA H100 NVL")
+H100 = ("NVIDIA H100 PCIe", "NVIDIA H100 NVL", "NVIDIA H100 80GB HBM3")
+A100 = ("NVIDIA A100-SXM4-80GB", "NVIDIA A100 80GB PCIe")
+# Todas compatibles con la imagen (torch 2.4, CUDA 12.4: sm_80 y sm_90). Una RTX 5090 (sm_120) necesitaría otra imagen.
+FAMILIAS = {"h100": H100, "a100": A100}
 IMAGEN = "runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04"
 CUDA = ["12.4", "12.5", "12.6", "12.7", "12.8", "12.9", "13.0"]
 NOMBRE = "fuga-final"
@@ -39,7 +42,7 @@ RUTA_LATIDO = "corridas/final_h100"
 FIN_OK, FIN_MAL = "CADENA FINAL TERMINADA", "CADENA FINAL FALLÓ"
 # Arranque del contenedor: temporizador de seguridad, clon del commit exacto, arranque de FUGA y servicios de la imagen.
 ARRANQUE = (
-    '(sleep $(( ${FUGA_MAX_HORAS:-5} * 3600 )); runpodctl pod stop "$RUNPOD_POD_ID" || runpodctl stop pod "$RUNPOD_POD_ID") '
+    '(sleep $(( ${FUGA_MAX_HORAS:-3} * 3600 )); runpodctl pod stop "$RUNPOD_POD_ID" || runpodctl stop pod "$RUNPOD_POD_ID") '
     '>/dev/null 2>&1 & '
     '( (mkdir -p /workspace && cd /workspace && { [ -d fuga/.git ] || git clone -q ' + REPO_GIT + '; } && cd fuga '
     '&& git fetch -q origin && git checkout -q "$FUGA_COMMIT" && bash scripts/runpod/arranque.sh) '
@@ -97,7 +100,7 @@ class Cliente:
         return self._ok(*self.enviar("DELETE", f"{REST}/pods/{pid}", self.clave), "eliminar el pod")
 
     def precios(self, gpus=H100) -> list[dict]:
-        """Ofertas [{gpu, nube, precio, stock}] de GPU bajo demanda; lista vacía si la consulta de precios no responde."""
+        """Ofertas [{gpu, nube, precio, stock}] de las GPU pedidas, bajo demanda; lista vacía si la consulta de precios no responde."""
         campos = ("id displayName seguro: lowestPrice(input: {gpuCount: 1, secureCloud: true}) { stockStatus uninterruptablePrice } "
                   "comunidad: lowestPrice(input: {gpuCount: 1, secureCloud: false}) { stockStatus uninterruptablePrice }")
         consulta = "query { " + " ".join(f'g{i}: gpuTypes(input: {{id: "{g}"}}) {{ {campos} }}' for i, g in enumerate(gpus)) + " }"
@@ -120,7 +123,7 @@ def ofertas(data: dict) -> list[dict]:
 
 
 def elegir_oferta(ofs: list[dict], precio_max: float) -> dict | None:
-    """Nube y GPUs a pedir: las H100 con stock y precio dentro del tope, de la más barata a la más cara; se prefiere la
+    """Nube y GPUs a pedir: las de la familia con stock y precio dentro del tope, de la más barata a la más cara; se prefiere la
     nube segura (centros de datos de RunPod) y solo si no hay nada en ella se usa la comunitaria."""
     validas = [o for o in ofs if o["precio"] <= precio_max and str(o["stock"] or "none").lower() != "none"]
     for nube in ("SECURE", "COMMUNITY"):
@@ -132,9 +135,10 @@ def elegir_oferta(ofs: list[dict], precio_max: float) -> dict | None:
 
 
 def especificacion(oferta: dict | None, commit: str, plan: str = "final", repo_hf: str = "esraderey/fuga-s-eco-rel",
-                   max_horas: int = 5, secreto: str = "hf_token", precio_hora: float = 3.0, volumen_gb: int = 40) -> dict:
+                   max_horas: int = 3, secreto: str = "hf_token", precio_hora: float = 3.0, volumen_gb: int = 40,
+                   familia: tuple = H100) -> dict:
     """Cuerpo de POST /pods. El token de Hugging Face va como referencia a un secreto de RunPod, nunca como valor."""
-    gpus = oferta["gpus"] if oferta else list(H100)
+    gpus = oferta["gpus"] if oferta else list(familia)
     return {"name": NOMBRE, "imageName": IMAGEN, "computeType": "GPU", "gpuCount": 1, "gpuTypeIds": gpus,
             "gpuTypePriority": "custom" if oferta else "availability", "cloudType": oferta["nube"] if oferta else "SECURE",
             "interruptible": False, "allowedCudaVersions": CUDA, "containerDiskInGb": 20, "volumeInGb": volumen_gb,
@@ -241,7 +245,8 @@ def main(argv=None) -> int:
     ap.add_argument("--plan", choices=["final", "completo"], default="final")
     ap.add_argument("--repo_hf", default="esraderey/fuga-s-eco-rel")
     ap.add_argument("--precio_max", type=float, default=3.0, help="USD por hora que no se debe superar")
-    ap.add_argument("--max_horas", type=int, default=5, help="tope de vida del pod; pasado ese tiempo se detiene")
+    ap.add_argument("--max_horas", type=int, default=3, help="tope de vida del pod; pasado ese tiempo se detiene")
+    ap.add_argument("--gpu", choices=sorted(FAMILIAS), default="h100", help="familia de GPU a alquilar")
     ap.add_argument("--secreto", default="hf_token", help="nombre del secreto de RunPod con el token de Hugging Face")
     ap.add_argument("--pod", default="", help="id del pod (por defecto, el registrado en runs/runpod_pod.json)")
     ap.add_argument("--confirmar", action="store_true")
@@ -268,19 +273,20 @@ def main(argv=None) -> int:
     cli = Cliente(clave)
     if a.accion in ("simulacro", "crear"):
         commit = commit_publicado()
-        ofs = cli.precios()
+        familia = FAMILIAS[a.gpu]
+        ofs = cli.precios(familia)
         oferta = elegir_oferta(ofs, a.precio_max)
         for o in sorted(ofs, key=lambda o: (o["nube"], o["precio"])):
             print(f"  {o['gpu']:<24} {o['nube']:<9} {o['precio']:.2f} USD/h  stock {o['stock']}")
         if ofs and not oferta:
-            print(f"ninguna H100 con stock por debajo de {a.precio_max:.2f} USD/h; no se crea nada")
+            print(f"ninguna {a.gpu.upper()} con stock por debajo de {a.precio_max:.2f} USD/h; no se crea nada")
             return 3
         precio = oferta["precio_peor"] if oferta else a.precio_max
-        spec = especificacion(oferta, commit, a.plan, a.repo_hf, a.max_horas, a.secreto, precio)
+        spec = especificacion(oferta, commit, a.plan, a.repo_hf, a.max_horas, a.secreto, precio, familia=familia)
         print(f"pod: {spec['gpuTypeIds']} en {spec['cloudType']}, imagen {IMAGEN}, volumen {spec['volumeInGb']} GB")
         print(f"código: commit {commit[:10]} | plan {a.plan} | publica en {a.repo_hf} | secreto HF: {a.secreto}")
         print(f"precio: {'hasta ' + format(precio, '.2f') if oferta else 'sin consulta previa; tope ' + format(a.precio_max, '.2f')} USD/h | "
-              f"estimado 1,5 a 2,5 h | tope {a.max_horas} h = {a.max_horas * precio:.2f} USD como máximo")
+              f"estimado 1,2 a 1,9 h | tope {a.max_horas} h = {a.max_horas * precio:.2f} USD como máximo")
         activos = [p for p in cli.listar() if p.get("name") == NOMBRE and p.get("desiredStatus") == "RUNNING"]
         if activos:
             print(f"ya hay un pod {NOMBRE} encendido ({activos[0]['id']}); no se crea otro")

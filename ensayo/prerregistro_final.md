@@ -66,6 +66,13 @@ deltas más pequeños en el 20 % final. Se registra para poder estar equivocado.
 
 ## Tiempo previsto (estimación; la sonda del primer minuto la sustituye por una medida)
 
+**Nota del 2026-11-25, antes de lanzar (no cambia ningún criterio).** Medido en local: cada paso despacha unas 19 500
+operaciones de PyTorch y ese despacho cuesta 0,18 s en la RTX 4060 aunque el lote sea diminuto; el cálculo útil son
+7,3 TFLOP por paso. El paso en la H100 estará limitado por la CPU del pod (estimado 0,06–0,12 s), así que el total
+previsto baja a 1 h 10 – 1 h 55. El tope de vida del pod pasa de 5 h a 3 h, y la cadena se aborta antes de entrenar
+si la proyección medida no cabe en él. El párrafo siguiente es la estimación original.
+
+
 36 880 pasos en total. Con 0,10–0,20 s por paso en una H100 (7 a 9 veces la RTX 4060 medida, sin checkpointing de
 activaciones): 60–125 min de entrenamiento, más unos 25 min de arranque, guardados Z-Space, evaluación, muestras, export
 y subida. Solo `completo`: 30–60 min de entrenamiento.
