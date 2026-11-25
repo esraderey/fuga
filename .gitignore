@@ -33,3 +33,6 @@ mneme_storage/
 
 # pod de RunPod lanzado desde esta máquina (id y precio; no es un secreto, pero es estado local)
 runs/runpod_pod.json
+
+# repositorio de Hugging Face descargado para verificarlo (pesos de 606 MB; la fuente es el propio repositorio)
+runs/**/hf_publicado/

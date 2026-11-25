@@ -1,5 +1,7 @@
 # Pre-registro: entrenamiento final de FUGA-S en una H100 (RunPod) y publicación
 
+> Resultado (2026-11-25): `ensayo/fuga_s_final.md`. Se ejecutó en una L40S; KF1 pasa.
+
 - Fecha de fijación: 2026-11-09, antes de lanzar ninguna corrida en la H100
 - Sustituye, para la corrida completa, a `ensayo/prerregistro_6h.md`, cuya ejecución local quedó cortada (ver «Estado»)
 - Cadena: `scripts/cadena_final.py`; arranque en el pod: `scripts/runpod/arranque.sh`; datos: dataset privado

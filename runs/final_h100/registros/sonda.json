@@ -1,0 +1,9 @@
+{
+ "s_por_paso": 0.164,
+ "pasos": 36880,
+ "minutos_entrenamiento": 100.80533333333334,
+ "minutos_totales": 138.20533333333333,
+ "precio_hora": 1.2,
+ "coste": 2.7641066666666667,
+ "device": "cuda"
+}

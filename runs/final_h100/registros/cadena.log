@@ -1,0 +1,1753 @@
+### 2026-11-25 14:37:08 cadena final: commit=28c64b1fd71d plan=final preset=fuga-s corridas=[('completo', 18380), ('wsd_4500', 4500), ('wsd_6000', 6000), ('wsd_8000', 8000)] dropout=0.3 device=cuda raiz=runs/final_h100
+### 2026-11-25 14:37:08 sonda: /usr/bin/python -m fuga.train --datos data/corpus_pd.jsonl --modo eco_rel --preset fuga-s --ctx 1024 --cache cache/eco_rel_1024.pkl --device cuda --tokens_por_lote 8192 --pasos 100 --lr 0.0006 --wd 0.1 --dropout 0.3 --eval_cada 0 --semilla 0 --out runs/final_h100/sonda
+secuencias=15834 tokens=4948693 val_trozos=617 prep=0s
+parámetros=151.59M vocab=723 device=cuda precision=bf16
+paso 25 f=0.24 loss=4.0883 tok=199331
+paso 50 f=0.49 loss=3.0216 tok=397696
+paso 75 f=0.74 loss=1.9382 tok=596918
+paso 100 f=0.99 loss=1.5561 tok=795949
+FINAL {"paso": 100, "tokens_vistos": 795949, "segundos": 20, "bits_por_nota": 8.127403845504018, "bits_por_token": 3.1614887321751413, "tokens_por_nota": 2.570752115226509, "notas": 96089}
+### 2026-11-25 14:37:33 sonda exit=0 segundos=25
+### 2026-11-25 14:37:33 PROYECCIÓN: 0.164 s/paso -> entrenamiento 101 min, total 138 min, coste ~2.76 USD a 1.20 USD/h
+### 2026-11-25 14:37:33 entrenar_completo: /usr/bin/python -m fuga.train --datos data/corpus_pd.jsonl --modo eco_rel --preset fuga-s --ctx 1024 --cache cache/eco_rel_1024.pkl --device cuda --tokens_por_lote 8192 --pasos 18380 --lr 0.0006 --wd 0.1 --dropout 0.3 --eval_cada 250 --semilla 0 --out runs/final_h100/completo --guardar_mejor --guardar_cada 500
+secuencias=15834 tokens=4948693 val_trozos=617 prep=0s
+parámetros=151.59M vocab=723 device=cuda precision=bf16
+paso 25 f=0.00 loss=4.4410 tok=199331
+paso 50 f=0.00 loss=3.1107 tok=397696
+paso 75 f=0.00 loss=1.8880 tok=596918
+paso 100 f=0.01 loss=1.7012 tok=795949
+paso 125 f=0.01 loss=2.3219 tok=996582
+paso 150 f=0.01 loss=2.1701 tok=1195566
+paso 175 f=0.01 loss=2.0514 tok=1394998
+paso 200 f=0.01 loss=1.4523 tok=1594089
+paso 225 f=0.01 loss=1.6850 tok=1793345
+paso 250 f=0.01 loss=1.6417 tok=1993154
+  val(sub) bpn=6.081
+paso 275 f=0.01 loss=1.2357 tok=2192967
+paso 300 f=0.02 loss=1.0605 tok=2393168
+paso 325 f=0.02 loss=1.5880 tok=2593003
+paso 350 f=0.02 loss=1.6268 tok=2793026
+paso 375 f=0.02 loss=1.4555 tok=2992696
+paso 400 f=0.02 loss=1.0538 tok=3192431
+paso 425 f=0.02 loss=1.0730 tok=3392532
+paso 450 f=0.02 loss=1.5860 tok=3590527
+paso 475 f=0.03 loss=1.4828 tok=3790043
+paso 500 f=0.03 loss=1.1120 tok=3989314
+  val(sub) bpn=5.245
+  zspace v0 paso 500: +241.3 MB, tienda 241.3 MB, 18.0s
+paso 525 f=0.03 loss=1.4997 tok=4188877
+paso 550 f=0.03 loss=1.0443 tok=4388289
+paso 575 f=0.03 loss=1.0291 tok=4589274
+paso 600 f=0.03 loss=1.3479 tok=4788743
+paso 625 f=0.03 loss=1.3370 tok=4988415
+paso 650 f=0.04 loss=1.3465 tok=5189145
+paso 675 f=0.04 loss=0.9802 tok=5388296
+paso 700 f=0.04 loss=1.2801 tok=5587956
+paso 725 f=0.04 loss=1.1192 tok=5787202
+paso 750 f=0.04 loss=1.3347 tok=5987414
+  val(sub) bpn=4.867
+paso 775 f=0.04 loss=0.9481 tok=6185644
+paso 800 f=0.04 loss=0.9950 tok=6384881
+paso 825 f=0.04 loss=1.3877 tok=6585194
+paso 850 f=0.05 loss=0.9063 tok=6785870
+paso 875 f=0.05 loss=0.8928 tok=6984561
+paso 900 f=0.05 loss=1.3083 tok=7185155
+paso 925 f=0.05 loss=1.1108 tok=7384895
+paso 950 f=0.05 loss=1.0177 tok=7585008
+paso 975 f=0.05 loss=1.0869 tok=7783616
+paso 1000 f=0.05 loss=0.9582 tok=7983636
+  val(sub) bpn=4.810
+  zspace v1 paso 1000: +230.1 MB, tienda 471.4 MB, 8.0s
+paso 1025 f=0.06 loss=0.9449 tok=8182390
+paso 1050 f=0.06 loss=0.9556 tok=8381858
+paso 1075 f=0.06 loss=1.4258 tok=8581490
+paso 1100 f=0.06 loss=0.8981 tok=8780555
+paso 1125 f=0.06 loss=0.9640 tok=8979781
+paso 1150 f=0.06 loss=1.2889 tok=9179407
+paso 1175 f=0.06 loss=0.8976 tok=9379144
+paso 1200 f=0.07 loss=0.9094 tok=9578972
+paso 1225 f=0.07 loss=1.3157 tok=9777681
+paso 1250 f=0.07 loss=1.1904 tok=9976726
+  val(sub) bpn=4.492
+paso 1275 f=0.07 loss=1.2427 tok=10175377
+paso 1300 f=0.07 loss=0.9581 tok=10375607
+paso 1325 f=0.07 loss=1.2156 tok=10575626
+paso 1350 f=0.07 loss=1.3101 tok=10774686
+paso 1375 f=0.07 loss=0.8726 tok=10975365
+paso 1400 f=0.08 loss=1.3125 tok=11175310
+paso 1425 f=0.08 loss=0.8734 tok=11374974
+paso 1450 f=0.08 loss=1.0945 tok=11574777
+paso 1475 f=0.08 loss=1.2982 tok=11775502
+paso 1500 f=0.08 loss=0.9014 tok=11973799
+  val(sub) bpn=4.336
+  zspace v2 paso 1500: +229.3 MB, tienda 700.7 MB, 7.8s
+paso 1525 f=0.08 loss=0.8497 tok=12171975
+paso 1550 f=0.08 loss=0.8870 tok=12370972
+paso 1575 f=0.09 loss=1.2516 tok=12571931
+paso 1600 f=0.09 loss=1.1187 tok=12772708
+paso 1625 f=0.09 loss=0.8078 tok=12972116
+paso 1650 f=0.09 loss=1.1110 tok=13172084
+paso 1675 f=0.09 loss=0.8131 tok=13370490
+paso 1700 f=0.09 loss=1.1406 tok=13570028
+paso 1725 f=0.09 loss=0.8535 tok=13770188
+paso 1750 f=0.10 loss=1.1974 tok=13968749
+  val(sub) bpn=4.187
+paso 1775 f=0.10 loss=0.8067 tok=14167358
+paso 1800 f=0.10 loss=1.1704 tok=14367728
+paso 1825 f=0.10 loss=1.1783 tok=14567961
+paso 1850 f=0.10 loss=1.0315 tok=14766593
+paso 1875 f=0.10 loss=0.8128 tok=14965408
+paso 1900 f=0.10 loss=0.8126 tok=15165273
+paso 1925 f=0.10 loss=0.8241 tok=15365509
+paso 1950 f=0.11 loss=1.1803 tok=15565808
+paso 1975 f=0.11 loss=1.0653 tok=15764723
+paso 2000 f=0.11 loss=0.9700 tok=15964689
+  val(sub) bpn=4.135
+  zspace v3 paso 2000: +227.5 MB, tienda 928.2 MB, 7.9s
+paso 2025 f=0.11 loss=0.7709 tok=16163572
+paso 2050 f=0.11 loss=0.7895 tok=16363092
+paso 2075 f=0.11 loss=1.1290 tok=16562778
+paso 2100 f=0.11 loss=1.2367 tok=16760701
+paso 2125 f=0.12 loss=1.1628 tok=16961121
+paso 2150 f=0.12 loss=1.1632 tok=17160506
+paso 2175 f=0.12 loss=0.9262 tok=17360135
+paso 2200 f=0.12 loss=1.1062 tok=17559919
+paso 2225 f=0.12 loss=0.7741 tok=17759779
+paso 2250 f=0.12 loss=0.7883 tok=17959779
+  val(sub) bpn=4.016
+paso 2275 f=0.12 loss=0.8119 tok=18158969
+paso 2300 f=0.13 loss=0.7637 tok=18357609
+paso 2325 f=0.13 loss=0.7876 tok=18556709
+paso 2350 f=0.13 loss=0.7653 tok=18756509
+paso 2375 f=0.13 loss=0.8254 tok=18957026
+paso 2400 f=0.13 loss=0.7770 tok=19157135
+paso 2425 f=0.13 loss=0.7659 tok=19358472
+paso 2450 f=0.13 loss=0.9998 tok=19555808
+paso 2475 f=0.13 loss=0.9852 tok=19754826
+paso 2500 f=0.14 loss=1.0955 tok=19954202
+  val(sub) bpn=3.969
+  zspace v4 paso 2500: +225.9 MB, tienda 1154.1 MB, 8.0s
+paso 2525 f=0.14 loss=1.1173 tok=20153404
+paso 2550 f=0.14 loss=0.7725 tok=20351995
+paso 2575 f=0.14 loss=0.7539 tok=20552015
+paso 2600 f=0.14 loss=0.7600 tok=20751733
+paso 2625 f=0.14 loss=1.0290 tok=20951993
+paso 2650 f=0.14 loss=0.7896 tok=21151939
+paso 2675 f=0.15 loss=0.7717 tok=21353135
+paso 2700 f=0.15 loss=0.7371 tok=21552751
+paso 2725 f=0.15 loss=0.7707 tok=21752707
+paso 2750 f=0.15 loss=0.7580 tok=21951479
+  val(sub) bpn=3.969
+paso 2775 f=0.15 loss=0.9742 tok=22152023
+paso 2800 f=0.15 loss=0.7939 tok=22351129
+paso 2825 f=0.15 loss=0.8715 tok=22550811
+paso 2850 f=0.16 loss=0.7843 tok=22750966
+paso 2875 f=0.16 loss=1.1478 tok=22950086
+paso 2900 f=0.16 loss=1.0028 tok=23148095
+paso 2925 f=0.16 loss=0.9110 tok=23347674
+paso 2950 f=0.16 loss=0.9022 tok=23547897
+paso 2975 f=0.16 loss=0.7686 tok=23747215
+paso 3000 f=0.16 loss=0.7468 tok=23945967
+  val(sub) bpn=3.916
+  zspace v5 paso 3000: +224.5 MB, tienda 1378.6 MB, 8.0s
+paso 3025 f=0.16 loss=0.8426 tok=24145920
+paso 3050 f=0.17 loss=1.0264 tok=24344464
+paso 3075 f=0.17 loss=0.8144 tok=24545021
+paso 3100 f=0.17 loss=0.6626 tok=24744004
+paso 3125 f=0.17 loss=0.9255 tok=24943421
+paso 3150 f=0.17 loss=0.9264 tok=25143303
+paso 3175 f=0.17 loss=0.8026 tok=25343664
+paso 3200 f=0.17 loss=0.7798 tok=25542593
+paso 3225 f=0.18 loss=0.7751 tok=25742472
+paso 3250 f=0.18 loss=1.0458 tok=25941372
+  val(sub) bpn=3.841
+paso 3275 f=0.18 loss=0.8399 tok=26141073
+paso 3300 f=0.18 loss=1.1327 tok=26340113
+paso 3325 f=0.18 loss=0.7325 tok=26540269
+paso 3350 f=0.18 loss=0.7389 tok=26739824
+paso 3375 f=0.18 loss=0.6936 tok=26939476
+paso 3400 f=0.18 loss=1.0067 tok=27140124
+paso 3425 f=0.19 loss=0.8862 tok=27340343
+paso 3450 f=0.19 loss=1.0236 tok=27538800
+paso 3475 f=0.19 loss=1.0002 tok=27738805
+paso 3500 f=0.19 loss=1.0253 tok=27939403
+  val(sub) bpn=3.840
+  zspace v6 paso 3500: +223.7 MB, tienda 1602.4 MB, 8.0s
+paso 3525 f=0.19 loss=0.7395 tok=28138916
+paso 3550 f=0.19 loss=0.7750 tok=28338183
+paso 3575 f=0.19 loss=0.7443 tok=28538665
+paso 3600 f=0.20 loss=1.1055 tok=28737398
+paso 3625 f=0.20 loss=1.0568 tok=28936863
+paso 3650 f=0.20 loss=1.0458 tok=29136695
+paso 3675 f=0.20 loss=0.9632 tok=29334257
+paso 3700 f=0.20 loss=0.9654 tok=29534760
+paso 3725 f=0.20 loss=0.9547 tok=29732991
+paso 3750 f=0.20 loss=0.6613 tok=29932434
+  val(sub) bpn=3.863
+paso 3775 f=0.21 loss=0.9788 tok=30131613
+paso 3800 f=0.21 loss=0.6632 tok=30330081
+paso 3825 f=0.21 loss=1.0322 tok=30530116
+paso 3850 f=0.21 loss=1.0459 tok=30729681
+paso 3875 f=0.21 loss=0.7134 tok=30929881
+paso 3900 f=0.21 loss=0.9189 tok=31129204
+paso 3925 f=0.21 loss=0.6909 tok=31330302
+paso 3950 f=0.21 loss=0.9627 tok=31529890
+paso 3975 f=0.22 loss=0.7909 tok=31729133
+paso 4000 f=0.22 loss=0.7859 tok=31929086
+  val(sub) bpn=3.822
+  zspace v7 paso 4000: +223.2 MB, tienda 1825.6 MB, 8.1s
+paso 4025 f=0.22 loss=0.6647 tok=32129567
+paso 4050 f=0.22 loss=0.7390 tok=32329884
+paso 4075 f=0.22 loss=0.6945 tok=32528562
+paso 4100 f=0.22 loss=0.8792 tok=32729584
+paso 4125 f=0.22 loss=0.8143 tok=32927428
+paso 4150 f=0.23 loss=0.8087 tok=33126937
+paso 4175 f=0.23 loss=0.9914 tok=33325091
+paso 4200 f=0.23 loss=0.9557 tok=33524176
+paso 4225 f=0.23 loss=0.7258 tok=33724358
+paso 4250 f=0.23 loss=0.9254 tok=33924596
+  val(sub) bpn=3.790
+paso 4275 f=0.23 loss=0.6700 tok=34123491
+paso 4300 f=0.23 loss=0.8792 tok=34322673
+paso 4325 f=0.24 loss=0.7464 tok=34522053
+paso 4350 f=0.24 loss=0.9155 tok=34721512
+paso 4375 f=0.24 loss=0.9591 tok=34921837
+paso 4400 f=0.24 loss=0.9226 tok=35121665
+paso 4425 f=0.24 loss=0.6357 tok=35321076
+paso 4450 f=0.24 loss=0.6614 tok=35520815
+paso 4475 f=0.24 loss=0.6997 tok=35719937
+paso 4500 f=0.24 loss=0.6478 tok=35920100
+  val(sub) bpn=3.866
+  zspace v8 paso 4500: +241.5 MB, tienda 2067.1 MB, 17.1s
+paso 4525 f=0.25 loss=0.7472 tok=36119365
+paso 4550 f=0.25 loss=0.7812 tok=36318157
+paso 4575 f=0.25 loss=0.7213 tok=36517573
+paso 4600 f=0.25 loss=0.8846 tok=36717514
+paso 4625 f=0.25 loss=0.6871 tok=36916293
+paso 4650 f=0.25 loss=1.0221 tok=37116550
+paso 4675 f=0.25 loss=0.9158 tok=37316761
+paso 4700 f=0.26 loss=1.0302 tok=37517006
+paso 4725 f=0.26 loss=0.6330 tok=37715931
+paso 4750 f=0.26 loss=0.6829 tok=37915141
+  val(sub) bpn=3.841
+paso 4775 f=0.26 loss=0.8008 tok=38114335
+paso 4800 f=0.26 loss=0.9469 tok=38312368
+paso 4825 f=0.26 loss=0.6577 tok=38511154
+paso 4850 f=0.26 loss=0.8348 tok=38711979
+paso 4875 f=0.27 loss=0.6676 tok=38912049
+paso 4900 f=0.27 loss=0.6525 tok=39111467
+paso 4925 f=0.27 loss=0.7885 tok=39311097
+paso 4950 f=0.27 loss=0.6692 tok=39510733
+paso 4975 f=0.27 loss=0.6902 tok=39708469
+paso 5000 f=0.27 loss=0.6503 tok=39908300
+  val(sub) bpn=3.994
+  zspace v9 paso 5000: +221.6 MB, tienda 2288.7 MB, 8.1s
+paso 5025 f=0.27 loss=0.8515 tok=40107744
+paso 5050 f=0.27 loss=0.8892 tok=40308024
+paso 5075 f=0.28 loss=0.6233 tok=40507501
+paso 5100 f=0.28 loss=0.7853 tok=40706709
+paso 5125 f=0.28 loss=0.6532 tok=40906572
+paso 5150 f=0.28 loss=0.6269 tok=41106241
+paso 5175 f=0.28 loss=0.8895 tok=41307111
+paso 5200 f=0.28 loss=0.7445 tok=41507761
+paso 5225 f=0.28 loss=0.7988 tok=41706883
+paso 5250 f=0.29 loss=0.8784 tok=41907943
+  val(sub) bpn=3.960
+paso 5275 f=0.29 loss=0.8469 tok=42107649
+paso 5300 f=0.29 loss=0.6577 tok=42306525
+paso 5325 f=0.29 loss=0.6382 tok=42505393
+paso 5350 f=0.29 loss=0.6877 tok=42705797
+paso 5375 f=0.29 loss=0.6736 tok=42903717
+paso 5400 f=0.29 loss=0.6430 tok=43103122
+paso 5425 f=0.30 loss=0.8185 tok=43303313
+paso 5450 f=0.30 loss=0.9184 tok=43503584
+paso 5475 f=0.30 loss=0.6139 tok=43701887
+paso 5500 f=0.30 loss=0.8651 tok=43901193
+  val(sub) bpn=3.886
+  zspace v10 paso 5500: +220.4 MB, tienda 2509.1 MB, 8.1s
+paso 5525 f=0.30 loss=1.0233 tok=44101146
+paso 5550 f=0.30 loss=0.7382 tok=44300283
+paso 5575 f=0.30 loss=0.8300 tok=44500427
+paso 5600 f=0.30 loss=0.5682 tok=44699240
+paso 5625 f=0.31 loss=0.7910 tok=44898257
+paso 5650 f=0.31 loss=0.7435 tok=45098498
+paso 5675 f=0.31 loss=0.6412 tok=45297111
+paso 5700 f=0.31 loss=0.6437 tok=45496028
+paso 5725 f=0.31 loss=0.5936 tok=45695395
+paso 5750 f=0.31 loss=0.7673 tok=45895016
+  val(sub) bpn=4.124
+paso 5775 f=0.31 loss=0.8304 tok=46095489
+paso 5800 f=0.32 loss=0.8538 tok=46295753
+paso 5825 f=0.32 loss=0.5442 tok=46496175
+paso 5850 f=0.32 loss=0.5574 tok=46694203
+paso 5875 f=0.32 loss=0.6726 tok=46893746
+paso 5900 f=0.32 loss=0.6742 tok=47094481
+paso 5925 f=0.32 loss=0.6294 tok=47293457
+paso 5950 f=0.32 loss=0.8404 tok=47493461
+paso 5975 f=0.33 loss=0.5676 tok=47693384
+paso 6000 f=0.33 loss=0.8241 tok=47893194
+  val(sub) bpn=4.106
+  zspace v11 paso 6000: +219.9 MB, tienda 2728.9 MB, 8.2s
+paso 6025 f=0.33 loss=0.9147 tok=48093480
+paso 6050 f=0.33 loss=0.7151 tok=48291269
+paso 6075 f=0.33 loss=0.6242 tok=48488859
+paso 6100 f=0.33 loss=0.8521 tok=48688461
+paso 6125 f=0.33 loss=0.8802 tok=48889251
+paso 6150 f=0.33 loss=0.5918 tok=49088526
+paso 6175 f=0.34 loss=0.6528 tok=49288704
+paso 6200 f=0.34 loss=0.4897 tok=49489038
+paso 6225 f=0.34 loss=0.8074 tok=49689177
+paso 6250 f=0.34 loss=0.7924 tok=49887278
+  val(sub) bpn=4.282
+paso 6275 f=0.34 loss=0.5721 tok=50086030
+paso 6300 f=0.34 loss=0.5454 tok=50286050
+paso 6325 f=0.34 loss=0.7408 tok=50486265
+paso 6350 f=0.35 loss=0.5987 tok=50686552
+paso 6375 f=0.35 loss=0.5951 tok=50886274
+paso 6400 f=0.35 loss=0.5828 tok=51085903
+paso 6425 f=0.35 loss=0.5824 tok=51285672
+paso 6450 f=0.35 loss=0.5532 tok=51486820
+paso 6475 f=0.35 loss=0.7491 tok=51686958
+paso 6500 f=0.35 loss=0.7324 tok=51886537
+  val(sub) bpn=4.313
+  zspace v12 paso 6500: +219.5 MB, tienda 2948.4 MB, 8.1s
+paso 6525 f=0.35 loss=0.8174 tok=52085440
+paso 6550 f=0.36 loss=0.7189 tok=52284521
+paso 6575 f=0.36 loss=0.5774 tok=52483883
+paso 6600 f=0.36 loss=0.6049 tok=52682809
+paso 6625 f=0.36 loss=0.8581 tok=52880914
+paso 6650 f=0.36 loss=0.7880 tok=53080892
+paso 6675 f=0.36 loss=0.6999 tok=53280578
+paso 6700 f=0.36 loss=0.7896 tok=53480780
+paso 6725 f=0.37 loss=0.5705 tok=53679973
+paso 6750 f=0.37 loss=0.7852 tok=53878718
+  val(sub) bpn=4.200
+paso 6775 f=0.37 loss=0.5563 tok=54079086
+paso 6800 f=0.37 loss=0.5746 tok=54277482
+paso 6825 f=0.37 loss=0.4594 tok=54474472
+paso 6850 f=0.37 loss=0.6676 tok=54673195
+paso 6875 f=0.37 loss=0.6491 tok=54872704
+paso 6900 f=0.38 loss=0.6427 tok=55071558
+paso 6925 f=0.38 loss=0.5670 tok=55270619
+paso 6950 f=0.38 loss=0.5451 tok=55469762
+paso 6975 f=0.38 loss=0.7244 tok=55670000
+paso 7000 f=0.38 loss=0.7039 tok=55870046
+  val(sub) bpn=4.570
+  zspace v13 paso 7000: +219.0 MB, tienda 3167.4 MB, 8.1s
+paso 7025 f=0.38 loss=0.4878 tok=56070333
+paso 7050 f=0.38 loss=0.6798 tok=56269662
+paso 7075 f=0.38 loss=0.5748 tok=56469870
+paso 7100 f=0.39 loss=0.7456 tok=56668832
+paso 7125 f=0.39 loss=0.5519 tok=56866936
+paso 7150 f=0.39 loss=0.6939 tok=57065301
+paso 7175 f=0.39 loss=0.5717 tok=57265513
+paso 7200 f=0.39 loss=0.7082 tok=57465880
+paso 7225 f=0.39 loss=0.7472 tok=57666881
+paso 7250 f=0.39 loss=0.5282 tok=57866280
+  val(sub) bpn=4.567
+paso 7275 f=0.40 loss=0.7219 tok=58066058
+paso 7300 f=0.40 loss=0.5531 tok=58266289
+paso 7325 f=0.40 loss=0.5629 tok=58466258
+paso 7350 f=0.40 loss=0.5923 tok=58666944
+paso 7375 f=0.40 loss=0.5938 tok=58867729
+paso 7400 f=0.40 loss=0.5611 tok=59066857
+paso 7425 f=0.40 loss=0.5568 tok=59266818
+paso 7450 f=0.41 loss=0.5338 tok=59464918
+paso 7475 f=0.41 loss=0.4969 tok=59666085
+paso 7500 f=0.41 loss=0.4317 tok=59865689
+  val(sub) bpn=4.965
+  zspace v14 paso 7500: +218.3 MB, tienda 3385.7 MB, 8.0s
+paso 7525 f=0.41 loss=0.4373 tok=60066572
+paso 7550 f=0.41 loss=0.6762 tok=60265001
+paso 7575 f=0.41 loss=0.5631 tok=60463173
+paso 7600 f=0.41 loss=0.5177 tok=60663020
+paso 7625 f=0.41 loss=0.5228 tok=60862838
+paso 7650 f=0.42 loss=0.6704 tok=61062986
+paso 7675 f=0.42 loss=0.5148 tok=61263574
+paso 7700 f=0.42 loss=0.5742 tok=61464542
+paso 7725 f=0.42 loss=0.5795 tok=61664250
+paso 7750 f=0.42 loss=0.5275 tok=61863847
+  val(sub) bpn=4.887
+paso 7775 f=0.42 loss=0.5360 tok=62062235
+paso 7800 f=0.42 loss=0.5694 tok=62261835
+paso 7825 f=0.43 loss=0.6566 tok=62461867
+paso 7850 f=0.43 loss=0.4700 tok=62661624
+paso 7875 f=0.43 loss=0.6928 tok=62859499
+paso 7900 f=0.43 loss=0.5894 tok=63059070
+paso 7925 f=0.43 loss=0.6380 tok=63258705
+paso 7950 f=0.43 loss=0.5437 tok=63455392
+paso 7975 f=0.43 loss=0.5523 tok=63654594
+paso 8000 f=0.44 loss=0.5123 tok=63854222
+  val(sub) bpn=4.763
+  zspace v15 paso 8000: +217.4 MB, tienda 3603.1 MB, 8.1s
+paso 8025 f=0.44 loss=0.6475 tok=64055369
+paso 8050 f=0.44 loss=0.5543 tok=64256267
+paso 8075 f=0.44 loss=0.3738 tok=64455953
+paso 8100 f=0.44 loss=0.4045 tok=64653748
+paso 8125 f=0.44 loss=0.3611 tok=64853253
+paso 8150 f=0.44 loss=0.3947 tok=65054043
+paso 8175 f=0.44 loss=0.3850 tok=65252974
+paso 8200 f=0.45 loss=0.4541 tok=65453265
+paso 8225 f=0.45 loss=0.6257 tok=65653547
+paso 8250 f=0.45 loss=0.4827 tok=65853471
+  val(sub) bpn=5.204
+paso 8275 f=0.45 loss=0.5743 tok=66052836
+paso 8300 f=0.45 loss=0.6152 tok=66251982
+paso 8325 f=0.45 loss=0.5453 tok=66452400
+paso 8350 f=0.45 loss=0.4759 tok=66651401
+paso 8375 f=0.46 loss=0.4053 tok=66850713
+paso 8400 f=0.46 loss=0.4729 tok=67048624
+paso 8425 f=0.46 loss=0.5189 tok=67249192
+paso 8450 f=0.46 loss=0.4926 tok=67449727
+paso 8475 f=0.46 loss=0.4185 tok=67648012
+paso 8500 f=0.46 loss=0.4406 tok=67848471
+  val(sub) bpn=5.103
+  zspace v16 paso 8500: +240.6 MB, tienda 3843.7 MB, 17.7s
+paso 8525 f=0.46 loss=0.5149 tok=68048254
+paso 8550 f=0.47 loss=0.4812 tok=68245978
+paso 8575 f=0.47 loss=0.4671 tok=68445698
+paso 8600 f=0.47 loss=0.6252 tok=68645368
+paso 8625 f=0.47 loss=0.5275 tok=68845557
+paso 8650 f=0.47 loss=0.4866 tok=69044006
+paso 8675 f=0.47 loss=0.4393 tok=69243407
+paso 8700 f=0.47 loss=0.3693 tok=69442725
+paso 8725 f=0.47 loss=0.4462 tok=69641292
+paso 8750 f=0.48 loss=0.4071 tok=69840707
+  val(sub) bpn=5.452
+paso 8775 f=0.48 loss=0.4330 tok=70040702
+paso 8800 f=0.48 loss=0.4105 tok=70239929
+paso 8825 f=0.48 loss=0.4594 tok=70438682
+paso 8850 f=0.48 loss=0.4156 tok=70638670
+paso 8875 f=0.48 loss=0.4879 tok=70838838
+paso 8900 f=0.48 loss=0.4057 tok=71038659
+paso 8925 f=0.49 loss=0.4507 tok=71238361
+paso 8950 f=0.49 loss=0.4700 tok=71436622
+paso 8975 f=0.49 loss=0.3970 tok=71635191
+paso 9000 f=0.49 loss=0.4948 tok=71834615
+  val(sub) bpn=5.391
+  zspace v17 paso 9000: +216.8 MB, tienda 4060.5 MB, 8.0s
+paso 9025 f=0.49 loss=0.4403 tok=72034901
+paso 9050 f=0.49 loss=0.5341 tok=72234451
+paso 9075 f=0.49 loss=0.5525 tok=72435226
+paso 9100 f=0.50 loss=0.5975 tok=72634537
+paso 9125 f=0.50 loss=0.4726 tok=72834492
+paso 9150 f=0.50 loss=0.6123 tok=73034559
+paso 9175 f=0.50 loss=0.4960 tok=73234444
+paso 9200 f=0.50 loss=0.5518 tok=73434034
+paso 9225 f=0.50 loss=0.4767 tok=73634297
+paso 9250 f=0.50 loss=0.4583 tok=73833008
+  val(sub) bpn=5.317
+paso 9275 f=0.50 loss=0.3452 tok=74032811
+paso 9300 f=0.51 loss=0.4702 tok=74232079
+paso 9325 f=0.51 loss=0.3578 tok=74430827
+paso 9350 f=0.51 loss=0.4279 tok=74630624
+paso 9375 f=0.51 loss=0.3368 tok=74830414
+paso 9400 f=0.51 loss=0.4318 tok=75029625
+paso 9425 f=0.51 loss=0.4649 tok=75230176
+paso 9450 f=0.51 loss=0.4950 tok=75429057
+paso 9475 f=0.52 loss=0.3939 tok=75628293
+paso 9500 f=0.52 loss=0.3657 tok=75829098
+  val(sub) bpn=5.749
+  zspace v18 paso 9500: +216.5 MB, tienda 4277.0 MB, 8.0s
+paso 9525 f=0.52 loss=0.3561 tok=76028705
+paso 9550 f=0.52 loss=0.3647 tok=76228102
+paso 9575 f=0.52 loss=0.4224 tok=76427800
+paso 9600 f=0.52 loss=0.4701 tok=76627189
+paso 9625 f=0.52 loss=0.4945 tok=76826777
+paso 9650 f=0.52 loss=0.4318 tok=77026339
+paso 9675 f=0.53 loss=0.4995 tok=77226022
+paso 9700 f=0.53 loss=0.4061 tok=77425720
+paso 9725 f=0.53 loss=0.4937 tok=77625663
+paso 9750 f=0.53 loss=0.4227 tok=77825752
+  val(sub) bpn=5.525
+paso 9775 f=0.53 loss=0.4991 tok=78025224
+paso 9800 f=0.53 loss=0.3612 tok=78223171
+paso 9825 f=0.53 loss=0.3890 tok=78422429
+paso 9850 f=0.54 loss=0.4602 tok=78622088
+paso 9875 f=0.54 loss=0.4180 tok=78822165
+paso 9900 f=0.54 loss=0.3462 tok=79022168
+paso 9925 f=0.54 loss=0.3448 tok=79222200
+paso 9950 f=0.54 loss=0.4211 tok=79422293
+paso 9975 f=0.54 loss=0.3708 tok=79623401
+paso 10000 f=0.54 loss=0.4151 tok=79823875
+  val(sub) bpn=5.970
+  zspace v19 paso 10000: +216.2 MB, tienda 4493.2 MB, 8.2s
+paso 10025 f=0.55 loss=0.4108 tok=80024956
+paso 10050 f=0.55 loss=0.4273 tok=80223306
+paso 10075 f=0.55 loss=0.3265 tok=80422170
+paso 10100 f=0.55 loss=0.3645 tok=80622244
+paso 10125 f=0.55 loss=0.4866 tok=80822936
+paso 10150 f=0.55 loss=0.4554 tok=81022266
+paso 10175 f=0.55 loss=0.3303 tok=81221861
+paso 10200 f=0.55 loss=0.3195 tok=81420925
+paso 10225 f=0.56 loss=0.3997 tok=81619962
+paso 10250 f=0.56 loss=0.4377 tok=81818682
+  val(sub) bpn=5.878
+paso 10275 f=0.56 loss=0.4331 tok=82018039
+paso 10300 f=0.56 loss=0.3749 tok=82217602
+paso 10325 f=0.56 loss=0.4506 tok=82417449
+paso 10350 f=0.56 loss=0.4738 tok=82617245
+paso 10375 f=0.56 loss=0.4557 tok=82816487
+paso 10400 f=0.57 loss=0.4254 tok=83016841
+paso 10425 f=0.57 loss=0.4482 tok=83215736
+paso 10450 f=0.57 loss=0.3242 tok=83415965
+paso 10475 f=0.57 loss=0.4563 tok=83614939
+paso 10500 f=0.57 loss=0.4655 tok=83813169
+  val(sub) bpn=5.800
+  zspace v20 paso 10500: +215.7 MB, tienda 4708.9 MB, 8.0s
+paso 10525 f=0.57 loss=0.3149 tok=84009557
+paso 10550 f=0.57 loss=0.3278 tok=84210404
+paso 10575 f=0.58 loss=0.3200 tok=84408389
+paso 10600 f=0.58 loss=0.2799 tok=84608023
+paso 10625 f=0.58 loss=0.4212 tok=84807661
+paso 10650 f=0.58 loss=0.3101 tok=85006924
+paso 10675 f=0.58 loss=0.3667 tok=85206964
+paso 10700 f=0.58 loss=0.3489 tok=85406510
+paso 10725 f=0.58 loss=0.3411 tok=85606178
+paso 10750 f=0.58 loss=0.2996 tok=85805747
+  val(sub) bpn=6.204
+paso 10775 f=0.59 loss=0.3597 tok=86006260
+paso 10800 f=0.59 loss=0.4069 tok=86204687
+paso 10825 f=0.59 loss=0.4093 tok=86404098
+paso 10850 f=0.59 loss=0.4187 tok=86603551
+paso 10875 f=0.59 loss=0.3459 tok=86804068
+paso 10900 f=0.59 loss=0.3224 tok=87003938
+paso 10925 f=0.59 loss=0.4406 tok=87201877
+paso 10950 f=0.60 loss=0.4207 tok=87402641
+paso 10975 f=0.60 loss=0.3667 tok=87602636
+paso 11000 f=0.60 loss=0.3988 tok=87801689
+  val(sub) bpn=6.049
+  zspace v21 paso 11000: +215.2 MB, tienda 4924.1 MB, 8.2s
+paso 11025 f=0.60 loss=0.4494 tok=88000834
+paso 11050 f=0.60 loss=0.4079 tok=88200117
+paso 11075 f=0.60 loss=0.4104 tok=88398957
+paso 11100 f=0.60 loss=0.4256 tok=88598252
+paso 11125 f=0.61 loss=0.3163 tok=88799606
+paso 11150 f=0.61 loss=0.3757 tok=88999293
+paso 11175 f=0.61 loss=0.2462 tok=89200031
+paso 11200 f=0.61 loss=0.2466 tok=89400225
+paso 11225 f=0.61 loss=0.3737 tok=89599699
+paso 11250 f=0.61 loss=0.3071 tok=89799291
+  val(sub) bpn=6.386
+paso 11275 f=0.61 loss=0.3728 tok=89998696
+paso 11300 f=0.61 loss=0.2692 tok=90198470
+paso 11325 f=0.62 loss=0.2338 tok=90398959
+paso 11350 f=0.62 loss=0.2850 tok=90598583
+paso 11375 f=0.62 loss=0.3366 tok=90797777
+paso 11400 f=0.62 loss=0.3479 tok=90995108
+paso 11425 f=0.62 loss=0.2788 tok=91194511
+paso 11450 f=0.62 loss=0.3084 tok=91394308
+paso 11475 f=0.62 loss=0.3153 tok=91592475
+paso 11500 f=0.63 loss=0.2987 tok=91791968
+  val(sub) bpn=6.218
+  zspace v22 paso 11500: +215.2 MB, tienda 5139.4 MB, 8.1s
+paso 11525 f=0.63 loss=0.2921 tok=91992046
+paso 11550 f=0.63 loss=0.2876 tok=92190760
+paso 11575 f=0.63 loss=0.2865 tok=92390587
+paso 11600 f=0.63 loss=0.3711 tok=92590553
+paso 11625 f=0.63 loss=0.3887 tok=92790468
+paso 11650 f=0.63 loss=0.3957 tok=92990739
+paso 11675 f=0.64 loss=0.3908 tok=93189700
+paso 11700 f=0.64 loss=0.3733 tok=93388527
+paso 11725 f=0.64 loss=0.3216 tok=93587620
+paso 11750 f=0.64 loss=0.2842 tok=93788456
+  val(sub) bpn=6.315
+paso 11775 f=0.64 loss=0.2616 tok=93988451
+paso 11800 f=0.64 loss=0.2934 tok=94188402
+paso 11825 f=0.64 loss=0.2683 tok=94387657
+paso 11850 f=0.64 loss=0.2450 tok=94588119
+paso 11875 f=0.65 loss=0.3084 tok=94787261
+paso 11900 f=0.65 loss=0.2405 tok=94986755
+paso 11925 f=0.65 loss=0.2909 tok=95185240
+paso 11950 f=0.65 loss=0.3048 tok=95384668
+paso 11975 f=0.65 loss=0.2995 tok=95581568
+paso 12000 f=0.65 loss=0.2996 tok=95781976
+  val(sub) bpn=6.490
+  zspace v23 paso 12000: +215.2 MB, tienda 5354.6 MB, 8.1s
+paso 12025 f=0.65 loss=0.3075 tok=95982656
+paso 12050 f=0.66 loss=0.3593 tok=96183212
+paso 12075 f=0.66 loss=0.3142 tok=96381100
+paso 12100 f=0.66 loss=0.3488 tok=96580327
+paso 12125 f=0.66 loss=0.3065 tok=96780974
+paso 12150 f=0.66 loss=0.3345 tok=96980784
+paso 12175 f=0.66 loss=0.3427 tok=97179567
+paso 12200 f=0.66 loss=0.3627 tok=97379550
+paso 12225 f=0.67 loss=0.3365 tok=97579783
+paso 12250 f=0.67 loss=0.3477 tok=97778948
+  val(sub) bpn=6.310
+paso 12275 f=0.67 loss=0.3569 tok=97977235
+paso 12300 f=0.67 loss=0.2707 tok=98178102
+paso 12325 f=0.67 loss=0.3151 tok=98378750
+paso 12350 f=0.67 loss=0.3141 tok=98577034
+paso 12375 f=0.67 loss=0.2406 tok=98775981
+paso 12400 f=0.67 loss=0.2871 tok=98976071
+paso 12425 f=0.68 loss=0.2687 tok=99176448
+paso 12450 f=0.68 loss=0.2304 tok=99375385
+paso 12475 f=0.68 loss=0.2595 tok=99574495
+paso 12500 f=0.68 loss=0.3085 tok=99775259
+  val(sub) bpn=6.702
+  zspace v24 paso 12500: +240.4 MB, tienda 5595.0 MB, 17.7s
+paso 12525 f=0.68 loss=0.2809 tok=99973882
+paso 12550 f=0.68 loss=0.2763 tok=100173616
+paso 12575 f=0.68 loss=0.2904 tok=100372168
+paso 12600 f=0.69 loss=0.2713 tok=100571855
+paso 12625 f=0.69 loss=0.2523 tok=100771604
+paso 12650 f=0.69 loss=0.2997 tok=100972043
+paso 12675 f=0.69 loss=0.3035 tok=101172072
+paso 12700 f=0.69 loss=0.2783 tok=101372251
+paso 12725 f=0.69 loss=0.3193 tok=101571288
+paso 12750 f=0.69 loss=0.2828 tok=101769530
+  val(sub) bpn=6.516
+paso 12775 f=0.69 loss=0.3019 tok=101970162
+paso 12800 f=0.70 loss=0.2704 tok=102168284
+paso 12825 f=0.70 loss=0.3411 tok=102366542
+paso 12850 f=0.70 loss=0.3507 tok=102566496
+paso 12875 f=0.70 loss=0.3507 tok=102767233
+paso 12900 f=0.70 loss=0.3707 tok=102966374
+paso 12925 f=0.70 loss=0.3320 tok=103166149
+paso 12950 f=0.70 loss=0.3064 tok=103365799
+paso 12975 f=0.71 loss=0.2909 tok=103566496
+paso 13000 f=0.71 loss=0.1635 tok=103764318
+  val(sub) bpn=6.693
+  zspace v25 paso 13000: +214.7 MB, tienda 5809.7 MB, 7.2s
+paso 13025 f=0.71 loss=0.2583 tok=103964466
+paso 13050 f=0.71 loss=0.2914 tok=104163574
+paso 13075 f=0.71 loss=0.2423 tok=104363643
+paso 13100 f=0.71 loss=0.2358 tok=104564048
+paso 13125 f=0.71 loss=0.2245 tok=104764027
+paso 13150 f=0.72 loss=0.2641 tok=104963509
+paso 13175 f=0.72 loss=0.3021 tok=105163649
+paso 13200 f=0.72 loss=0.2685 tok=105362017
+paso 13225 f=0.72 loss=0.2705 tok=105561066
+paso 13250 f=0.72 loss=0.3208 tok=105761249
+  val(sub) bpn=6.724
+paso 13275 f=0.72 loss=0.2454 tok=105961344
+paso 13300 f=0.72 loss=0.2650 tok=106159957
+paso 13325 f=0.72 loss=0.2653 tok=106358383
+paso 13350 f=0.73 loss=0.2355 tok=106558740
+paso 13375 f=0.73 loss=0.3192 tok=106758316
+paso 13400 f=0.73 loss=0.3423 tok=106958479
+paso 13425 f=0.73 loss=0.2448 tok=107157487
+paso 13450 f=0.73 loss=0.2698 tok=107357795
+paso 13475 f=0.73 loss=0.3301 tok=107557260
+paso 13500 f=0.73 loss=0.2867 tok=107756791
+  val(sub) bpn=6.563
+  zspace v26 paso 13500: +214.4 MB, tienda 6024.0 MB, 7.6s
+paso 13525 f=0.74 loss=0.3028 tok=107955531
+paso 13550 f=0.74 loss=0.2849 tok=108155465
+paso 13575 f=0.74 loss=0.3331 tok=108356533
+paso 13600 f=0.74 loss=0.2475 tok=108554691
+paso 13625 f=0.74 loss=0.1907 tok=108754692
+paso 13650 f=0.74 loss=0.1942 tok=108954624
+paso 13675 f=0.74 loss=0.2451 tok=109154606
+paso 13700 f=0.75 loss=0.2242 tok=109353729
+paso 13725 f=0.75 loss=0.2488 tok=109554334
+paso 13750 f=0.75 loss=0.1995 tok=109754533
+  val(sub) bpn=6.921
+paso 13775 f=0.75 loss=0.3337 tok=109953019
+paso 13800 f=0.75 loss=0.2045 tok=110153392
+paso 13825 f=0.75 loss=0.2441 tok=110351769
+paso 13850 f=0.75 loss=0.2249 tok=110550851
+paso 13875 f=0.75 loss=0.2385 tok=110750117
+paso 13900 f=0.76 loss=0.2881 tok=110949777
+paso 13925 f=0.76 loss=0.2463 tok=111149368
+paso 13950 f=0.76 loss=0.2496 tok=111349256
+paso 13975 f=0.76 loss=0.2603 tok=111548084
+paso 14000 f=0.76 loss=0.2838 tok=111748055
+  val(sub) bpn=6.751
+  zspace v27 paso 14000: +214.3 MB, tienda 6238.4 MB, 7.3s
+paso 14025 f=0.76 loss=0.3078 tok=111947515
+paso 14050 f=0.76 loss=0.2451 tok=112147458
+paso 14075 f=0.77 loss=0.2977 tok=112346362
+paso 14100 f=0.77 loss=0.2850 tok=112545239
+paso 14125 f=0.77 loss=0.2788 tok=112745314
+paso 14150 f=0.77 loss=0.2714 tok=112944447
+paso 14175 f=0.77 loss=0.2568 tok=113144124
+paso 14200 f=0.77 loss=0.2555 tok=113343853
+paso 14225 f=0.77 loss=0.2170 tok=113542587
+paso 14250 f=0.78 loss=0.1900 tok=113741909
+  val(sub) bpn=7.026
+paso 14275 f=0.78 loss=0.1589 tok=113941776
+paso 14300 f=0.78 loss=0.2464 tok=114141363
+paso 14325 f=0.78 loss=0.1994 tok=114342048
+paso 14350 f=0.78 loss=0.1749 tok=114542129
+paso 14375 f=0.78 loss=0.1950 tok=114742449
+paso 14400 f=0.78 loss=0.2704 tok=114942415
+paso 14425 f=0.78 loss=0.2042 tok=115142339
+paso 14450 f=0.79 loss=0.2147 tok=115342265
+paso 14475 f=0.79 loss=0.2186 tok=115541901
+paso 14500 f=0.79 loss=0.2744 tok=115739907
+  val(sub) bpn=6.919
+  zspace v28 paso 14500: +214.3 MB, tienda 6452.6 MB, 7.2s
+paso 14525 f=0.79 loss=0.2341 tok=115939688
+paso 14550 f=0.79 loss=0.2799 tok=116138565
+paso 14575 f=0.79 loss=0.2204 tok=116338215
+paso 14600 f=0.79 loss=0.2742 tok=116537989
+paso 14625 f=0.80 loss=0.2336 tok=116736268
+paso 14650 f=0.80 loss=0.2723 tok=116934948
+paso 14675 f=0.80 loss=0.2423 tok=117135825
+paso 14700 f=0.80 loss=0.2506 tok=117333598
+paso 14725 f=0.80 loss=0.2806 tok=117533243
+paso 14750 f=0.80 loss=0.2401 tok=117733269
+  val(sub) bpn=6.839
+paso 14775 f=0.80 loss=0.2951 tok=117932784
+paso 14800 f=0.81 loss=0.2447 tok=118132942
+paso 14825 f=0.81 loss=0.2690 tok=118333100
+paso 14850 f=0.81 loss=0.1826 tok=118533058
+paso 14875 f=0.81 loss=0.1899 tok=118732994
+paso 14900 f=0.81 loss=0.1872 tok=118932758
+paso 14925 f=0.81 loss=0.1772 tok=119132914
+paso 14950 f=0.81 loss=0.1872 tok=119333261
+paso 14975 f=0.81 loss=0.2348 tok=119533381
+paso 15000 f=0.82 loss=0.2348 tok=119733329
+  val(sub) bpn=7.117
+  zspace v29 paso 15000: +213.7 MB, tienda 6666.4 MB, 7.3s
+paso 15025 f=0.82 loss=0.1892 tok=119930675
+paso 15050 f=0.82 loss=0.2344 tok=120129934
+paso 15075 f=0.82 loss=0.2405 tok=120329933
+paso 15100 f=0.82 loss=0.2122 tok=120528793
+paso 15125 f=0.82 loss=0.3402 tok=120725975
+paso 15150 f=0.82 loss=0.1930 tok=120925919
+paso 15175 f=0.83 loss=0.2374 tok=121126461
+paso 15200 f=0.83 loss=0.2469 tok=121326743
+paso 15225 f=0.83 loss=0.2513 tok=121525965
+paso 15250 f=0.83 loss=0.2153 tok=121725108
+  val(sub) bpn=7.059
+paso 15275 f=0.83 loss=0.2243 tok=121924259
+paso 15300 f=0.83 loss=0.2091 tok=122124617
+paso 15325 f=0.83 loss=0.2176 tok=122323854
+paso 15350 f=0.84 loss=0.2252 tok=122523894
+paso 15375 f=0.84 loss=0.2437 tok=122723525
+paso 15400 f=0.84 loss=0.2290 tok=122923057
+paso 15425 f=0.84 loss=0.2515 tok=123121073
+paso 15450 f=0.84 loss=0.2157 tok=123321475
+paso 15475 f=0.84 loss=0.1456 tok=123521198
+paso 15500 f=0.84 loss=0.1538 tok=123719361
+  val(sub) bpn=7.448
+  zspace v30 paso 15500: +210.6 MB, tienda 6877.0 MB, 7.3s
+paso 15525 f=0.84 loss=0.1933 tok=123920122
+paso 15550 f=0.85 loss=0.1269 tok=124119144
+paso 15575 f=0.85 loss=0.1537 tok=124319511
+paso 15600 f=0.85 loss=0.1578 tok=124519755
+paso 15625 f=0.85 loss=0.1688 tok=124719436
+paso 15650 f=0.85 loss=0.1452 tok=124918387
+paso 15675 f=0.85 loss=0.1370 tok=125119005
+paso 15700 f=0.85 loss=0.1926 tok=125317916
+paso 15725 f=0.86 loss=0.1775 tok=125516382
+paso 15750 f=0.86 loss=0.1849 tok=125717020
+  val(sub) bpn=7.555
+paso 15775 f=0.86 loss=0.1427 tok=125916403
+paso 15800 f=0.86 loss=0.1479 tok=126115291
+paso 15825 f=0.86 loss=0.1525 tok=126315722
+paso 15850 f=0.86 loss=0.1692 tok=126514296
+paso 15875 f=0.86 loss=0.1713 tok=126714045
+paso 15900 f=0.87 loss=0.1524 tok=126913314
+paso 15925 f=0.87 loss=0.1870 tok=127114326
+paso 15950 f=0.87 loss=0.1765 tok=127313932
+paso 15975 f=0.87 loss=0.1693 tok=127512694
+paso 16000 f=0.87 loss=0.1549 tok=127712857
+  val(sub) bpn=7.617
+  zspace v31 paso 16000: +206.6 MB, tienda 7083.6 MB, 7.0s
+paso 16025 f=0.87 loss=0.1410 tok=127912364
+paso 16050 f=0.87 loss=0.1778 tok=128111844
+paso 16075 f=0.87 loss=0.1473 tok=128310410
+paso 16100 f=0.88 loss=0.1123 tok=128510765
+paso 16125 f=0.88 loss=0.1107 tok=128709886
+paso 16150 f=0.88 loss=0.1063 tok=128908502
+paso 16175 f=0.88 loss=0.2588 tok=129107860
+paso 16200 f=0.88 loss=0.1178 tok=129307974
+paso 16225 f=0.88 loss=0.0960 tok=129505999
+paso 16250 f=0.88 loss=0.1180 tok=129706558
+  val(sub) bpn=7.996
+paso 16275 f=0.89 loss=0.1045 tok=129905845
+paso 16300 f=0.89 loss=0.1135 tok=130106696
+paso 16325 f=0.89 loss=0.1023 tok=130306182
+paso 16350 f=0.89 loss=0.1398 tok=130506242
+paso 16375 f=0.89 loss=0.1589 tok=130705789
+paso 16400 f=0.89 loss=0.0958 tok=130905077
+paso 16425 f=0.89 loss=0.1182 tok=131105071
+paso 16450 f=0.89 loss=0.1031 tok=131304886
+paso 16475 f=0.90 loss=0.1291 tok=131503993
+paso 16500 f=0.90 loss=0.1448 tok=131703884
+  val(sub) bpn=8.147
+  zspace v32 paso 16500: +240.4 MB, tienda 7324.0 MB, 17.5s
+paso 16525 f=0.90 loss=0.1299 tok=131902951
+paso 16550 f=0.90 loss=0.1215 tok=132102229
+paso 16575 f=0.90 loss=0.1081 tok=132301094
+paso 16600 f=0.90 loss=0.2516 tok=132501397
+paso 16625 f=0.90 loss=0.1089 tok=132700056
+paso 16650 f=0.91 loss=0.1396 tok=132899497
+paso 16675 f=0.91 loss=0.1191 tok=133098697
+paso 16700 f=0.91 loss=0.1159 tok=133298453
+paso 16725 f=0.91 loss=0.0820 tok=133498179
+paso 16750 f=0.91 loss=0.1017 tok=133697537
+  val(sub) bpn=8.448
+paso 16775 f=0.91 loss=0.0768 tok=133897252
+paso 16800 f=0.91 loss=0.0765 tok=134095795
+paso 16825 f=0.92 loss=0.0636 tok=134294957
+paso 16850 f=0.92 loss=0.1115 tok=134495978
+paso 16875 f=0.92 loss=0.0780 tok=134694925
+paso 16900 f=0.92 loss=0.0938 tok=134894451
+paso 16925 f=0.92 loss=0.1076 tok=135094865
+paso 16950 f=0.92 loss=0.0755 tok=135293258
+paso 16975 f=0.92 loss=0.1446 tok=135493246
+paso 17000 f=0.92 loss=0.0652 tok=135693979
+  val(sub) bpn=8.589
+  zspace v33 paso 17000: +194.9 MB, tienda 7518.9 MB, 7.0s
+paso 17025 f=0.93 loss=0.1092 tok=135893982
+paso 17050 f=0.93 loss=0.0786 tok=136093547
+paso 17075 f=0.93 loss=0.0689 tok=136292799
+paso 17100 f=0.93 loss=0.1400 tok=136493129
+paso 17125 f=0.93 loss=0.1029 tok=136692617
+paso 17150 f=0.93 loss=0.0784 tok=136892715
+paso 17175 f=0.93 loss=0.1116 tok=137091978
+paso 17200 f=0.94 loss=0.1956 tok=137292134
+paso 17225 f=0.94 loss=0.1286 tok=137491316
+paso 17250 f=0.94 loss=0.0663 tok=137691026
+  val(sub) bpn=8.691
+paso 17275 f=0.94 loss=0.0551 tok=137890400
+paso 17300 f=0.94 loss=0.0952 tok=138088089
+paso 17325 f=0.94 loss=0.0959 tok=138288109
+paso 17350 f=0.94 loss=0.0394 tok=138487796
+paso 17375 f=0.95 loss=0.0486 tok=138687873
+paso 17400 f=0.95 loss=0.0687 tok=138887477
+paso 17425 f=0.95 loss=0.0510 tok=139084772
+paso 17450 f=0.95 loss=0.1942 tok=139282980
+paso 17475 f=0.95 loss=0.1412 tok=139482469
+paso 17500 f=0.95 loss=0.0533 tok=139680738
+  val(sub) bpn=9.125
+  zspace v34 paso 17500: +185.5 MB, tienda 7704.4 MB, 6.6s
+paso 17525 f=0.95 loss=0.0395 tok=139880310
+paso 17550 f=0.95 loss=0.0410 tok=140080266
+paso 17575 f=0.96 loss=0.1312 tok=140279105
+paso 17600 f=0.96 loss=0.0937 tok=140479618
+paso 17625 f=0.96 loss=0.0985 tok=140679734
+paso 17650 f=0.96 loss=0.0432 tok=140879211
+paso 17675 f=0.96 loss=0.0402 tok=141079125
+paso 17700 f=0.96 loss=0.0479 tok=141279659
+paso 17725 f=0.96 loss=0.0469 tok=141480149
+paso 17750 f=0.97 loss=0.0681 tok=141677115
+  val(sub) bpn=9.252
+paso 17775 f=0.97 loss=0.0417 tok=141876962
+paso 17800 f=0.97 loss=0.0439 tok=142075924
+paso 17825 f=0.97 loss=0.1108 tok=142276183
+paso 17850 f=0.97 loss=0.0614 tok=142476242
+paso 17875 f=0.97 loss=0.0390 tok=142676669
+paso 17900 f=0.97 loss=0.0765 tok=142876054
+paso 17925 f=0.98 loss=0.0258 tok=143076637
+paso 17950 f=0.98 loss=0.0890 tok=143277470
+paso 17975 f=0.98 loss=0.0324 tok=143476825
+paso 18000 f=0.98 loss=0.0349 tok=143675821
+  val(sub) bpn=9.435
+  zspace v35 paso 18000: +172.4 MB, tienda 7876.9 MB, 6.3s
+paso 18025 f=0.98 loss=0.0686 tok=143876532
+paso 18050 f=0.98 loss=0.0354 tok=144077167
+paso 18075 f=0.98 loss=0.0226 tok=144277443
+paso 18100 f=0.98 loss=0.0319 tok=144477625
+paso 18125 f=0.99 loss=0.0992 tok=144677195
+paso 18150 f=0.99 loss=0.0526 tok=144875238
+paso 18175 f=0.99 loss=0.0259 tok=145073681
+paso 18200 f=0.99 loss=0.0783 tok=145273671
+paso 18225 f=0.99 loss=0.0359 tok=145474204
+paso 18250 f=0.99 loss=0.0557 tok=145673761
+  val(sub) bpn=9.601
+paso 18275 f=0.99 loss=0.1446 tok=145873760
+paso 18300 f=1.00 loss=0.0300 tok=146072250
+paso 18325 f=1.00 loss=0.0773 tok=146271367
+paso 18350 f=1.00 loss=0.0626 tok=146469864
+paso 18375 f=1.00 loss=0.0229 tok=146670236
+FINAL {"paso": 18380, "tokens_vistos": 146710638, "segundos": 3492, "bits_por_nota": 8.18601774726293, "bits_por_token": 3.1842890252923746, "tokens_por_nota": 2.570752115226509, "notas": 96089}
+### 2026-11-25 15:35:55 entrenar_completo exit=0 segundos=3502
+### 2026-11-25 15:35:55 entrenar_wsd_4500: /usr/bin/python -m fuga.train --datos data/corpus_pd.jsonl --modo eco_rel --preset fuga-s --ctx 1024 --cache cache/eco_rel_1024.pkl --device cuda --tokens_por_lote 8192 --pasos 4500 --lr 0.0006 --wd 0.1 --dropout 0.3 --eval_cada 250 --semilla 0 --out runs/final_h100/wsd_4500 --guardar_mejor
+secuencias=15834 tokens=4948693 val_trozos=617 prep=0s
+parámetros=151.59M vocab=723 device=cuda precision=bf16
+paso 25 f=0.01 loss=3.8269 tok=199331
+paso 50 f=0.01 loss=2.8209 tok=397696
+paso 75 f=0.02 loss=1.5695 tok=596918
+paso 100 f=0.02 loss=1.3639 tok=795949
+paso 125 f=0.03 loss=2.0443 tok=996582
+paso 150 f=0.03 loss=1.9357 tok=1195566
+paso 175 f=0.04 loss=1.9633 tok=1394998
+paso 200 f=0.04 loss=1.4007 tok=1594089
+paso 225 f=0.05 loss=1.6850 tok=1793345
+paso 250 f=0.06 loss=1.6227 tok=1993154
+  val(sub) bpn=5.994
+paso 275 f=0.06 loss=1.2047 tok=2192967
+paso 300 f=0.07 loss=1.0465 tok=2393168
+paso 325 f=0.07 loss=1.6413 tok=2593003
+paso 350 f=0.08 loss=1.6047 tok=2793026
+paso 375 f=0.08 loss=1.4360 tok=2992696
+paso 400 f=0.09 loss=1.0420 tok=3192431
+paso 425 f=0.09 loss=1.0494 tok=3392532
+paso 450 f=0.10 loss=1.5403 tok=3590527
+paso 475 f=0.11 loss=1.4126 tok=3790043
+paso 500 f=0.11 loss=1.0966 tok=3989314
+  val(sub) bpn=5.141
+paso 525 f=0.12 loss=1.4760 tok=4188877
+paso 550 f=0.12 loss=1.0369 tok=4388289
+paso 575 f=0.13 loss=1.0051 tok=4589274
+paso 600 f=0.13 loss=1.2985 tok=4788743
+paso 625 f=0.14 loss=1.3018 tok=4988415
+paso 650 f=0.14 loss=1.3154 tok=5189145
+paso 675 f=0.15 loss=0.9695 tok=5388296
+paso 700 f=0.16 loss=1.2718 tok=5587956
+paso 725 f=0.16 loss=1.0970 tok=5787202
+paso 750 f=0.17 loss=1.3172 tok=5987414
+  val(sub) bpn=4.772
+paso 775 f=0.17 loss=0.9267 tok=6185644
+paso 800 f=0.18 loss=0.9275 tok=6384881
+paso 825 f=0.18 loss=1.3243 tok=6585194
+paso 850 f=0.19 loss=0.8863 tok=6785870
+paso 875 f=0.19 loss=0.8765 tok=6984561
+paso 900 f=0.20 loss=1.2983 tok=7185155
+paso 925 f=0.21 loss=1.0802 tok=7384895
+paso 950 f=0.21 loss=0.9675 tok=7585008
+paso 975 f=0.22 loss=1.0437 tok=7783616
+paso 1000 f=0.22 loss=0.9284 tok=7983636
+  val(sub) bpn=4.633
+paso 1025 f=0.23 loss=0.9181 tok=8182390
+paso 1050 f=0.23 loss=0.9333 tok=8381858
+paso 1075 f=0.24 loss=1.3675 tok=8581490
+paso 1100 f=0.24 loss=0.8718 tok=8780555
+paso 1125 f=0.25 loss=0.9433 tok=8979781
+paso 1150 f=0.26 loss=1.2556 tok=9179407
+paso 1175 f=0.26 loss=0.8729 tok=9379144
+paso 1200 f=0.27 loss=0.9076 tok=9578972
+paso 1225 f=0.27 loss=1.2948 tok=9777681
+paso 1250 f=0.28 loss=1.1788 tok=9976726
+  val(sub) bpn=4.449
+paso 1275 f=0.28 loss=1.2167 tok=10175377
+paso 1300 f=0.29 loss=0.9456 tok=10375607
+paso 1325 f=0.29 loss=1.2016 tok=10575626
+paso 1350 f=0.30 loss=1.2959 tok=10774686
+paso 1375 f=0.31 loss=0.8695 tok=10975365
+paso 1400 f=0.31 loss=1.2953 tok=11175310
+paso 1425 f=0.32 loss=0.8688 tok=11374974
+paso 1450 f=0.32 loss=1.0982 tok=11574777
+paso 1475 f=0.33 loss=1.2954 tok=11775502
+paso 1500 f=0.33 loss=0.9064 tok=11973799
+  val(sub) bpn=4.325
+paso 1525 f=0.34 loss=0.8412 tok=12171975
+paso 1550 f=0.34 loss=0.8802 tok=12370972
+paso 1575 f=0.35 loss=1.2586 tok=12571931
+paso 1600 f=0.36 loss=1.1107 tok=12772708
+paso 1625 f=0.36 loss=0.8058 tok=12972116
+paso 1650 f=0.37 loss=1.1153 tok=13172084
+paso 1675 f=0.37 loss=0.8105 tok=13370490
+paso 1700 f=0.38 loss=1.1386 tok=13570028
+paso 1725 f=0.38 loss=0.8464 tok=13770188
+paso 1750 f=0.39 loss=1.1996 tok=13968749
+  val(sub) bpn=4.196
+paso 1775 f=0.39 loss=0.8106 tok=14167358
+paso 1800 f=0.40 loss=1.1677 tok=14367728
+paso 1825 f=0.41 loss=1.1603 tok=14567961
+paso 1850 f=0.41 loss=1.0264 tok=14766593
+paso 1875 f=0.42 loss=0.7982 tok=14965408
+paso 1900 f=0.42 loss=0.8112 tok=15165273
+paso 1925 f=0.43 loss=0.8218 tok=15365509
+paso 1950 f=0.43 loss=1.1615 tok=15565808
+paso 1975 f=0.44 loss=1.0606 tok=15764723
+paso 2000 f=0.44 loss=0.9694 tok=15964689
+  val(sub) bpn=4.143
+paso 2025 f=0.45 loss=0.7812 tok=16163572
+paso 2050 f=0.46 loss=0.7928 tok=16363092
+paso 2075 f=0.46 loss=1.1160 tok=16562778
+paso 2100 f=0.47 loss=1.2344 tok=16760701
+paso 2125 f=0.47 loss=1.1526 tok=16961121
+paso 2150 f=0.48 loss=1.1633 tok=17160506
+paso 2175 f=0.48 loss=0.9294 tok=17360135
+paso 2200 f=0.49 loss=1.1227 tok=17559919
+paso 2225 f=0.49 loss=0.7640 tok=17759779
+paso 2250 f=0.50 loss=0.7967 tok=17959779
+  val(sub) bpn=4.052
+paso 2275 f=0.51 loss=0.8025 tok=18158969
+paso 2300 f=0.51 loss=0.7652 tok=18357609
+paso 2325 f=0.52 loss=0.7949 tok=18556709
+paso 2350 f=0.52 loss=0.7696 tok=18756509
+paso 2375 f=0.53 loss=0.8328 tok=18957026
+paso 2400 f=0.53 loss=0.7788 tok=19157135
+paso 2425 f=0.54 loss=0.7723 tok=19358472
+paso 2450 f=0.54 loss=0.9992 tok=19555808
+paso 2475 f=0.55 loss=0.9737 tok=19754826
+paso 2500 f=0.56 loss=1.0997 tok=19954202
+  val(sub) bpn=3.987
+paso 2525 f=0.56 loss=1.1218 tok=20153404
+paso 2550 f=0.57 loss=0.7767 tok=20351995
+paso 2575 f=0.57 loss=0.7638 tok=20552015
+paso 2600 f=0.58 loss=0.7576 tok=20751733
+paso 2625 f=0.58 loss=1.0356 tok=20951993
+paso 2650 f=0.59 loss=0.7882 tok=21151939
+paso 2675 f=0.59 loss=0.7748 tok=21353135
+paso 2700 f=0.60 loss=0.7420 tok=21552751
+paso 2725 f=0.61 loss=0.7758 tok=21752707
+paso 2750 f=0.61 loss=0.7704 tok=21951479
+  val(sub) bpn=4.003
+paso 2775 f=0.62 loss=0.9738 tok=22152023
+paso 2800 f=0.62 loss=0.7885 tok=22351129
+paso 2825 f=0.63 loss=0.8750 tok=22550811
+paso 2850 f=0.63 loss=0.7890 tok=22750966
+paso 2875 f=0.64 loss=1.1530 tok=22950086
+paso 2900 f=0.64 loss=1.0136 tok=23148095
+paso 2925 f=0.65 loss=0.9093 tok=23347674
+paso 2950 f=0.66 loss=0.9031 tok=23547897
+paso 2975 f=0.66 loss=0.7783 tok=23747215
+paso 3000 f=0.67 loss=0.7510 tok=23945967
+  val(sub) bpn=3.969
+paso 3025 f=0.67 loss=0.8505 tok=24145920
+paso 3050 f=0.68 loss=1.0329 tok=24344464
+paso 3075 f=0.68 loss=0.8183 tok=24545021
+paso 3100 f=0.69 loss=0.6772 tok=24744004
+paso 3125 f=0.69 loss=0.9213 tok=24943421
+paso 3150 f=0.70 loss=0.9341 tok=25143303
+paso 3175 f=0.71 loss=0.8036 tok=25343664
+paso 3200 f=0.71 loss=0.7939 tok=25542593
+paso 3225 f=0.72 loss=0.7834 tok=25742472
+paso 3250 f=0.72 loss=1.0651 tok=25941372
+  val(sub) bpn=3.874
+paso 3275 f=0.73 loss=0.8331 tok=26141073
+paso 3300 f=0.73 loss=1.1404 tok=26340113
+paso 3325 f=0.74 loss=0.7426 tok=26540269
+paso 3350 f=0.74 loss=0.7460 tok=26739824
+paso 3375 f=0.75 loss=0.6967 tok=26939476
+paso 3400 f=0.76 loss=1.0124 tok=27140124
+paso 3425 f=0.76 loss=0.9023 tok=27340343
+paso 3450 f=0.77 loss=1.0327 tok=27538800
+paso 3475 f=0.77 loss=1.0046 tok=27738805
+paso 3500 f=0.78 loss=1.0400 tok=27939403
+  val(sub) bpn=3.892
+paso 3525 f=0.78 loss=0.7519 tok=28138916
+paso 3550 f=0.79 loss=0.7813 tok=28338183
+paso 3575 f=0.79 loss=0.7502 tok=28538665
+paso 3600 f=0.80 loss=1.1203 tok=28737398
+paso 3625 f=0.81 loss=1.0576 tok=28936863
+paso 3650 f=0.81 loss=1.0575 tok=29136695
+paso 3675 f=0.82 loss=0.9544 tok=29334257
+paso 3700 f=0.82 loss=0.9698 tok=29534760
+paso 3725 f=0.83 loss=0.9537 tok=29732991
+paso 3750 f=0.83 loss=0.6624 tok=29932434
+  val(sub) bpn=3.871
+paso 3775 f=0.84 loss=0.9645 tok=30131613
+paso 3800 f=0.84 loss=0.6639 tok=30330081
+paso 3825 f=0.85 loss=1.0216 tok=30530116
+paso 3850 f=0.86 loss=1.0167 tok=30729681
+paso 3875 f=0.86 loss=0.6989 tok=30929881
+paso 3900 f=0.87 loss=0.8900 tok=31129204
+paso 3925 f=0.87 loss=0.6735 tok=31330302
+paso 3950 f=0.88 loss=0.9463 tok=31529890
+paso 3975 f=0.88 loss=0.7517 tok=31729133
+paso 4000 f=0.89 loss=0.7541 tok=31929086
+  val(sub) bpn=3.796
+paso 4025 f=0.89 loss=0.6529 tok=32129567
+paso 4050 f=0.90 loss=0.7122 tok=32329884
+paso 4075 f=0.91 loss=0.6649 tok=32528562
+paso 4100 f=0.91 loss=0.8429 tok=32729584
+paso 4125 f=0.92 loss=0.7563 tok=32927428
+paso 4150 f=0.92 loss=0.7640 tok=33126937
+paso 4175 f=0.93 loss=0.9185 tok=33325091
+paso 4200 f=0.93 loss=0.9182 tok=33524176
+paso 4225 f=0.94 loss=0.6992 tok=33724358
+paso 4250 f=0.94 loss=0.8557 tok=33924596
+  val(sub) bpn=3.745
+paso 4275 f=0.95 loss=0.6172 tok=34123491
+paso 4300 f=0.96 loss=0.8136 tok=34322673
+paso 4325 f=0.96 loss=0.6968 tok=34522053
+paso 4350 f=0.97 loss=0.8283 tok=34721512
+paso 4375 f=0.97 loss=0.8725 tok=34921837
+paso 4400 f=0.98 loss=0.8282 tok=35121665
+paso 4425 f=0.98 loss=0.5656 tok=35321076
+paso 4450 f=0.99 loss=0.6419 tok=35520815
+paso 4475 f=0.99 loss=0.6662 tok=35719937
+paso 4500 f=1.00 loss=0.6153 tok=35920100
+  val(sub) bpn=3.798
+FINAL {"paso": 4500, "tokens_vistos": 35920100, "segundos": 783, "bits_por_nota": 3.373671081179202, "bits_por_token": 1.3123284276212481, "tokens_por_nota": 2.570752115226509, "notas": 96089}
+### 2026-11-25 15:49:02 entrenar_wsd_4500 exit=0 segundos=787
+### 2026-11-25 15:49:02 entrenar_wsd_6000: /usr/bin/python -m fuga.train --datos data/corpus_pd.jsonl --modo eco_rel --preset fuga-s --ctx 1024 --cache cache/eco_rel_1024.pkl --device cuda --tokens_por_lote 8192 --pasos 6000 --lr 0.0006 --wd 0.1 --dropout 0.3 --eval_cada 250 --semilla 0 --out runs/final_h100/wsd_6000 --guardar_mejor
+secuencias=15834 tokens=4948693 val_trozos=617 prep=0s
+parámetros=151.59M vocab=723 device=cuda precision=bf16
+paso 25 f=0.00 loss=4.1039 tok=199331
+paso 50 f=0.01 loss=2.8416 tok=397696
+paso 75 f=0.01 loss=1.6045 tok=596918
+paso 100 f=0.02 loss=1.4506 tok=795949
+paso 125 f=0.02 loss=2.1169 tok=996582
+paso 150 f=0.02 loss=2.0163 tok=1195566
+paso 175 f=0.03 loss=1.9411 tok=1394998
+paso 200 f=0.03 loss=1.3824 tok=1594089
+paso 225 f=0.04 loss=1.6273 tok=1793345
+paso 250 f=0.04 loss=1.6316 tok=1993154
+  val(sub) bpn=5.994
+paso 275 f=0.05 loss=1.2429 tok=2192967
+paso 300 f=0.05 loss=1.0650 tok=2393168
+paso 325 f=0.05 loss=1.6010 tok=2593003
+paso 350 f=0.06 loss=1.6245 tok=2793026
+paso 375 f=0.06 loss=1.4444 tok=2992696
+paso 400 f=0.07 loss=1.0407 tok=3192431
+paso 425 f=0.07 loss=1.0498 tok=3392532
+paso 450 f=0.07 loss=1.5604 tok=3590527
+paso 475 f=0.08 loss=1.4345 tok=3790043
+paso 500 f=0.08 loss=1.0961 tok=3989314
+  val(sub) bpn=5.120
+paso 525 f=0.09 loss=1.4623 tok=4188877
+paso 550 f=0.09 loss=1.0228 tok=4388289
+paso 575 f=0.10 loss=0.9873 tok=4589274
+paso 600 f=0.10 loss=1.2928 tok=4788743
+paso 625 f=0.10 loss=1.3146 tok=4988415
+paso 650 f=0.11 loss=1.3237 tok=5189145
+paso 675 f=0.11 loss=0.9687 tok=5388296
+paso 700 f=0.12 loss=1.2690 tok=5587956
+paso 725 f=0.12 loss=1.1035 tok=5787202
+paso 750 f=0.12 loss=1.3192 tok=5987414
+  val(sub) bpn=4.778
+paso 775 f=0.13 loss=0.9339 tok=6185644
+paso 800 f=0.13 loss=0.9267 tok=6384881
+paso 825 f=0.14 loss=1.3223 tok=6585194
+paso 850 f=0.14 loss=0.8858 tok=6785870
+paso 875 f=0.15 loss=0.8724 tok=6984561
+paso 900 f=0.15 loss=1.2963 tok=7185155
+paso 925 f=0.15 loss=1.0800 tok=7384895
+paso 950 f=0.16 loss=0.9670 tok=7585008
+paso 975 f=0.16 loss=1.0552 tok=7783616
+paso 1000 f=0.17 loss=0.9335 tok=7983636
+  val(sub) bpn=4.680
+paso 1025 f=0.17 loss=0.9056 tok=8182390
+paso 1050 f=0.17 loss=0.9285 tok=8381858
+paso 1075 f=0.18 loss=1.3930 tok=8581490
+paso 1100 f=0.18 loss=0.8739 tok=8780555
+paso 1125 f=0.19 loss=0.9390 tok=8979781
+paso 1150 f=0.19 loss=1.2536 tok=9179407
+paso 1175 f=0.20 loss=0.8816 tok=9379144
+paso 1200 f=0.20 loss=0.9117 tok=9578972
+paso 1225 f=0.20 loss=1.3012 tok=9777681
+paso 1250 f=0.21 loss=1.1758 tok=9976726
+  val(sub) bpn=4.441
+paso 1275 f=0.21 loss=1.2092 tok=10175377
+paso 1300 f=0.22 loss=0.9516 tok=10375607
+paso 1325 f=0.22 loss=1.2156 tok=10575626
+paso 1350 f=0.22 loss=1.3171 tok=10774686
+paso 1375 f=0.23 loss=0.8687 tok=10975365
+paso 1400 f=0.23 loss=1.3173 tok=11175310
+paso 1425 f=0.24 loss=0.8680 tok=11374974
+paso 1450 f=0.24 loss=1.0957 tok=11574777
+paso 1475 f=0.25 loss=1.2937 tok=11775502
+paso 1500 f=0.25 loss=0.8871 tok=11973799
+  val(sub) bpn=4.345
+paso 1525 f=0.25 loss=0.8458 tok=12171975
+paso 1550 f=0.26 loss=0.8726 tok=12370972
+paso 1575 f=0.26 loss=1.2636 tok=12571931
+paso 1600 f=0.27 loss=1.1111 tok=12772708
+paso 1625 f=0.27 loss=0.7998 tok=12972116
+paso 1650 f=0.27 loss=1.1094 tok=13172084
+paso 1675 f=0.28 loss=0.8130 tok=13370490
+paso 1700 f=0.28 loss=1.1376 tok=13570028
+paso 1725 f=0.29 loss=0.8579 tok=13770188
+paso 1750 f=0.29 loss=1.1985 tok=13968749
+  val(sub) bpn=4.194
+paso 1775 f=0.30 loss=0.8098 tok=14167358
+paso 1800 f=0.30 loss=1.1690 tok=14367728
+paso 1825 f=0.30 loss=1.1803 tok=14567961
+paso 1850 f=0.31 loss=1.0282 tok=14766593
+paso 1875 f=0.31 loss=0.8039 tok=14965408
+paso 1900 f=0.32 loss=0.8124 tok=15165273
+paso 1925 f=0.32 loss=0.8161 tok=15365509
+paso 1950 f=0.32 loss=1.1737 tok=15565808
+paso 1975 f=0.33 loss=1.0577 tok=15764723
+paso 2000 f=0.33 loss=0.9603 tok=15964689
+  val(sub) bpn=4.140
+paso 2025 f=0.34 loss=0.7793 tok=16163572
+paso 2050 f=0.34 loss=0.7952 tok=16363092
+paso 2075 f=0.35 loss=1.1170 tok=16562778
+paso 2100 f=0.35 loss=1.2373 tok=16760701
+paso 2125 f=0.35 loss=1.1563 tok=16961121
+paso 2150 f=0.36 loss=1.1816 tok=17160506
+paso 2175 f=0.36 loss=0.9313 tok=17360135
+paso 2200 f=0.37 loss=1.1252 tok=17559919
+paso 2225 f=0.37 loss=0.7657 tok=17759779
+paso 2250 f=0.37 loss=0.7873 tok=17959779
+  val(sub) bpn=4.091
+paso 2275 f=0.38 loss=0.8088 tok=18158969
+paso 2300 f=0.38 loss=0.7606 tok=18357609
+paso 2325 f=0.39 loss=0.7854 tok=18556709
+paso 2350 f=0.39 loss=0.7621 tok=18756509
+paso 2375 f=0.40 loss=0.8298 tok=18957026
+paso 2400 f=0.40 loss=0.7823 tok=19157135
+paso 2425 f=0.40 loss=0.7706 tok=19358472
+paso 2450 f=0.41 loss=1.0018 tok=19555808
+paso 2475 f=0.41 loss=0.9798 tok=19754826
+paso 2500 f=0.42 loss=1.1068 tok=19954202
+  val(sub) bpn=3.993
+paso 2525 f=0.42 loss=1.1283 tok=20153404
+paso 2550 f=0.42 loss=0.7763 tok=20351995
+paso 2575 f=0.43 loss=0.7573 tok=20552015
+paso 2600 f=0.43 loss=0.7548 tok=20751733
+paso 2625 f=0.44 loss=1.0416 tok=20951993
+paso 2650 f=0.44 loss=0.7855 tok=21151939
+paso 2675 f=0.45 loss=0.7823 tok=21353135
+paso 2700 f=0.45 loss=0.7450 tok=21552751
+paso 2725 f=0.45 loss=0.7739 tok=21752707
+paso 2750 f=0.46 loss=0.7659 tok=21951479
+  val(sub) bpn=4.002
+paso 2775 f=0.46 loss=0.9767 tok=22152023
+paso 2800 f=0.47 loss=0.8012 tok=22351129
+paso 2825 f=0.47 loss=0.8786 tok=22550811
+paso 2850 f=0.47 loss=0.7943 tok=22750966
+paso 2875 f=0.48 loss=1.1526 tok=22950086
+paso 2900 f=0.48 loss=1.0125 tok=23148095
+paso 2925 f=0.49 loss=0.9073 tok=23347674
+paso 2950 f=0.49 loss=0.9097 tok=23547897
+paso 2975 f=0.50 loss=0.7731 tok=23747215
+paso 3000 f=0.50 loss=0.7496 tok=23945967
+  val(sub) bpn=3.959
+paso 3025 f=0.50 loss=0.8523 tok=24145920
+paso 3050 f=0.51 loss=1.0329 tok=24344464
+paso 3075 f=0.51 loss=0.8254 tok=24545021
+paso 3100 f=0.52 loss=0.6765 tok=24744004
+paso 3125 f=0.52 loss=0.9344 tok=24943421
+paso 3150 f=0.52 loss=0.9377 tok=25143303
+paso 3175 f=0.53 loss=0.8024 tok=25343664
+paso 3200 f=0.53 loss=0.7912 tok=25542593
+paso 3225 f=0.54 loss=0.7799 tok=25742472
+paso 3250 f=0.54 loss=1.0578 tok=25941372
+  val(sub) bpn=3.893
+paso 3275 f=0.55 loss=0.8491 tok=26141073
+paso 3300 f=0.55 loss=1.1421 tok=26340113
+paso 3325 f=0.55 loss=0.7385 tok=26540269
+paso 3350 f=0.56 loss=0.7427 tok=26739824
+paso 3375 f=0.56 loss=0.6998 tok=26939476
+paso 3400 f=0.57 loss=1.0187 tok=27140124
+paso 3425 f=0.57 loss=0.8965 tok=27340343
+paso 3450 f=0.57 loss=1.0317 tok=27538800
+paso 3475 f=0.58 loss=1.0183 tok=27738805
+paso 3500 f=0.58 loss=1.0474 tok=27939403
+  val(sub) bpn=3.889
+paso 3525 f=0.59 loss=0.7360 tok=28138916
+paso 3550 f=0.59 loss=0.7801 tok=28338183
+paso 3575 f=0.60 loss=0.7395 tok=28538665
+paso 3600 f=0.60 loss=1.1163 tok=28737398
+paso 3625 f=0.60 loss=1.0709 tok=28936863
+paso 3650 f=0.61 loss=1.0613 tok=29136695
+paso 3675 f=0.61 loss=0.9743 tok=29334257
+paso 3700 f=0.62 loss=0.9832 tok=29534760
+paso 3725 f=0.62 loss=0.9752 tok=29732991
+paso 3750 f=0.62 loss=0.6747 tok=29932434
+  val(sub) bpn=3.883
+paso 3775 f=0.63 loss=0.9875 tok=30131613
+paso 3800 f=0.63 loss=0.6706 tok=30330081
+paso 3825 f=0.64 loss=1.0509 tok=30530116
+paso 3850 f=0.64 loss=1.0565 tok=30729681
+paso 3875 f=0.65 loss=0.7142 tok=30929881
+paso 3900 f=0.65 loss=0.9387 tok=31129204
+paso 3925 f=0.65 loss=0.6962 tok=31330302
+paso 3950 f=0.66 loss=0.9862 tok=31529890
+paso 3975 f=0.66 loss=0.7960 tok=31729133
+paso 4000 f=0.67 loss=0.7915 tok=31929086
+  val(sub) bpn=3.860
+paso 4025 f=0.67 loss=0.6736 tok=32129567
+paso 4050 f=0.67 loss=0.7450 tok=32329884
+paso 4075 f=0.68 loss=0.6920 tok=32528562
+paso 4100 f=0.68 loss=0.8838 tok=32729584
+paso 4125 f=0.69 loss=0.8147 tok=32927428
+paso 4150 f=0.69 loss=0.8175 tok=33126937
+paso 4175 f=0.70 loss=1.0019 tok=33325091
+paso 4200 f=0.70 loss=0.9763 tok=33524176
+paso 4225 f=0.70 loss=0.7293 tok=33724358
+paso 4250 f=0.71 loss=0.9338 tok=33924596
+  val(sub) bpn=3.836
+paso 4275 f=0.71 loss=0.6738 tok=34123491
+paso 4300 f=0.72 loss=0.8868 tok=34322673
+paso 4325 f=0.72 loss=0.7428 tok=34522053
+paso 4350 f=0.72 loss=0.9240 tok=34721512
+paso 4375 f=0.73 loss=0.9955 tok=34921837
+paso 4400 f=0.73 loss=0.9264 tok=35121665
+paso 4425 f=0.74 loss=0.6425 tok=35321076
+paso 4450 f=0.74 loss=0.6768 tok=35520815
+paso 4475 f=0.75 loss=0.6977 tok=35719937
+paso 4500 f=0.75 loss=0.6524 tok=35920100
+  val(sub) bpn=3.919
+paso 4525 f=0.75 loss=0.7625 tok=36119365
+paso 4550 f=0.76 loss=0.7961 tok=36318157
+paso 4575 f=0.76 loss=0.7343 tok=36517573
+paso 4600 f=0.77 loss=0.9043 tok=36717514
+paso 4625 f=0.77 loss=0.6922 tok=36916293
+paso 4650 f=0.77 loss=1.0294 tok=37116550
+paso 4675 f=0.78 loss=0.9314 tok=37316761
+paso 4700 f=0.78 loss=1.0451 tok=37517006
+paso 4725 f=0.79 loss=0.6469 tok=37715931
+paso 4750 f=0.79 loss=0.6915 tok=37915141
+  val(sub) bpn=3.881
+paso 4775 f=0.80 loss=0.8099 tok=38114335
+paso 4800 f=0.80 loss=0.9557 tok=38312368
+paso 4825 f=0.80 loss=0.6636 tok=38511154
+paso 4850 f=0.81 loss=0.8540 tok=38711979
+paso 4875 f=0.81 loss=0.6808 tok=38912049
+paso 4900 f=0.82 loss=0.6672 tok=39111467
+paso 4925 f=0.82 loss=0.7865 tok=39311097
+paso 4950 f=0.82 loss=0.6742 tok=39510733
+paso 4975 f=0.83 loss=0.6815 tok=39708469
+paso 5000 f=0.83 loss=0.6451 tok=39908300
+  val(sub) bpn=4.010
+paso 5025 f=0.84 loss=0.8676 tok=40107744
+paso 5050 f=0.84 loss=0.8749 tok=40308024
+paso 5075 f=0.85 loss=0.6215 tok=40507501
+paso 5100 f=0.85 loss=0.7827 tok=40706709
+paso 5125 f=0.85 loss=0.6431 tok=40906572
+paso 5150 f=0.86 loss=0.6133 tok=41106241
+paso 5175 f=0.86 loss=0.8708 tok=41307111
+paso 5200 f=0.87 loss=0.7294 tok=41507761
+paso 5225 f=0.87 loss=0.7757 tok=41706883
+paso 5250 f=0.87 loss=0.8519 tok=41907943
+  val(sub) bpn=3.969
+paso 5275 f=0.88 loss=0.8134 tok=42107649
+paso 5300 f=0.88 loss=0.6342 tok=42306525
+paso 5325 f=0.89 loss=0.6009 tok=42505393
+paso 5350 f=0.89 loss=0.6600 tok=42705797
+paso 5375 f=0.90 loss=0.6467 tok=42903717
+paso 5400 f=0.90 loss=0.6024 tok=43103122
+paso 5425 f=0.90 loss=0.7913 tok=43303313
+paso 5450 f=0.91 loss=0.8620 tok=43503584
+paso 5475 f=0.91 loss=0.5602 tok=43701887
+paso 5500 f=0.92 loss=0.8332 tok=43901193
+  val(sub) bpn=3.928
+paso 5525 f=0.92 loss=0.9361 tok=44101146
+paso 5550 f=0.92 loss=0.6683 tok=44300283
+paso 5575 f=0.93 loss=0.7324 tok=44500427
+paso 5600 f=0.93 loss=0.5534 tok=44699240
+paso 5625 f=0.94 loss=0.6808 tok=44898257
+paso 5650 f=0.94 loss=0.6597 tok=45098498
+paso 5675 f=0.95 loss=0.5907 tok=45297111
+paso 5700 f=0.95 loss=0.5771 tok=45496028
+paso 5725 f=0.95 loss=0.5267 tok=45695395
+paso 5750 f=0.96 loss=0.7043 tok=45895016
+  val(sub) bpn=4.227
+paso 5775 f=0.96 loss=0.7030 tok=46095489
+paso 5800 f=0.97 loss=0.7454 tok=46295753
+paso 5825 f=0.97 loss=0.4505 tok=46496175
+paso 5850 f=0.97 loss=0.4843 tok=46694203
+paso 5875 f=0.98 loss=0.5565 tok=46893746
+paso 5900 f=0.98 loss=0.5885 tok=47094481
+paso 5925 f=0.99 loss=0.5621 tok=47293457
+paso 5950 f=0.99 loss=0.7027 tok=47493461
+paso 5975 f=1.00 loss=0.4502 tok=47693384
+paso 6000 f=1.00 loss=0.6408 tok=47893194
+  val(sub) bpn=4.235
+FINAL {"paso": 6000, "tokens_vistos": 47893194, "segundos": 1037, "bits_por_nota": 3.6004954658763153, "bits_por_token": 1.4005611216074312, "tokens_por_nota": 2.570752115226509, "notas": 96089}
+### 2026-11-25 16:06:23 entrenar_wsd_6000 exit=0 segundos=1041
+### 2026-11-25 16:06:23 entrenar_wsd_8000: /usr/bin/python -m fuga.train --datos data/corpus_pd.jsonl --modo eco_rel --preset fuga-s --ctx 1024 --cache cache/eco_rel_1024.pkl --device cuda --tokens_por_lote 8192 --pasos 8000 --lr 0.0006 --wd 0.1 --dropout 0.3 --eval_cada 250 --semilla 0 --out runs/final_h100/wsd_8000 --guardar_mejor
+secuencias=15834 tokens=4948693 val_trozos=617 prep=0s
+parámetros=151.59M vocab=723 device=cuda precision=bf16
+paso 25 f=0.00 loss=3.9931 tok=199331
+paso 50 f=0.01 loss=2.9242 tok=397696
+paso 75 f=0.01 loss=1.6505 tok=596918
+paso 100 f=0.01 loss=1.4484 tok=795949
+paso 125 f=0.02 loss=2.1285 tok=996582
+paso 150 f=0.02 loss=2.0119 tok=1195566
+paso 175 f=0.02 loss=2.0032 tok=1394998
+paso 200 f=0.02 loss=1.3769 tok=1594089
+paso 225 f=0.03 loss=1.6209 tok=1793345
+paso 250 f=0.03 loss=1.6176 tok=1993154
+  val(sub) bpn=5.873
+paso 275 f=0.03 loss=1.2071 tok=2192967
+paso 300 f=0.04 loss=1.0656 tok=2393168
+paso 325 f=0.04 loss=1.6136 tok=2593003
+paso 350 f=0.04 loss=1.6190 tok=2793026
+paso 375 f=0.05 loss=1.4378 tok=2992696
+paso 400 f=0.05 loss=1.0560 tok=3192431
+paso 425 f=0.05 loss=1.0843 tok=3392532
+paso 450 f=0.06 loss=1.5724 tok=3590527
+paso 475 f=0.06 loss=1.4726 tok=3790043
+paso 500 f=0.06 loss=1.1187 tok=3989314
+  val(sub) bpn=5.147
+paso 525 f=0.07 loss=1.4830 tok=4188877
+paso 550 f=0.07 loss=1.0439 tok=4388289
+paso 575 f=0.07 loss=1.0046 tok=4589274
+paso 600 f=0.07 loss=1.2997 tok=4788743
+paso 625 f=0.08 loss=1.2896 tok=4988415
+paso 650 f=0.08 loss=1.3190 tok=5189145
+paso 675 f=0.08 loss=0.9635 tok=5388296
+paso 700 f=0.09 loss=1.2609 tok=5587956
+paso 725 f=0.09 loss=1.0991 tok=5787202
+paso 750 f=0.09 loss=1.3144 tok=5987414
+  val(sub) bpn=4.789
+paso 775 f=0.10 loss=0.9195 tok=6185644
+paso 800 f=0.10 loss=0.9327 tok=6384881
+paso 825 f=0.10 loss=1.3273 tok=6585194
+paso 850 f=0.11 loss=0.8861 tok=6785870
+paso 875 f=0.11 loss=0.8751 tok=6984561
+paso 900 f=0.11 loss=1.2959 tok=7185155
+paso 925 f=0.12 loss=1.0733 tok=7384895
+paso 950 f=0.12 loss=0.9692 tok=7585008
+paso 975 f=0.12 loss=1.0509 tok=7783616
+paso 1000 f=0.12 loss=0.9368 tok=7983636
+  val(sub) bpn=4.624
+paso 1025 f=0.13 loss=0.9171 tok=8182390
+paso 1050 f=0.13 loss=0.9295 tok=8381858
+paso 1075 f=0.13 loss=1.3762 tok=8581490
+paso 1100 f=0.14 loss=0.8711 tok=8780555
+paso 1125 f=0.14 loss=0.9403 tok=8979781
+paso 1150 f=0.14 loss=1.2592 tok=9179407
+paso 1175 f=0.15 loss=0.8726 tok=9379144
+paso 1200 f=0.15 loss=0.9005 tok=9578972
+paso 1225 f=0.15 loss=1.3083 tok=9777681
+paso 1250 f=0.16 loss=1.1741 tok=9976726
+  val(sub) bpn=4.429
+paso 1275 f=0.16 loss=1.2090 tok=10175377
+paso 1300 f=0.16 loss=0.9467 tok=10375607
+paso 1325 f=0.17 loss=1.2056 tok=10575626
+paso 1350 f=0.17 loss=1.3025 tok=10774686
+paso 1375 f=0.17 loss=0.8645 tok=10975365
+paso 1400 f=0.17 loss=1.3006 tok=11175310
+paso 1425 f=0.18 loss=0.8665 tok=11374974
+paso 1450 f=0.18 loss=1.0723 tok=11574777
+paso 1475 f=0.18 loss=1.2718 tok=11775502
+paso 1500 f=0.19 loss=0.8925 tok=11973799
+  val(sub) bpn=4.282
+paso 1525 f=0.19 loss=0.8460 tok=12171975
+paso 1550 f=0.19 loss=0.8785 tok=12370972
+paso 1575 f=0.20 loss=1.2539 tok=12571931
+paso 1600 f=0.20 loss=1.1082 tok=12772708
+paso 1625 f=0.20 loss=0.8025 tok=12972116
+paso 1650 f=0.21 loss=1.1100 tok=13172084
+paso 1675 f=0.21 loss=0.8047 tok=13370490
+paso 1700 f=0.21 loss=1.1247 tok=13570028
+paso 1725 f=0.22 loss=0.8531 tok=13770188
+paso 1750 f=0.22 loss=1.1881 tok=13968749
+  val(sub) bpn=4.173
+paso 1775 f=0.22 loss=0.8028 tok=14167358
+paso 1800 f=0.22 loss=1.1609 tok=14367728
+paso 1825 f=0.23 loss=1.1709 tok=14567961
+paso 1850 f=0.23 loss=1.0236 tok=14766593
+paso 1875 f=0.23 loss=0.8012 tok=14965408
+paso 1900 f=0.24 loss=0.8033 tok=15165273
+paso 1925 f=0.24 loss=0.8193 tok=15365509
+paso 1950 f=0.24 loss=1.1656 tok=15565808
+paso 1975 f=0.25 loss=1.0601 tok=15764723
+paso 2000 f=0.25 loss=0.9583 tok=15964689
+  val(sub) bpn=4.119
+paso 2025 f=0.25 loss=0.7727 tok=16163572
+paso 2050 f=0.26 loss=0.7914 tok=16363092
+paso 2075 f=0.26 loss=1.1117 tok=16562778
+paso 2100 f=0.26 loss=1.2209 tok=16760701
+paso 2125 f=0.27 loss=1.1542 tok=16961121
+paso 2150 f=0.27 loss=1.1493 tok=17160506
+paso 2175 f=0.27 loss=0.9162 tok=17360135
+paso 2200 f=0.27 loss=1.1152 tok=17559919
+paso 2225 f=0.28 loss=0.7563 tok=17759779
+paso 2250 f=0.28 loss=0.7836 tok=17959779
+  val(sub) bpn=4.034
+paso 2275 f=0.28 loss=0.8074 tok=18158969
+paso 2300 f=0.29 loss=0.7567 tok=18357609
+paso 2325 f=0.29 loss=0.7827 tok=18556709
+paso 2350 f=0.29 loss=0.7544 tok=18756509
+paso 2375 f=0.30 loss=0.8280 tok=18957026
+paso 2400 f=0.30 loss=0.7752 tok=19157135
+paso 2425 f=0.30 loss=0.7671 tok=19358472
+paso 2450 f=0.31 loss=0.9934 tok=19555808
+paso 2475 f=0.31 loss=0.9726 tok=19754826
+paso 2500 f=0.31 loss=1.0882 tok=19954202
+  val(sub) bpn=3.963
+paso 2525 f=0.32 loss=1.1164 tok=20153404
+paso 2550 f=0.32 loss=0.7713 tok=20351995
+paso 2575 f=0.32 loss=0.7509 tok=20552015
+paso 2600 f=0.32 loss=0.7563 tok=20751733
+paso 2625 f=0.33 loss=1.0336 tok=20951993
+paso 2650 f=0.33 loss=0.7847 tok=21151939
+paso 2675 f=0.33 loss=0.7782 tok=21353135
+paso 2700 f=0.34 loss=0.7405 tok=21552751
+paso 2725 f=0.34 loss=0.7693 tok=21752707
+paso 2750 f=0.34 loss=0.7650 tok=21951479
+  val(sub) bpn=3.974
+paso 2775 f=0.35 loss=0.9754 tok=22152023
+paso 2800 f=0.35 loss=0.7859 tok=22351129
+paso 2825 f=0.35 loss=0.8673 tok=22550811
+paso 2850 f=0.36 loss=0.7905 tok=22750966
+paso 2875 f=0.36 loss=1.1401 tok=22950086
+paso 2900 f=0.36 loss=0.9943 tok=23148095
+paso 2925 f=0.37 loss=0.8983 tok=23347674
+paso 2950 f=0.37 loss=0.9059 tok=23547897
+paso 2975 f=0.37 loss=0.7604 tok=23747215
+paso 3000 f=0.37 loss=0.7393 tok=23945967
+  val(sub) bpn=3.952
+paso 3025 f=0.38 loss=0.8442 tok=24145920
+paso 3050 f=0.38 loss=1.0292 tok=24344464
+paso 3075 f=0.38 loss=0.8156 tok=24545021
+paso 3100 f=0.39 loss=0.6622 tok=24744004
+paso 3125 f=0.39 loss=0.9228 tok=24943421
+paso 3150 f=0.39 loss=0.9288 tok=25143303
+paso 3175 f=0.40 loss=0.7985 tok=25343664
+paso 3200 f=0.40 loss=0.7781 tok=25542593
+paso 3225 f=0.40 loss=0.7748 tok=25742472
+paso 3250 f=0.41 loss=1.0389 tok=25941372
+  val(sub) bpn=3.855
+paso 3275 f=0.41 loss=0.8368 tok=26141073
+paso 3300 f=0.41 loss=1.1366 tok=26340113
+paso 3325 f=0.42 loss=0.7307 tok=26540269
+paso 3350 f=0.42 loss=0.7318 tok=26739824
+paso 3375 f=0.42 loss=0.6905 tok=26939476
+paso 3400 f=0.42 loss=1.0029 tok=27140124
+paso 3425 f=0.43 loss=0.8889 tok=27340343
+paso 3450 f=0.43 loss=1.0179 tok=27538800
+paso 3475 f=0.43 loss=1.0017 tok=27738805
+paso 3500 f=0.44 loss=1.0316 tok=27939403
+  val(sub) bpn=3.885
+paso 3525 f=0.44 loss=0.7422 tok=28138916
+paso 3550 f=0.44 loss=0.7750 tok=28338183
+paso 3575 f=0.45 loss=0.7419 tok=28538665
+paso 3600 f=0.45 loss=1.1058 tok=28737398
+paso 3625 f=0.45 loss=1.0484 tok=28936863
+paso 3650 f=0.46 loss=1.0446 tok=29136695
+paso 3675 f=0.46 loss=0.9526 tok=29334257
+paso 3700 f=0.46 loss=0.9683 tok=29534760
+paso 3725 f=0.47 loss=0.9420 tok=29732991
+paso 3750 f=0.47 loss=0.6722 tok=29932434
+  val(sub) bpn=3.897
+paso 3775 f=0.47 loss=0.9699 tok=30131613
+paso 3800 f=0.47 loss=0.6659 tok=30330081
+paso 3825 f=0.48 loss=1.0269 tok=30530116
+paso 3850 f=0.48 loss=1.0394 tok=30729681
+paso 3875 f=0.48 loss=0.7092 tok=30929881
+paso 3900 f=0.49 loss=0.9129 tok=31129204
+paso 3925 f=0.49 loss=0.6846 tok=31330302
+paso 3950 f=0.49 loss=0.9623 tok=31529890
+paso 3975 f=0.50 loss=0.7843 tok=31729133
+paso 4000 f=0.50 loss=0.7868 tok=31929086
+  val(sub) bpn=3.863
+paso 4025 f=0.50 loss=0.6680 tok=32129567
+paso 4050 f=0.51 loss=0.7413 tok=32329884
+paso 4075 f=0.51 loss=0.6918 tok=32528562
+paso 4100 f=0.51 loss=0.8846 tok=32729584
+paso 4125 f=0.52 loss=0.7972 tok=32927428
+paso 4150 f=0.52 loss=0.8135 tok=33126937
+paso 4175 f=0.52 loss=0.9884 tok=33325091
+paso 4200 f=0.52 loss=0.9538 tok=33524176
+paso 4225 f=0.53 loss=0.7234 tok=33724358
+paso 4250 f=0.53 loss=0.9234 tok=33924596
+  val(sub) bpn=3.818
+paso 4275 f=0.53 loss=0.6676 tok=34123491
+paso 4300 f=0.54 loss=0.8801 tok=34322673
+paso 4325 f=0.54 loss=0.7438 tok=34522053
+paso 4350 f=0.54 loss=0.9096 tok=34721512
+paso 4375 f=0.55 loss=0.9640 tok=34921837
+paso 4400 f=0.55 loss=0.9157 tok=35121665
+paso 4425 f=0.55 loss=0.6315 tok=35321076
+paso 4450 f=0.56 loss=0.6651 tok=35520815
+paso 4475 f=0.56 loss=0.6968 tok=35719937
+paso 4500 f=0.56 loss=0.6548 tok=35920100
+  val(sub) bpn=3.908
+paso 4525 f=0.57 loss=0.7448 tok=36119365
+paso 4550 f=0.57 loss=0.7608 tok=36318157
+paso 4575 f=0.57 loss=0.7222 tok=36517573
+paso 4600 f=0.57 loss=0.8858 tok=36717514
+paso 4625 f=0.58 loss=0.6823 tok=36916293
+paso 4650 f=0.58 loss=1.0175 tok=37116550
+paso 4675 f=0.58 loss=0.9227 tok=37316761
+paso 4700 f=0.59 loss=1.0313 tok=37517006
+paso 4725 f=0.59 loss=0.6274 tok=37715931
+paso 4750 f=0.59 loss=0.6834 tok=37915141
+  val(sub) bpn=3.868
+paso 4775 f=0.60 loss=0.7985 tok=38114335
+paso 4800 f=0.60 loss=0.9404 tok=38312368
+paso 4825 f=0.60 loss=0.6607 tok=38511154
+paso 4850 f=0.61 loss=0.8459 tok=38711979
+paso 4875 f=0.61 loss=0.6834 tok=38912049
+paso 4900 f=0.61 loss=0.6648 tok=39111467
+paso 4925 f=0.62 loss=0.7763 tok=39311097
+paso 4950 f=0.62 loss=0.6587 tok=39510733
+paso 4975 f=0.62 loss=0.6816 tok=39708469
+paso 5000 f=0.62 loss=0.6527 tok=39908300
+  val(sub) bpn=4.040
+paso 5025 f=0.63 loss=0.8472 tok=40107744
+paso 5050 f=0.63 loss=0.8713 tok=40308024
+paso 5075 f=0.63 loss=0.6278 tok=40507501
+paso 5100 f=0.64 loss=0.7931 tok=40706709
+paso 5125 f=0.64 loss=0.6507 tok=40906572
+paso 5150 f=0.64 loss=0.6229 tok=41106241
+paso 5175 f=0.65 loss=0.8792 tok=41307111
+paso 5200 f=0.65 loss=0.7569 tok=41507761
+paso 5225 f=0.65 loss=0.7959 tok=41706883
+paso 5250 f=0.66 loss=0.8836 tok=41907943
+  val(sub) bpn=4.012
+paso 5275 f=0.66 loss=0.8399 tok=42107649
+paso 5300 f=0.66 loss=0.6555 tok=42306525
+paso 5325 f=0.67 loss=0.6433 tok=42505393
+paso 5350 f=0.67 loss=0.6972 tok=42705797
+paso 5375 f=0.67 loss=0.6829 tok=42903717
+paso 5400 f=0.67 loss=0.6420 tok=43103122
+paso 5425 f=0.68 loss=0.8130 tok=43303313
+paso 5450 f=0.68 loss=0.9209 tok=43503584
+paso 5475 f=0.68 loss=0.6177 tok=43701887
+paso 5500 f=0.69 loss=0.8663 tok=43901193
+  val(sub) bpn=3.940
+paso 5525 f=0.69 loss=1.0130 tok=44101146
+paso 5550 f=0.69 loss=0.7263 tok=44300283
+paso 5575 f=0.70 loss=0.8389 tok=44500427
+paso 5600 f=0.70 loss=0.5799 tok=44699240
+paso 5625 f=0.70 loss=0.8014 tok=44898257
+paso 5650 f=0.71 loss=0.7236 tok=45098498
+paso 5675 f=0.71 loss=0.6433 tok=45297111
+paso 5700 f=0.71 loss=0.6465 tok=45496028
+paso 5725 f=0.72 loss=0.6030 tok=45695395
+paso 5750 f=0.72 loss=0.7634 tok=45895016
+  val(sub) bpn=4.158
+paso 5775 f=0.72 loss=0.8104 tok=46095489
+paso 5800 f=0.72 loss=0.8493 tok=46295753
+paso 5825 f=0.73 loss=0.5271 tok=46496175
+paso 5850 f=0.73 loss=0.5531 tok=46694203
+paso 5875 f=0.73 loss=0.6725 tok=46893746
+paso 5900 f=0.74 loss=0.6788 tok=47094481
+paso 5925 f=0.74 loss=0.6420 tok=47293457
+paso 5950 f=0.74 loss=0.8368 tok=47493461
+paso 5975 f=0.75 loss=0.5552 tok=47693384
+paso 6000 f=0.75 loss=0.8200 tok=47893194
+  val(sub) bpn=4.184
+paso 6025 f=0.75 loss=0.8988 tok=48093480
+paso 6050 f=0.76 loss=0.7019 tok=48291269
+paso 6075 f=0.76 loss=0.6300 tok=48488859
+paso 6100 f=0.76 loss=0.8464 tok=48688461
+paso 6125 f=0.77 loss=0.8673 tok=48889251
+paso 6150 f=0.77 loss=0.5895 tok=49088526
+paso 6175 f=0.77 loss=0.6554 tok=49288704
+paso 6200 f=0.77 loss=0.4634 tok=49489038
+paso 6225 f=0.78 loss=0.7838 tok=49689177
+paso 6250 f=0.78 loss=0.7873 tok=49887278
+  val(sub) bpn=4.333
+paso 6275 f=0.78 loss=0.5668 tok=50086030
+paso 6300 f=0.79 loss=0.5505 tok=50286050
+paso 6325 f=0.79 loss=0.7401 tok=50486265
+paso 6350 f=0.79 loss=0.5924 tok=50686552
+paso 6375 f=0.80 loss=0.5841 tok=50886274
+paso 6400 f=0.80 loss=0.5823 tok=51085903
+paso 6425 f=0.80 loss=0.5853 tok=51285672
+paso 6450 f=0.81 loss=0.5701 tok=51486820
+paso 6475 f=0.81 loss=0.7374 tok=51686958
+paso 6500 f=0.81 loss=0.7286 tok=51886537
+  val(sub) bpn=4.368
+paso 6525 f=0.82 loss=0.8038 tok=52085440
+paso 6550 f=0.82 loss=0.7207 tok=52284521
+paso 6575 f=0.82 loss=0.5711 tok=52483883
+paso 6600 f=0.82 loss=0.6063 tok=52682809
+paso 6625 f=0.83 loss=0.8395 tok=52880914
+paso 6650 f=0.83 loss=0.7575 tok=53080892
+paso 6675 f=0.83 loss=0.6897 tok=53280578
+paso 6700 f=0.84 loss=0.7484 tok=53480780
+paso 6725 f=0.84 loss=0.5459 tok=53679973
+paso 6750 f=0.84 loss=0.7549 tok=53878718
+  val(sub) bpn=4.332
+paso 6775 f=0.85 loss=0.5495 tok=54079086
+paso 6800 f=0.85 loss=0.5483 tok=54277482
+paso 6825 f=0.85 loss=0.4416 tok=54474472
+paso 6850 f=0.86 loss=0.6338 tok=54673195
+paso 6875 f=0.86 loss=0.5571 tok=54872704
+paso 6900 f=0.86 loss=0.5799 tok=55071558
+paso 6925 f=0.87 loss=0.5379 tok=55270619
+paso 6950 f=0.87 loss=0.5098 tok=55469762
+paso 6975 f=0.87 loss=0.6581 tok=55670000
+paso 7000 f=0.87 loss=0.6386 tok=55870046
+  val(sub) bpn=4.765
+paso 7025 f=0.88 loss=0.4309 tok=56070333
+paso 7050 f=0.88 loss=0.5713 tok=56269662
+paso 7075 f=0.88 loss=0.5290 tok=56469870
+paso 7100 f=0.89 loss=0.6376 tok=56668832
+paso 7125 f=0.89 loss=0.5166 tok=56866936
+paso 7150 f=0.89 loss=0.5887 tok=57065301
+paso 7175 f=0.90 loss=0.4872 tok=57265513
+paso 7200 f=0.90 loss=0.5842 tok=57465880
+paso 7225 f=0.90 loss=0.6194 tok=57666881
+paso 7250 f=0.91 loss=0.4562 tok=57866280
+  val(sub) bpn=4.874
+paso 7275 f=0.91 loss=0.5522 tok=58066058
+paso 7300 f=0.91 loss=0.4693 tok=58266289
+paso 7325 f=0.92 loss=0.4792 tok=58466258
+paso 7350 f=0.92 loss=0.4874 tok=58666944
+paso 7375 f=0.92 loss=0.5271 tok=58867729
+paso 7400 f=0.92 loss=0.5073 tok=59066857
+paso 7425 f=0.93 loss=0.4002 tok=59266818
+paso 7450 f=0.93 loss=0.4397 tok=59464918
+paso 7475 f=0.93 loss=0.3908 tok=59666085
+paso 7500 f=0.94 loss=0.3315 tok=59865689
+  val(sub) bpn=5.389
+paso 7525 f=0.94 loss=0.3311 tok=60066572
+paso 7550 f=0.94 loss=0.4817 tok=60265001
+paso 7575 f=0.95 loss=0.3751 tok=60463173
+paso 7600 f=0.95 loss=0.3737 tok=60663020
+paso 7625 f=0.95 loss=0.3295 tok=60862838
+paso 7650 f=0.96 loss=0.5140 tok=61062986
+paso 7675 f=0.96 loss=0.4022 tok=61263574
+paso 7700 f=0.96 loss=0.4007 tok=61464542
+paso 7725 f=0.97 loss=0.3896 tok=61664250
+paso 7750 f=0.97 loss=0.4124 tok=61863847
+  val(sub) bpn=5.583
+paso 7775 f=0.97 loss=0.3944 tok=62062235
+paso 7800 f=0.97 loss=0.4300 tok=62261835
+paso 7825 f=0.98 loss=0.4460 tok=62461867
+paso 7850 f=0.98 loss=0.3060 tok=62661624
+paso 7875 f=0.98 loss=0.4719 tok=62859499
+paso 7900 f=0.99 loss=0.3727 tok=63059070
+paso 7925 f=0.99 loss=0.4144 tok=63258705
+paso 7950 f=0.99 loss=0.3999 tok=63455392
+paso 7975 f=1.00 loss=0.4011 tok=63654594
+paso 8000 f=1.00 loss=0.3542 tok=63854222
+  val(sub) bpn=5.620
+FINAL {"paso": 8000, "tokens_vistos": 63854222, "segundos": 1379, "bits_por_nota": 4.4982866442562965, "bits_por_token": 1.7497940068251012, "tokens_por_nota": 2.570752115226509, "notas": 96089}
+### 2026-11-25 16:29:26 entrenar_wsd_8000 exit=0 segundos=1383
+### 2026-11-25 16:29:26 verificar_zspace: /usr/bin/python scripts/verificar_zspace.py --run runs/final_h100/completo
+{
+ "dtype": "bf16",
+ "versiones": 37,
+ "completas": 5,
+ "bytes_tienda": 8019036856,
+ "bytes_equivalente_torch": 11217727488,
+ "bytes_equivalente_torch_fp32": 22435454976,
+ "ratio_vs_mismo_dtype": 0.7148539545623878,
+ "ratio_vs_fp32": 0.3574269772811939,
+ "exacto_modelo.pt": true,
+ "exacto_modelo_mejor.pt": null,
+ "segundos_por_version": {
+  "n": 36,
+  "media": 9.10833333333333,
+  "max": 18.0,
+  "suma": 327.8999999999999
+ }
+}
+### 2026-11-25 16:29:55 verificar_zspace exit=0 segundos=30
+### 2026-11-25 16:29:57 evaluar: /usr/bin/python scripts/evaluar_ckpts.py --ckpts runs/final_h100/completo/modelo_mejor.pt runs/final_h100/completo/modelo.pt runs/final_h100/wsd_4500/modelo_mejor.pt runs/final_h100/wsd_4500/modelo.pt runs/final_h100/wsd_6000/modelo_mejor.pt runs/final_h100/wsd_6000/modelo.pt runs/final_h100/wsd_8000/modelo_mejor.pt runs/final_h100/wsd_8000/modelo.pt --cache cache/eco_rel_1024.pkl --cache_test cache/test_eco_rel_1024.pkl --datos data/corpus_pd.jsonl --device cuda --por_pieza --out runs/final_h100/evaluacion.json
+runs/final_h100/completo/modelo_mejor.pt: val 3.4419 test 3.7448
+runs/final_h100/completo/modelo.pt: val 8.1861 test 8.5914
+runs/final_h100/wsd_4500/modelo_mejor.pt: val 3.3618 test 3.6454
+runs/final_h100/wsd_4500/modelo.pt: val 3.3737 test 3.6554
+runs/final_h100/wsd_6000/modelo_mejor.pt: val 3.4798 test 3.7775
+runs/final_h100/wsd_6000/modelo.pt: val 3.6005 test 3.8738
+runs/final_h100/wsd_8000/modelo_mejor.pt: val 3.4483 test 3.7461
+runs/final_h100/wsd_8000/modelo.pt: val 4.4983 test 4.7687
+### 2026-11-25 16:32:13 evaluar exit=0 segundos=136
+### 2026-11-25 16:32:14 ELEGIDO runs/final_h100/wsd_4500/modelo_mejor.pt: val 3.3618 test 3.6454 | KF1 [-0.08974610674900292, -0.1035294803418523, -0.07575524088123942] pasa (IC95 < 0)
+### 2026-11-25 16:32:14 generar: /usr/bin/python -m fuga.sample --ckpt runs/final_h100/wsd_4500/modelo_mejor.pt --n 12 --compases 16 --wav --interpretar romantico --device cuda --out runs/final_h100/muestras
+{'muestra': 0, 'notas': 33, 'compases': 9, 'tonica': 5, 'modo': 'major', 'tempo': 94}
+{'muestra': 1, 'notas': 220, 'compases': 16, 'tonica': 2, 'modo': 'minor', 'tempo': 94}
+{'muestra': 2, 'notas': 69, 'compases': 16, 'tonica': 7, 'modo': 'minor', 'tempo': 94}
+{'muestra': 3, 'notas': 229, 'compases': 16, 'tonica': 9, 'modo': 'minor', 'tempo': 94}
+{'muestra': 4, 'notas': 128, 'compases': 16, 'tonica': 2, 'modo': 'major', 'tempo': 94}
+{'muestra': 5, 'notas': 30, 'compases': 9, 'tonica': 5, 'modo': 'major', 'tempo': 94}
+{'muestra': 6, 'notas': 51, 'compases': 13, 'tonica': 9, 'modo': 'major', 'tempo': 94}
+{'muestra': 7, 'notas': 36, 'compases': 9, 'tonica': 7, 'modo': 'major', 'tempo': 94}
+{'muestra': 8, 'notas': 283, 'compases': 16, 'tonica': 2, 'modo': 'major', 'tempo': 94}
+{'muestra': 9, 'notas': 30, 'compases': 9, 'tonica': 5, 'modo': 'major', 'tempo': 94}
+{'muestra': 10, 'notas': 141, 'compases': 10, 'tonica': 0, 'modo': 'major', 'tempo': 94}
+{'muestra': 11, 'notas': 15, 'compases': 4, 'tonica': 5, 'modo': 'major', 'tempo': 94}
+### 2026-11-25 16:33:03 generar exit=0 segundos=49
+### 2026-11-25 16:33:03 analizar: /usr/bin/python scripts/analizar_muestras.py --ckpt runs/final_h100/wsd_4500/modelo_mejor.pt --n 12 --datos data/corpus_pd.jsonl --device cuda --out runs/final_h100/analisis_muestras.json
+índice: 228354 ventanas de 4 compases; 40s
+{'muestra': 0, 'notas': 33, 'compases': 9, 'fin': True, 'partes': 1, 'tonica': 5, 'modo': 'major', 'tempo': 94, 'copia4': 0.0, 'copia2': 0.0, 'en_escala': 0.97, 'repeticion': 0.143, 'ambito': [60, 77]}
+{'muestra': 1, 'notas': 220, 'compases': 16, 'fin': True, 'partes': 5, 'tonica': 2, 'modo': 'minor', 'tempo': 94, 'copia4': 0.0, 'copia2': 0.0, 'en_escala': 0.905, 'repeticion': 0.197, 'ambito': [50, 77]}
+{'muestra': 2, 'notas': 69, 'compases': 16, 'fin': True, 'partes': 1, 'tonica': 7, 'modo': 'minor', 'tempo': 94, 'copia4': 0.0, 'copia2': 0.0, 'en_escala': 0.971, 'repeticion': 0.312, 'ambito': [55, 74]}
+{'muestra': 3, 'notas': 229, 'compases': 16, 'fin': True, 'partes': 6, 'tonica': 9, 'modo': 'minor', 'tempo': 94, 'copia4': 0.0, 'copia2': 0.0, 'en_escala': 0.961, 'repeticion': 0.175, 'ambito': [40, 72]}
+{'muestra': 4, 'notas': 128, 'compases': 16, 'fin': True, 'partes': 1, 'tonica': 2, 'modo': 'major', 'tempo': 94, 'copia4': 0.0, 'copia2': 0.0, 'en_escala': 1.0, 'repeticion': 0.438, 'ambito': [59, 76]}
+{'muestra': 5, 'notas': 30, 'compases': 9, 'fin': True, 'partes': 1, 'tonica': 5, 'modo': 'major', 'tempo': 94, 'copia4': 0.0, 'copia2': 0.0, 'en_escala': 1.0, 'repeticion': 0.0, 'ambito': [60, 74]}
+{'muestra': 6, 'notas': 51, 'compases': 13, 'fin': True, 'partes': 1, 'tonica': 9, 'modo': 'major', 'tempo': 94, 'copia4': 0.0, 'copia2': 0.0, 'en_escala': 1.0, 'repeticion': 0.385, 'ambito': [64, 74]}
+{'muestra': 7, 'notas': 36, 'compases': 9, 'fin': True, 'partes': 1, 'tonica': 7, 'modo': 'major', 'tempo': 94, 'copia4': 0.0, 'copia2': 0.0, 'en_escala': 1.0, 'repeticion': 0.0, 'ambito': [62, 74]}
+{'muestra': 8, 'notas': 283, 'compases': 16, 'fin': True, 'partes': 4, 'tonica': 2, 'modo': 'major', 'tempo': 94, 'copia4': 0.0, 'copia2': 0.0, 'en_escala': 0.841, 'repeticion': 0.188, 'ambito': [40, 79]}
+{'muestra': 9, 'notas': 30, 'compases': 9, 'fin': True, 'partes': 1, 'tonica': 5, 'modo': 'major', 'tempo': 94, 'copia4': 0.0, 'copia2': 0.0, 'en_escala': 1.0, 'repeticion': 0.25, 'ambito': [65, 77]}
+{'muestra': 10, 'notas': 141, 'compases': 10, 'fin': True, 'partes': 4, 'tonica': 0, 'modo': 'major', 'tempo': 94, 'copia4': 0.0, 'copia2': 0.0, 'en_escala': 0.972, 'repeticion': 0.038, 'ambito': [43, 72]}
+{'muestra': 11, 'notas': 15, 'compases': 4, 'fin': True, 'partes': 1, 'tonica': 5, 'modo': 'major', 'tempo': 94, 'copia4': 0.0, 'copia2': 0.0, 'en_escala': 1.0, 'repeticion': 0.0, 'ambito': [65, 74]}
+BASE REAL {"test_real_copia4": 0.051993996569468265, "test_real_copia2": 0.0918419702411493, "test_real_repeticion": 0.24254137170651302, "test_real_en_escala": 0.9572404627228223}
+### 2026-11-25 16:34:24 analizar exit=0 segundos=81
+### 2026-11-25 16:34:24 exportar: /usr/bin/python scripts/exportar_hf.py --ckpt runs/final_h100/wsd_4500/modelo_mejor.pt --run runs/final_h100/wsd_4500 --out runs/final_h100/hf --nombre FUGA-S eco_rel --datos data/corpus_pd.jsonl --seleccion runs/final_h100/seleccion.json --commit 28c64b1fd71d1e086ffaedbc3a64591b2f755de6 --muestras runs/final_h100/muestras/muestra_01_romantico.wav runs/final_h100/muestras/muestra_01_romantico.mid runs/final_h100/muestras/muestra_08_romantico.wav runs/final_h100/muestras/muestra_08_romantico.mid
+exportado a runs/final_h100/hf: 151.6M parámetros, float32, 612.1 MB en total, sha256 7355ffe953e0…
+### 2026-11-25 16:34:28 exportar exit=0 segundos=4
