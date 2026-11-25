@@ -160,6 +160,10 @@ def parsear_sse(lineas) -> list[str]:
     return out
 
 
+class CatalogoInaccesible(RuntimeError):
+    """El catálogo de GPU no se pudo leer; se puede crear igualmente y comprobar el precio después."""
+
+
 class Cliente:
     def __init__(self, clave: str, enviar=http):
         self.clave, self.enviar = clave, enviar
@@ -198,13 +202,18 @@ class Cliente:
         return [s.get("name") for s in r.get("secrets", [])]
 
     def precios(self, gpus=H100) -> list[dict]:
-        """Ofertas de las GPU pedidas en las dos nubes, con disponibilidad para hosts con CUDA >= CUDA_MIN."""
-        out = []
+        """Ofertas de las GPU pedidas en las dos nubes, con disponibilidad para hosts con CUDA >= CUDA_MIN. Si el
+        catálogo no responde en ninguna nube (p. ej., una clave sin catalog:read), lanza CatalogoInaccesible."""
+        out, errores = [], []
         for nube in ("SECURE", "COMMUNITY"):
             q = urllib.parse.urlencode({"include": "AVAILABILITY", "product": "POD", "cloud": nube, "minCudaVersion": CUDA_MIN})
             cod, resp = self.enviar("GET", f"{API}/catalog/gpus?{q}", self.clave)
             if 200 <= cod < 300 and isinstance(resp, dict):
                 out += ofertas(resp, nube, gpus)
+            else:
+                errores.append(f"{nube} {cod}: {motivo(resp)}")
+        if len(errores) == 2:
+            raise CatalogoInaccesible("; ".join(errores))
         return out
 
     def crear_primero(self, gpus: list[str], construir) -> tuple[dict | None, list[str]]:
@@ -384,13 +393,21 @@ def _ejecutar(a) -> int:
     if a.accion in ("simulacro", "crear"):
         commit = commit_publicado()
         familia = FAMILIAS[a.gpu]
-        ofs = cli.precios(familia)
-        for o in sorted(ofs, key=lambda o: (o["nube"], o["precio"])):
-            print(f"  {o['gpu']:<24} {o['nube']:<9} {o['precio']:.2f} USD/h  disponibilidad {o['stock']}")
-        oferta = elegir_oferta(ofs, a.precio_max)
-        if not oferta:
-            print(f"ninguna {a.gpu.upper()} con disponibilidad por debajo de {a.precio_max:.2f} USD/h; no se crea nada")
-            return 3
+        try:
+            ofs = cli.precios(familia)
+        except CatalogoInaccesible as e:
+            print(f"AVISO: no se pudo leer el catálogo ({e}). Se probará {list(familia)} en SECURE sin conocer precio ni "
+                  f"disponibilidad; si el pod sale por encima de {a.precio_max:.2f} USD/h, se elimina al crearlo.")
+            ofs = None
+        if ofs is None:
+            oferta = {"nube": "SECURE", "gpus": list(familia), "precio": a.precio_max, "precio_peor": a.precio_max, "stock": None}
+        else:
+            for o in sorted(ofs, key=lambda o: (o["nube"], o["precio"])):
+                print(f"  {o['gpu']:<24} {o['nube']:<9} {o['precio']:.2f} USD/h  disponibilidad {o['stock']}")
+            oferta = elegir_oferta(ofs, a.precio_max)
+            if not oferta:
+                print(f"ninguna {a.gpu.upper()} con disponibilidad por debajo de {a.precio_max:.2f} USD/h; no se crea nada")
+                return 3
         precio = oferta["precio_peor"]
         print(f"se probaría, en este orden: {oferta['gpus']} en {oferta['nube']}")
         print(f"imagen {IMAGEN} | CUDA del host >= {CUDA_MIN} | volumen 40 GB en /workspace | commit {commit[:10]} | plan {a.plan}")

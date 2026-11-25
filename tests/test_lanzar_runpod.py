@@ -128,6 +128,14 @@ def test_cliente_v2_rutas_paginacion_y_errores(lz):
     assert cod == 0 and "sin conexión" in motivo
 
 
+def test_catalogo_inaccesible(lz):
+    prohibido = (403, {"title": "Forbidden", "status": 403, "detail": "this API key does not grant catalog:read"})
+    with pytest.raises(lz.CatalogoInaccesible, match="catalog:read"):
+        lz.Cliente("k", lambda *a, **k: prohibido).precios()
+    medio = lambda m, url, *a, **k: (200, SEGURO) if "cloud=SECURE" in url else prohibido   # noqa: E731
+    assert {o["nube"] for o in lz.Cliente("k", medio).precios()} == {"SECURE"}         # con una nube basta
+
+
 def test_crear_salta_las_gpu_sin_capacidad(lz):
     sin_cap = (400, {"title": "Bad Request", "status": 400, "detail": "There are no longer any instances available with the requested specifications."})
     f = _Falso(crear=[sin_cap, (409, {"title": "Conflict", "status": 409}), (201, {"id": "p1", "cost": 4.39, "status": "PROVISIONING"})])
