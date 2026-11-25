@@ -80,7 +80,7 @@ y 8 000 pasos la meseta dura demasiado y el decaimiento llega cuando el modelo y
 | Velocidad (sonda de 100 pasos) | 0,164 s por paso; con evaluaciones y guardados, 0,19 s en `completo` |
 | Cadena completa | 118 min (sonda, cuatro corridas, verificación, evaluación, muestras, export y subida) |
 | Pod | 2,0 h encendido, de 08:35 a 10:35 hora local; se detuvo solo |
-| Coste de GPU | ~2,18 USD a 1,09 USD/h; el volumen de 40 GB se factura mientras el pod exista |
+| Coste de GPU | ~2,18 USD a 1,09 USD/h, más el volumen de 40 GB hasta eliminar el pod (2026-11-25) |
 | Proyección previa | 1,64–2,29 USD estimado; 2,76 USD proyectado por la sonda con el tope de 1,20 USD/h |
 
 ## 7. Desviaciones
@@ -102,4 +102,6 @@ y 8 000 pasos la meseta dura demasiado y el decaimiento llega cuando el modelo y
 - Una semilla por corrida; los intervalos son entre piezas, no entre semillas.
 - Validación y test salen del mismo corpus (partición por libro): generalización dentro de sus estilos, no fuera.
 - La calidad musical se mide con métricas automáticas; no hay escucha ciega.
-- Los checkpoints no publicados y el almacén Z-Space viven solo en el volumen del pod mientras no se elimine.
+- El pod y su volumen se eliminaron el 2026-11-25, tras verificar la publicación: los siete checkpoints no publicados
+  y el almacén Z-Space ya no existen. Quedan sus registros (`runs/final_h100/registros/`) y se pueden regenerar con la
+  cadena desde el commit `28c64b1`.
