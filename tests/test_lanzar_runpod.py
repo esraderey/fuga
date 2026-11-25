@@ -50,6 +50,16 @@ def test_ofertas_y_eleccion_con_el_catalogo_real(lz):
     assert lz.ofertas(_catalogo([("NVIDIA A100-SXM4-40GB", 0, 1.0, "LOW")]), "SECURE", ("NVIDIA A100-SXM4-40GB",)) == []
 
 
+def test_familias_economicas(lz):
+    assert set(lz.FAMILIAS) == set(lz.HORAS_ESTIMADAS) == set(lz.TOPE_HORAS)
+    for fam, (h0, h1) in lz.HORAS_ESTIMADAS.items():
+        assert h0 < h1 < lz.TOPE_HORAS[fam] - 0.3, fam                     # la estimación cabe en el tope con margen
+    cat = _catalogo([("NVIDIA L40S", 1.09, 0.79, "LOW"), ("NVIDIA A40", 0.59, 0.35, "LOW"), ("NVIDIA GeForce RTX 4090", 0.89, 0.34, "LOW")])
+    assert lz.elegir_oferta(lz.ofertas(cat, "SECURE", lz.FAMILIAS["l40s"]), 1.2)["gpus"] == ["NVIDIA L40S"]
+    assert lz.elegir_oferta(lz.ofertas(cat, "SECURE", lz.FAMILIAS["a40"]), 0.6)["gpus"] == ["NVIDIA A40"]
+    assert lz.elegir_oferta(lz.ofertas(cat, "SECURE", lz.FAMILIAS["l40s"]), 1.0) is None   # tope por debajo del precio
+
+
 def test_especificacion_valida_contra_el_esquema_oficial_v2(lz):
     jsonschema = pytest.importorskip("jsonschema")
     validador = jsonschema.Draft202012Validator(json.loads(ESQUEMA.read_text(encoding="utf-8")))

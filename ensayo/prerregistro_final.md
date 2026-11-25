@@ -31,6 +31,10 @@ con 5 % de calentamiento y 20 % final de decaimiento, bf16, semilla 0, evaluaci�
 | `wsd_6000` | 6 000 | Presupuesto corto; la meseta acaba en el paso 4 800. |
 | `wsd_8000` | 8 000 | Presupuesto corto; la meseta acaba en el paso 6 400. |
 
+**Hardware (nota del 2026-11-25, antes de lanzar).** La GPU se elige al lanzar según disponibilidad y coste entre las
+compatibles con la imagen (H100, A100, L40S, A40 o RTX 4090, todas con bf16 y memoria de sobra: el paso pide ~12,4 GB).
+El cálculo es el mismo en todas; solo cambia la velocidad. La tarjeta usada se anotará en el informe.
+
 Desviaciones respecto a `prerregistro_6h.md`, fijadas ahora: presupuesto en pasos en vez de minutos (el reloj de la H100
 no es comparable); sin checkpointing de activaciones (80 GB de memoria; mismo cálculo, salvo redondeo); Linux y CUDA en
 vez de Windows. El dropout 0,3 es el que eligió la regla del pre-registro anterior.

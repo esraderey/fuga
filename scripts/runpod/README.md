@@ -99,3 +99,12 @@ H100 SXM apenas gana a una H100 NVL o a una A100. La sonda sustituye estas cifra
 
 Con los precios vistos en la consola el 2026-11-25 (H100 PCIe 2,89 USD/h sin capacidad; H100 NVL 3,19; H100 SXM 4,39;
 A100 SXM 2,19), el plan `final` cuesta unos 3,8–6,1 USD en H100 NVL, 5,3–8,3 en H100 SXM y 2,8–4,4 en A100 SXM.
+
+Tarjetas más baratas (`--gpu`): el paso pide unos 12,4 GB sin checkpointing (medido), así que basta con 20–24 GB. Precios
+de la nube segura en el catálogo del 2026-11-25; el tiempo incluye unos 40 min fijos.
+
+| `--gpu` | Tarjeta | Memoria | USD/h | Tiempo estimado | Coste estimado | Tope por defecto |
+|---|---|---|---|---|---|---|
+| `l40s` | L40S | 48 GB | 1,09 | 1,5–2,1 h | 1,6–2,3 | 3 h |
+| `a40` | A40 | 48 GB | 0,59 | 2,2–3,2 h | 1,3–1,9 | 4 h |
+| `rtx4090` | RTX 4090 | 24 GB | 0,89 | 2,0–2,7 h | 1,8–2,4 | 4 h |

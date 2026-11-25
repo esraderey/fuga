@@ -31,8 +31,15 @@ RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 API = "https://api.runpod.io/v2"          # la v1 (rest.runpod.io) se retiró el 2026-11-15
 H100 = ("NVIDIA H100 PCIe", "NVIDIA H100 NVL", "NVIDIA H100 80GB HBM3")
 A100 = ("NVIDIA A100-SXM4-80GB", "NVIDIA A100 80GB PCIe")
-# Todas compatibles con la imagen (torch 2.4, CUDA 12.4: sm_80 y sm_90). Una RTX 5090 (sm_120) necesitaría otra imagen.
-FAMILIAS = {"h100": H100, "a100": A100}
+# Compatibles con la imagen (torch 2.4, CUDA 12.4): Ampere (sm_80, sm_86), Ada (sm_89, por compatibilidad binaria con
+# sm_86) y Hopper (sm_90), todas con bf16 y >= 24 GB (el paso pide ~12,4 GB sin checkpointing). Las Blackwell (RTX 5090,
+# RTX PRO) necesitarían otra imagen.
+FAMILIAS = {"h100": H100, "a100": A100, "l40s": ("NVIDIA L40S",), "a40": ("NVIDIA A40",),
+            "rtx4090": ("NVIDIA GeForce RTX 4090",)}
+# Horas estimadas del plan `final` (36 880 pasos + ~40 min fijos) y tope de vida por defecto. El paso está limitado por
+# el despacho en CPU en las tarjetas rápidas y por el cálculo en las lentas; la sonda del pod lo mide de verdad.
+HORAS_ESTIMADAS = {"h100": (1.2, 1.9), "a100": (1.5, 1.9), "l40s": (1.5, 2.1), "a40": (2.2, 3.2), "rtx4090": (2.0, 2.7)}
+TOPE_HORAS = {"h100": 3, "a100": 3, "l40s": 3, "a40": 4, "rtx4090": 4}
 IMAGEN = "runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04"
 CUDA_MIN = "12.4"                         # el host debe tener un driver con CUDA >= 12.4 (13.x incluido)
 NOMBRE = "fuga-final"
@@ -339,7 +346,8 @@ def main(argv=None) -> int:
     ap.add_argument("--repo_hf", default="esraderey/fuga-s-eco-rel")
     ap.add_argument("--gpu", choices=sorted(FAMILIAS), default="h100", help="familia de GPU a alquilar")
     ap.add_argument("--precio_max", type=float, default=3.0, help="USD por hora que no se debe superar")
-    ap.add_argument("--max_horas", type=int, default=3, help="tope de vida del pod; pasado ese tiempo se detiene")
+    ap.add_argument("--max_horas", type=int, default=0,
+                    help="tope de vida del pod; pasado ese tiempo se detiene (0 = el de la familia: 3 h, o 4 h en A40 y RTX 4090)")
     ap.add_argument("--secreto", default="hf_token", help="nombre del secreto de RunPod con el token de Hugging Face")
     ap.add_argument("--pod", default="", help="id del pod (por defecto, el registrado en runs/runpod_pod.json)")
     ap.add_argument("--confirmar", action="store_true")
@@ -372,13 +380,9 @@ def _ejecutar(a) -> int:
         print("falta la API key de RunPod: ejecuta `python scripts/runpod/lanzar.py clave` en tu terminal", file=sys.stderr)
         return 2
     cli = Cliente(clave)
+    a.max_horas = a.max_horas or TOPE_HORAS[a.gpu]
     if a.accion in ("simulacro", "crear"):
         commit = commit_publicado()
-        secretos = cli.secretos()
-        if a.secreto not in secretos:
-            print(f"falta el secreto «{a.secreto}» en la cuenta de esta API key (secretos: {secretos or 'ninguno'}). "
-                  "Créalo en la consola de RunPod → Secrets con tu token de Hugging Face.")
-            return 5
         familia = FAMILIAS[a.gpu]
         ofs = cli.precios(familia)
         for o in sorted(ofs, key=lambda o: (o["nube"], o["precio"])):
@@ -388,9 +392,17 @@ def _ejecutar(a) -> int:
             print(f"ninguna {a.gpu.upper()} con disponibilidad por debajo de {a.precio_max:.2f} USD/h; no se crea nada")
             return 3
         precio = oferta["precio_peor"]
-        print(f"se probaría, en este orden: {oferta['gpus']} en {oferta['nube']} (secreto «{a.secreto}» presente)")
+        print(f"se probaría, en este orden: {oferta['gpus']} en {oferta['nube']}")
         print(f"imagen {IMAGEN} | CUDA del host >= {CUDA_MIN} | volumen 40 GB en /workspace | commit {commit[:10]} | plan {a.plan}")
-        print(f"precio: hasta {precio:.2f} USD/h | estimado 1,2 a 1,9 h | tope {a.max_horas} h = {a.max_horas * precio:.2f} USD como máximo")
+        h0, h1 = HORAS_ESTIMADAS[a.gpu]
+        print(f"precio: hasta {precio:.2f} USD/h | estimado {h0:.1f} a {h1:.1f} h = {h0 * oferta['precio']:.2f} a {h1 * precio:.2f} USD | "
+              f"tope {a.max_horas} h = {a.max_horas * precio:.2f} USD como máximo")
+        secretos = cli.secretos()
+        if a.secreto not in secretos:
+            print(f"FALTA el secreto «{a.secreto}» en la cuenta de esta API key (secretos: {secretos or 'ninguno'}). "
+                  "Créalo en la consola de RunPod → Secrets con tu token de Hugging Face. No se crea nada.")
+            return 5
+        print(f"secreto «{a.secreto}» presente")
         activos = [p for p in cli.listar() if p.get("name") == NOMBRE and p.get("status") in VIVOS]
         if activos:
             print(f"ya hay un pod {NOMBRE} encendido ({activos[0]['id']}); no se crea otro")
