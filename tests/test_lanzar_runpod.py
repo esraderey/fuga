@@ -150,7 +150,9 @@ def test_crear_salta_las_gpu_sin_capacidad(lz):
     with pytest.raises(RuntimeError, match="422.*additional properties"):
         lz.Cliente("k", malo).crear_primero(["G1", "G2"], construir)          # un error nuestro no se salta
     nada = _Falso(crear=[sin_cap, sin_cap])
-    assert lz.Cliente("k", nada).crear_primero(["G1", "G2"], construir) == (None, ["G1: sin capacidad (400)", "G2: sin capacidad (400)"])
+    pod, intentos = lz.Cliente("k", nada).crear_primero(["G1", "G2"], construir)
+    assert pod is None and [i.split(" (")[0] for i in intentos] == ["G1: sin capacidad", "G2: sin capacidad"]
+    assert "no longer any instances" in intentos[0]                       # el motivo se muestra
     assert lz.sin_capacidad(503, None) and not lz.sin_capacidad(401, {"detail": "no instances"})
 
 

@@ -226,7 +226,7 @@ class Cliente:
                 return resp, intentos
             if not sin_capacidad(cod, resp):
                 raise RuntimeError(f"RunPod respondió {cod} al crear el pod con {gpu}: {motivo(resp)}")
-            intentos.append(f"{gpu}: sin capacidad ({cod})")
+            intentos.append(f"{gpu}: sin capacidad ({cod}: {motivo(resp)[:200]})")
         return None, intentos
 
     def registros(self, pid: str, cola: int = 80, segundos: float = 8.0) -> list[str]:
