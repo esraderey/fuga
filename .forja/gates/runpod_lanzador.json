@@ -62,5 +62,23 @@
   },
   "G3": "73 passed in 132.96s",
   "nuevo_test": "test_guardia_de_presupuesto_aborta_antes_de_entrenar"
+ },
+ "migracion_api_v2_2026_11_25": {
+  "motivo": "rest.runpod.io ya no resuelve (NXDOMAIN también en 1.1.1.1 y 8.8.8.8); RunPod retiró la API v1 el 2026-11-15",
+  "fuente": [
+   "https://docs.runpod.io/api-reference-v2/migrate-from-v1.md",
+   "https://api.runpod.io/v2/openapi.json"
+  ],
+  "cambios": [
+   "cliente v2: /v2/pods (paginado), /v2/pods/{id}/action, DELETE /v2/pods/{id}, /v2/catalog/gpus, /v2/account/secrets, /v2/pods/{id}/logs",
+   "cuerpo de creación anidado (gpu.id, gpu.minCudaVersion, mounts.persistent, cmd), una GPU por pod con reintento por capacidad",
+   "comprobación del secreto por nombre antes de crear; errores de red sin traza",
+   "parada desde el pod con la API v2 y RUNPOD_API_KEY como respaldo de runpodctl"
+  ],
+  "verificacion": {
+   "esquema": "tests/datos/runpod_v2_crear_pod.json (extracto oficial); el cuerpo valida y los campos v1 se rechazan",
+   "lectura_real": "catálogo, pods y secretos con la clave del usuario: HTTP 200 (sin crear nada)"
+  },
+  "G3": "75 passed in 127.62s"
  }
 }

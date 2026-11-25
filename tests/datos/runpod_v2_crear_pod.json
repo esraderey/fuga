@@ -1,0 +1,368 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$comment": "Extracto de https://api.runpod.io/v2/openapi.json (2026-11-25): CreatePodRequest y lo que referencia.",
+ "$ref": "#/components/schemas/CreatePodRequest",
+ "components": {
+  "schemas": {
+   "BaseContainerConfig": {
+    "type": "object",
+    "properties": {
+     "args": {
+      "type": "string"
+     },
+     "cmd": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "entrypoint": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "disk": {
+      "type": "integer",
+      "minimum": 1
+     },
+     "env": {
+      "type": "object",
+      "additionalProperties": {
+       "type": "string"
+      }
+     },
+     "image": {
+      "type": "string"
+     },
+     "ports": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    }
+   },
+   "BaseCpuConfig": {
+    "type": "object",
+    "required": [
+     "id",
+     "vcpuCount"
+    ],
+    "properties": {
+     "id": {
+      "type": "string",
+      "minLength": 1
+     },
+     "vcpuCount": {
+      "type": "integer",
+      "minimum": 2
+     }
+    }
+   },
+   "BaseGpuConfig": {
+    "type": "object",
+    "required": [
+     "id"
+    ],
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "count": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1024,
+      "default": 1
+     }
+    }
+   },
+   "BaseMounts": {
+    "type": "object",
+    "properties": {
+     "persistent": {
+      "$ref": "#/components/schemas/PersistentMount"
+     },
+     "network": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/NetworkMount"
+      }
+     }
+    }
+   },
+   "Cloud": {
+    "type": "string",
+    "enum": [
+     "SECURE",
+     "COMMUNITY"
+    ]
+   },
+   "ContainerConfig": {
+    "allOf": [
+     {
+      "$ref": "#/components/schemas/BaseContainerConfig"
+     },
+     {
+      "type": "object",
+      "properties": {
+       "registry": {
+        "type": [
+         "string",
+         "null"
+        ]
+       }
+      }
+     }
+    ]
+   },
+   "CreateCpuConfig": {
+    "allOf": [
+     {
+      "$ref": "#/components/schemas/BaseCpuConfig"
+     }
+    ],
+    "unevaluatedProperties": false
+   },
+   "CreateGpuConfig": {
+    "allOf": [
+     {
+      "$ref": "#/components/schemas/BaseGpuConfig"
+     },
+     {
+      "type": "object",
+      "properties": {
+       "allowedCudaVersions": {
+        "type": "array",
+        "items": {
+         "type": "string",
+         "pattern": "^\\d+\\.\\d+$"
+        }
+       },
+       "minCudaVersion": {
+        "type": "string",
+        "pattern": "^\\d+\\.\\d+$"
+       },
+       "minRamPerGpu": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 65536
+       },
+       "minVcpuCountPerGpu": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4096
+       }
+      }
+     }
+    ],
+    "unevaluatedProperties": false
+   },
+   "CreatePodRequest": {
+    "allOf": [
+     {
+      "$ref": "#/components/schemas/ContainerConfig"
+     },
+     {
+      "type": "object",
+      "required": [
+       "name"
+      ],
+      "properties": {
+       "name": {
+        "type": "string",
+        "minLength": 1
+       },
+       "cloud": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/Cloud"
+         }
+        ],
+        "default": "SECURE"
+       },
+       "cpu": {
+        "$ref": "#/components/schemas/CreateCpuConfig"
+       },
+       "dataCenterIds": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       },
+       "globalNetworking": {
+        "type": "boolean",
+        "default": false
+       },
+       "gpu": {
+        "$ref": "#/components/schemas/CreateGpuConfig"
+       },
+       "mounts": {
+        "$ref": "#/components/schemas/Mounts"
+       },
+       "startJupyter": {
+        "type": "boolean",
+        "default": false
+       },
+       "startSsh": {
+        "type": "boolean",
+        "default": false
+       },
+       "templateId": {
+        "type": "string",
+        "minLength": 1
+       },
+       "queue": {
+        "$ref": "#/components/schemas/PodQueueOptions"
+       }
+      }
+     }
+    ],
+    "unevaluatedProperties": false,
+    "if": {
+     "not": {
+      "required": [
+       "templateId"
+      ]
+     }
+    },
+    "then": {
+     "required": [
+      "image"
+     ]
+    }
+   },
+   "GlobalMount": {
+    "type": "object",
+    "required": [
+     "volumeId"
+    ],
+    "additionalProperties": false,
+    "properties": {
+     "volumeId": {
+      "type": "string"
+     },
+     "path": {
+      "type": "string"
+     }
+    }
+   },
+   "Mounts": {
+    "allOf": [
+     {
+      "$ref": "#/components/schemas/BaseMounts"
+     },
+     {
+      "type": "object",
+      "properties": {
+       "network": {
+        "type": "array",
+        "maxItems": 4,
+        "items": {
+         "$ref": "#/components/schemas/NetworkMount"
+        }
+       },
+       "global": {
+        "type": "array",
+        "maxItems": 1,
+        "items": {
+         "$ref": "#/components/schemas/GlobalMount"
+        }
+       }
+      }
+     }
+    ],
+    "unevaluatedProperties": false
+   },
+   "NetworkMount": {
+    "type": "object",
+    "required": [
+     "volumeId",
+     "path"
+    ],
+    "additionalProperties": false,
+    "properties": {
+     "volumeId": {
+      "type": "string"
+     },
+     "path": {
+      "type": "string"
+     }
+    }
+   },
+   "PersistentMount": {
+    "type": "object",
+    "required": [
+     "size",
+     "path"
+    ],
+    "additionalProperties": false,
+    "properties": {
+     "size": {
+      "type": "integer",
+      "minimum": 10
+     },
+     "path": {
+      "type": "string"
+     }
+    }
+   },
+   "PodQueueAllowedHours": {
+    "type": "object",
+    "properties": {
+     "monday": {
+      "$ref": "#/components/schemas/PodQueueHours"
+     },
+     "tuesday": {
+      "$ref": "#/components/schemas/PodQueueHours"
+     },
+     "wednesday": {
+      "$ref": "#/components/schemas/PodQueueHours"
+     },
+     "thursday": {
+      "$ref": "#/components/schemas/PodQueueHours"
+     },
+     "friday": {
+      "$ref": "#/components/schemas/PodQueueHours"
+     },
+     "saturday": {
+      "$ref": "#/components/schemas/PodQueueHours"
+     },
+     "sunday": {
+      "$ref": "#/components/schemas/PodQueueHours"
+     }
+    },
+    "unevaluatedProperties": false
+   },
+   "PodQueueHours": {
+    "type": "array",
+    "items": {
+     "type": "integer",
+     "minimum": 0,
+     "maximum": 23
+    }
+   },
+   "PodQueueOptions": {
+    "type": "object",
+    "properties": {
+     "startsAt": {
+      "type": "string",
+      "format": "date-time"
+     },
+     "expiresAt": {
+      "type": "string",
+      "format": "date-time"
+     },
+     "allowedHours": {
+      "$ref": "#/components/schemas/PodQueueAllowedHours"
+     },
+     "notifyEmail": {
+      "type": "string",
+      "format": "email"
+     }
+    },
+    "unevaluatedProperties": false
+   }
+  }
+ }
+}

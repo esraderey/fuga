@@ -32,7 +32,10 @@ hito() { echo "### $(date '+%Y-%m-%d %H:%M:%S') $*"; }
 
 apagar_pod() {
   if [ -z "${RUNPOD_POD_ID:-}" ]; then echo "RUNPOD_POD_ID no definido: no se apaga nada"; return 0; fi
-  runpodctl pod stop "$RUNPOD_POD_ID" || runpodctl stop pod "$RUNPOD_POD_ID" || echo "NO SE PUDO DETENER EL POD: DETENLO DESDE LA CONSOLA"
+  runpodctl pod stop "$RUNPOD_POD_ID" || runpodctl stop pod "$RUNPOD_POD_ID" \
+    || curl -fsS -X POST "https://api.runpod.io/v2/pods/$RUNPOD_POD_ID/action" -H "Authorization: Bearer ${RUNPOD_API_KEY:-}" \
+         -H "Content-Type: application/json" -d '{"action":"stop"}' \
+    || echo "NO SE PUDO DETENER EL POD: DETENLO DESDE LA CONSOLA"
 }
 subir_log() {   # copia este registro al dataset privado para poder leerlo sin entrar al pod (si falla, no pasa nada)
   sleep 1
@@ -61,7 +64,7 @@ if [ "$PRUEBA" != "1" ]; then
     *RUNPOD_SECRET*|"{{"*) echo "ERROR: el secreto de RunPod no se resolvió: comprueba que existe y que su nombre coincide."; exit 1 ;;
   esac
   if [ "$APAGAR" = "1" ] && [ -n "${RUNPOD_POD_ID:-}" ]; then   # temporizador de seguridad
-    nohup bash -c "sleep $((MAX_HORAS * 3600)); runpodctl pod stop $RUNPOD_POD_ID || runpodctl stop pod $RUNPOD_POD_ID" >/dev/null 2>&1 &
+    (sleep $((MAX_HORAS * 3600)); apagar_pod) >/dev/null 2>&1 &
   fi
 fi
 

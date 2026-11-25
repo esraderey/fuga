@@ -36,14 +36,20 @@ Después:
 python scripts/runpod/lanzar.py simulacro --precio_max 4.5           # precios y stock, pod que se crearía, coste; no crea nada
 python scripts/runpod/lanzar.py crear --confirmar --precio_max 4.5   # crea el pod: una H100 bajo demanda, tope de precio y de 3 h
 python scripts/runpod/lanzar.py vigilar              # sigue los hitos y detiene el pod al terminar o al pasar el tope
+python scripts/runpod/lanzar.py registros            # últimas líneas del contenedor, para diagnosticar
 python scripts/runpod/lanzar.py estado               # estado y coste por hora
 python scripts/runpod/lanzar.py eliminar --confirmar # borra el pod y su volumen cuando el modelo ya esté publicado
 ```
 
 El pod clona el commit exacto desde el que se lanzó (`FUGA_COMMIT`), así que hay que lanzar con todo subido a GitHub.
 
+El lanzador usa la API REST v2 de RunPod (`https://api.runpod.io/v2`); la v1 (`rest.runpod.io`) se retiró el
+2026-11-15. En la v2 cada pod lleva un solo tipo de GPU, así que se prueban una a una, de la más barata a la más cara.
+Antes de crear nada, `simulacro` y `crear` comprueban que la clave funciona, que el secreto existe (solo por su nombre),
+y los precios y la disponibilidad en vivo del catálogo.
+
 `--gpu a100` alquila una A100 en vez de una H100 (misma imagen). `--precio_max` (3 USD/h por defecto) se elige al lanzar:
-entre las GPU de la familia con stock y precio bajo el tope se pide la más barata, primero en la nube segura.
+entre las GPU de la familia con disponibilidad y precio bajo el tope se prueba primero la más barata, en la nube segura.
 
 Seguros contra el gasto: la cadena detiene el pod al terminar o fallar; si la proyección medida tras la sonda no cabe
 en el tope (menos 20 min), se aborta antes de entrenar; el contenedor lleva un temporizador que lo detiene a las 3 h;

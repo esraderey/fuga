@@ -97,13 +97,25 @@ def apagar_pod(registrar) -> None:
         try:
             r = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
         except FileNotFoundError:
-            registrar("apagar: runpodctl no está en esta imagen; DETÉN EL POD DESDE LA CONSOLA")
-            return
+            registrar("apagar: runpodctl no está en esta imagen")
+            break
         except subprocess.TimeoutExpired:
             continue
         registrar(f"apagar: {' '.join(cmd[:3])} -> exit {r.returncode} {(r.stdout or r.stderr).strip()[:200]}")
         if r.returncode == 0:
             return
+    clave = os.environ.get("RUNPOD_API_KEY", "")   # clave propia del pod, inyectada por RunPod
+    if clave:
+        import urllib.error
+        import urllib.request
+        req = urllib.request.Request(f"https://api.runpod.io/v2/pods/{pod}/action", data=b'{"action":"stop"}', method="POST",
+                                     headers={"Authorization": f"Bearer {clave}", "Content-Type": "application/json"})
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                registrar(f"apagar: API v2 -> {r.status}")
+                return
+        except (urllib.error.URLError, OSError) as e:
+            registrar(f"apagar: API v2 falló: {e}")
     registrar("apagar: no se pudo detener el pod; DETENLO DESDE LA CONSOLA")
 
 
